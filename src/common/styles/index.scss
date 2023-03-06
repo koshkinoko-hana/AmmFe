@@ -1,0 +1,260 @@
+@import 'src/common/styles/constants';
+@import 'src/common/styles/colors';
+@import 'src/common/styles/fonts';
+
+html,
+body,
+#root {
+  font-family: $font-family;
+  box-sizing: border-box;
+  color: $color-key-primary;
+  height: 100%;
+  width: 100%;
+  background-color: $color-white;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Remove the margin in Safari
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: $color-key-primary;
+
+  &:hover {
+    color: $color-blue80;
+  }
+}
+
+
+
+.context-link {
+  text-decoration: none;
+  color: $color-blue80;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  border-radius: $grid-border-radius;
+  font-size: 18px;
+  line-height: 23.4px;
+  padding: $grid-tiny-3x $grid-medium;
+  background: $color-blue80;
+  color: $color-white;
+  border: 2px solid $color-blue80;
+
+  &:hover {
+    background: $color-blue10;
+    color: $color-blue80;
+  }
+
+  &.light {
+    background: $color-blue10;
+    border: 2px solid $color-blue80;
+    color: $color-blue80;
+
+    &:hover {
+      background: $color-blue80;
+      color: $color-white;
+    }
+  }
+}
+
+.container {
+  margin: 0 $grid-normal;
+  max-width: $grid-desktop;
+}
+
+h1 {
+  @include h1-desktop();
+  
+  @media (max-width: $grid-tablet-max) {
+    @include h1-tablet();
+  }
+
+  @media (max-width: $grid-mobile-max) {
+    @include h1-mobile();
+  }
+}
+
+h2 {
+  @include h2-desktop();
+
+  @media (max-width: $grid-tablet-max) {
+    @include h2-tablet();
+  }
+
+  @media (max-width: $grid-mobile-max) {
+    @include h2-mobile();
+  }
+}
+
+h3 {
+  @include h3-desktop();
+
+  @media (max-width: $grid-tablet-max) {
+    @include h3-tablet();
+  }
+
+  @media (max-width: $grid-mobile-max) {
+    @include h3-mobile();
+  }
+}
+
+h4 {
+  @include h4-desktop();
+
+  @media (max-width: $grid-tablet-max) {
+    @include h4-tablet();
+  }
+
+  @media (max-width: $grid-mobile-max) {
+    @include h4-mobile();
+  }
+}
+
+h5 {
+  @include h5-desktop();
+
+  @media (max-width: $grid-tablet-max) {
+    @include h5-tablet();
+  }
+
+  @media (max-width: $grid-mobile-max) {
+    @include h5-mobile();
+  }
+}
+
+p {
+  margin: 0;
+  @include p1-desktop();
+  @media (max-width: $grid-mobile-max) {
+    @include p1-mobile();
+  }
+
+  &.p2 {
+    @include p2-desktop();
+    @media (max-width: $grid-mobile-max) {
+      @include p2-mobile();
+    }
+  }
+
+  &.p3 {
+    @include p3-desktop();
+    @media (max-width: $grid-mobile-max) {
+      @include p2-mobile();
+    }
+  }
+}
+
+input {
+  width: 310px;
+  height: 53px;
+  border: 2px solid $color-grey80;
+  border-radius: 15px;
+  font-size: 18px;
+  line-height: 23px;
+  padding: 15px 20px;
+  font-weight: $font-weight-normal;
+  font-family: $font-family;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  &:focus {
+    border: 2px solid $color-blue80;
+    box-shadow: 0 0 0 4px #E5F7FE;
+  }
+
+  &.filled {
+    border: 2px solid $color-blue80;
+  }
+}
+
+input[type='radio'], textarea {
+  width: 20px;
+  height: 20px;
+  border: 2px solid $color-grey90;
+
+  &:hover {
+    border: 2px solid $color-blue80;
+  }
+
+  &:checked {
+    border: 6px solid $color-blue80;
+  }
+}
+
+textarea {
+  width: 310px;
+  border: 2px solid $color-grey80;
+  border-radius: 15px;
+  font-size: 18px;
+  line-height: 23px;
+  padding: 15px 20px;
+  font-weight: $font-weight-normal;
+  font-family: $font-family;
+  resize: none;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 90px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid $color-grey90;
+
+  &:hover {
+    border: 2px solid $color-blue80;
+  }
+
+  &:checked {
+    background: $color-blue80;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";
+  color: $color-blue80;
+  display: inline-block;
+  width: $grid-small-extended;
+  margin-left: $grid-small-extended;
+}
+
+ol {
+  counter-reset: item;
+  & li {
+    display: block;
+    &:before {
+      content: counter(item) ". ";
+      counter-increment: item;
+      color: $color-blue80;
+    }
+  }
+}

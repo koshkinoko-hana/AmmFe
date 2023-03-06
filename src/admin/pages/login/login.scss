@@ -1,0 +1,33 @@
+@import "src/common/styles/constants";
+@import "src/common/styles/colors";
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+
+    .button {
+      margin-top: $grid-tiny-3x;
+
+      &__disabled {
+        background: $color-grey80;
+        border: none;
+
+        &:hover {
+          background: $color-grey80;
+          color: white;
+          border: none;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

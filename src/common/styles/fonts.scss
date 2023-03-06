@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Jost:semibold,medium,normal,light&display=swap');
+
+$font-family: 'Jost';
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+
+@import "fonts-desktop";
+@import "fonts-tablet";
+@import "fonts-mobile";

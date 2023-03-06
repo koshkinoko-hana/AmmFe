@@ -1,0 +1,14 @@
+@import "src/common/styles/colors";
+
+.list {
+  display: flex;
+  flex-direction: column;
+
+  .list-item {
+    border-bottom: 2px solid $color-grey60;
+
+    &--last {
+      border-bottom: none;
+    }
+  }
+}

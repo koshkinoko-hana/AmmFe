@@ -1,0 +1,24 @@
+@import "src/common/styles/constants";
+@import "src/common/styles/colors";
+@import "src/common/styles/fonts";
+
+.departments {
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: $grid-normal 1fr 3fr;
+    cursor: pointer;
+
+    &__bold {
+      .p2 {
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}

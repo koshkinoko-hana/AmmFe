@@ -1,0 +1,26 @@
+@import "src/common/styles/constants";
+@import "src/common/styles/colors";
+
+.input {
+  &__container {
+    padding-top: $grid-tiny-3x;
+    position: relative;
+  }
+
+  &__error {
+    position: absolute;
+    font-size: $grid-small;
+    line-height: $grid-tiny-3x;
+    color: $color-red80;
+    top: 0;
+  }
+}
+
+.p3 {
+  margin-right: auto;
+  margin-top: $grid-small;
+}
+
+.is-invalid {
+  border-color: $color-red80;
+}

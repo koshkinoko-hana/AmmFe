@@ -1,0 +1,90 @@
+/** h1 **/
+$h1-font-family: 'Jost';
+$h1-font-size: 26px;
+$h1-line-height: 28.6px;
+$h1-font-weight: 600;
+
+@mixin h1-mobile() {
+  font-family: $h1-font-family;
+  font-size: $h1-font-size;
+  line-height: $h1-line-height;
+  font-weight: $h1-font-weight;
+}
+
+/** h2 **/
+$h2-font-family: 'Jost';
+$h2-font-size: 24px;
+$h2-line-height: 26.4px;
+$h2-font-weight: 600;
+
+@mixin h2-mobile() {
+  font-family: $h2-font-family;
+  font-size: $h2-font-size;
+  line-height: $h2-line-height;
+  font-weight: $h2-font-weight;
+}
+
+/** h3 **/
+$h3-font-family: 'Jost';
+$h3-font-size: 22px;
+$h3-line-height: 26.4px;
+$h3-font-weight: 400;
+
+@mixin h3-mobile() {
+  font-family: $h3-font-family;
+  font-size: $h3-font-size;
+  line-height: $h3-line-height;
+  font-weight: $h3-font-weight;
+}
+
+/** h4 **/
+$h4-font-family: 'Jost';
+$h4-font-size: 20px;
+$h4-line-height: 25px;
+$h4-font-weight: 400;
+
+@mixin h4-mobile() {
+  font-family: $h4-font-family;
+  font-size: $h4-font-size;
+  line-height: $h4-line-height;
+  font-weight: $h4-font-weight;
+}
+
+/** h5 **/
+$h5-font-family: 'Jost';
+$h5-font-size: 18px;
+$h5-line-height: 22.5px;
+$h5-font-weight: 400;
+
+@mixin h5-mobile() {
+  font-family: $h5-font-family;
+  font-size: $h5-font-size;
+  line-height: $h5-line-height;
+  font-weight: $h5-font-weight;
+}
+
+/** p1 - default **/
+$p1-font-family: 'Jost';
+$p1-font-size: 18px;
+$p1-line-height: 23.4px;
+$p1-font-weight: 400;
+
+@mixin p1-mobile() {
+  font-family: $p1-font-family;
+  font-size: $p1-font-size;
+  line-height: $p1-line-height;
+  font-weight: $p1-font-weight;
+}
+
+/** p2 **/
+$p2-font-family: 'Jost';
+$p2-font-size: 16px;
+$p2-line-height: 20.8px;
+$p2-font-weight: 400;
+
+@mixin p2-mobile() {
+  font-family: $p2-font-family;
+  font-size: $p2-font-size;
+  line-height: $p2-line-height;
+  font-weight: $p2-font-weight;
+}

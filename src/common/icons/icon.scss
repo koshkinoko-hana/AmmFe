@@ -1,0 +1,18 @@
+@import "src/common/styles/index";
+
+.svg-icon {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: auto;
+  width: auto;
+
+  .icon {
+    fill: currentColor;
+
+    width: $icon-size-base;
+    height: $icon-size-base;
+  }
+}
