@@ -1,5 +1,7 @@
 import DepartmentDetails from '@admin/components/departmentDialogue'
+import PositionDetails from '@admin/components/positionDialogue'
 import { clearCurrentDepartmentAction } from '@admin/ducks/actions/department'
+import { clearCurrentPositionAction } from '@admin/ducks/actions/position'
 import { DialogueOption } from '@common/ducks/types/dialogueOption'
 import React from 'react'
 import { AnyAction } from 'redux'
@@ -15,6 +17,11 @@ const dialogueOptions: {
     header: 'Кафедра',
     body: <DepartmentDetails/>,
     onCloseAction: clearCurrentDepartmentAction
+  },
+  [DialogueOption.ADMIN_POSITION]: {
+    header: 'Должность',
+    body: <PositionDetails/>,
+    onCloseAction: clearCurrentPositionAction
   }
 }
 

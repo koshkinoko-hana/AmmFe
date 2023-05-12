@@ -16,14 +16,20 @@
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-file-drop": "^3.1.6",
     "react-hook-form": "^7.43.1",
     "react-icons": "^4.7.1",
+    "react-images-uploading": "^3.1.7",
     "react-redux": "^8.0.5",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.2",
+    "react-slick": "^0.29.0",
     "react-toastify": "^9.1.1",
     "redux-saga": "^1.2.2",
     "redux-saga-routines": "^3.2.3",
+    "slick-carousel": "^1.8.1",
     "sort-by": "^1.2.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -55,6 +61,7 @@
   },
   "devDependencies": {
     "@redux-devtools/core": "^3.13.1",
+    "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "eslint": "^8.33.0",
@@ -66,6 +73,7 @@
   "_moduleAliases": {
     "~/*": "src/*",
     "@admin/*": "src/admin/*",
+    "@client/*": "src/client/*",
     "@common/*": "src/common/*"
   }
 }

@@ -1,0 +1,72 @@
+@import "src/common/styles/index";
+
+.client__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $grid-big;
+  z-index: 100;
+  background: $color-white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    width: $grid-desktop;
+
+    @media (max-width: $grid-laptop-max) {
+      width: 100%;
+    }
+
+
+    .logo-container {
+      display: flex;
+      flex-direction: row;
+      gap: $grid-base;
+      align-items: center;
+      padding: 0 $grid-medium;
+
+      .logo-text {
+        width: 185px;
+        font-weight: $font-weight-light;
+        font-size: $p4-font-size;
+        line-height: 1.2;
+        border-left: 0.5px solid $color-key-primary;
+        padding-left: $grid-tiny-3x;
+      }
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: row;
+      gap: $grid-base * 2;
+      align-items: center;
+      padding: 0 $grid-medium;
+
+      @media (max-width: $grid-tablet-max) {
+        gap: $grid-base;
+      }
+    }
+
+    .tablet-hidden {
+      @media (max-width: $grid-tablet-max) {
+        display: none;
+      }
+    }
+
+    .mobile-hidden {
+      @media (max-width: $grid-mobile-max) {
+        display: none;
+      }
+    }
+  }
+}
+
+
+.header__substrate {
+  width: 100%;
+  height: $grid-big;
+}

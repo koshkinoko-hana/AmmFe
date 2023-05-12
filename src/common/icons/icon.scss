@@ -5,13 +5,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  height: auto;
-  width: auto;
+  border: none;
+  outline: none;
+  padding: 0;
 
   .icon {
-    fill: currentColor;
-
     width: $icon-size-base;
     height: $icon-size-base;
   }

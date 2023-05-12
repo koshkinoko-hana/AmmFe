@@ -1,9 +1,11 @@
 import './icon.scss'
+import { Props } from '@common/icons/types'
 import React, { FC } from 'react'
 
-export const Burger: FC = () => {
+export const Burger: FC<Props> = (props) => {
+
   return (
-    <div className="svg-icon">
+    <div className="svg-icon" onClick={props.onClick}>
       <svg className="svg-icon icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" clipRule="evenodd" d="M16.5 22C17.8807 22 19 23.1193 19 24.5C19 25.8807 17.8807 27 16.5 27C15.1193 27 14 25.8807 14 24.5C14 23.1193 15.1193 22 16.5 22Z" fill="currentColor"/>
         <path fillRule="evenodd" clipRule="evenodd" d="M16.5 13C17.8807 13 19 14.1193 19 15.5C19 16.8807 17.8807 18 16.5 18C15.1193 18 14 16.8807 14 15.5C14 14.1193 15.1193 13 16.5 13Z" fill="currentColor"/>

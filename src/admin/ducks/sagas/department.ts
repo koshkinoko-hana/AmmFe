@@ -1,10 +1,12 @@
 import {
-  fetchDepartmentListAction,
+  fetchDepartmentListAction, fetchDepartmentOptionsAction,
   saveDepartmentAction,
-  updateDepartmentAction, updateDepartmentListAction
+  updateDepartmentAction,
+  updateDepartmentListAction
 } from '@admin/ducks/actions/department'
 import { errorWrapper } from '@admin/ducks/sagas/sagaWrapper'
 import { Department, DepartmentNew } from '@admin/ducks/types/department'
+import { Option } from '@common/components/select/types'
 import { closeDialogueAction, setLoadingDialogueAction } from '@common/ducks/slice/dialogue'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
@@ -49,11 +51,24 @@ function* updateDepartment(action: PayloadAction<Department>) {
   })
 }
 
+function* fetchDepartmentOptions() {
+  yield errorWrapper(function* () {
+    try {
+      const res: Option[] = yield call(get, `${apiAdmin}/department/options`)
+      yield put({ type: fetchDepartmentOptionsAction.SUCCESS, payload: {departments: res} })
+    } catch (e: unknown) {
+      yield put({ type: fetchDepartmentOptionsAction.FAILURE })
+      throw e
+    }
+  })
+}
+
 function* departmentWatcher() {
   yield all([
     takeLatest(fetchDepartmentListAction.TRIGGER, fetchDepartments),
     takeLatest(saveDepartmentAction.type, saveDepartment),
-    takeLatest(updateDepartmentAction.type, updateDepartment)
+    takeLatest(updateDepartmentAction.type, updateDepartment),
+    takeLatest(fetchDepartmentOptionsAction.TRIGGER, fetchDepartmentOptions)
   ])
 }
 

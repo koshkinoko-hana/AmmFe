@@ -1,15 +1,18 @@
 import {
   clearCurrentDepartmentAction,
   fetchDepartmentListAction,
+  fetchDepartmentOptionsAction,
   setCurrentDepartmentAction,
   updateDepartmentListAction
 } from '@admin/ducks/actions/department'
 import { Department, DepartmentState } from '@admin/ducks/types/department'
+import { Option } from '@common/components/select/types'
 import { createReducer, PayloadAction } from '@reduxjs/toolkit'
 
 
 const initialState: DepartmentState = {
   departments: [],
+  departmentOptions: [],
   loading: false
 }
 
@@ -22,6 +25,16 @@ const department = createReducer(initialState, {
     return { ...state, loggedIn: true, loading: false, departments }
   },
   [fetchDepartmentListAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
+  },
+  [fetchDepartmentOptionsAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [fetchDepartmentOptionsAction.SUCCESS]: (state, action: PayloadAction<{departments: Option[]}>) => {
+    const { departments } = action.payload
+    return { ...state, loggedIn: true, loading: false, departmentOptions: departments }
+  },
+  [fetchDepartmentOptionsAction.FAILURE]: (state) => {
     return { ...state, loading: false }
   },
   [setCurrentDepartmentAction.type]: (state, action: PayloadAction<Department | undefined>) => {

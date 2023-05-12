@@ -12,7 +12,7 @@ import { LoginRequestPayload, LoginResponse } from '../types/user'
 function* auth(action: PayloadAction<LoginRequestPayload>) {
   yield errorWrapper(function* () {
     try {
-      const res: LoginResponse = yield call(postUnauth, `${apiAdmin}/auth`, action.payload, [ 404 ])
+      const res: LoginResponse = yield call(postUnauth, `${apiAdmin}/auth`, action.payload)
       setToken(res.authToken)
       yield put({ type: loginAction.SUCCESS, payload: res })
     } catch (e: unknown) {
@@ -33,6 +33,7 @@ function* fetchMe() {
       yield put({ type: loginAction.SUCCESS, payload: res })
     } catch (e: unknown) {
       if ((e as RequestError).code === 404) {
+        setToken('')
         yield put(errorAction(401))
       }
       else throw e

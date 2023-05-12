@@ -1,37 +1,30 @@
 import './menu.scss'
-import { fetchMeAction } from '@admin/ducks/actions/user'
-import { getUserRoles } from '@admin/ducks/selectors/user'
-import { Role } from '@admin/ducks/types/user'
-import Logo from '@common/logo'
-import React, { useEffect } from 'react'
+import { toggleMenuAction } from '@admin/ducks/reducer/app'
+import { getMenuShown } from '@admin/ducks/selectors/app'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { AdminRoutes } from '~/common/types/routes'
-import { token } from '~/common/utils/token'
 
-const Header: React.FC = () => {
-  const navigate = useNavigate()
+const Menu: React.FC = () => {
+  const shown: boolean = useSelector(getMenuShown)
   const dispatch = useDispatch()
-  const roles: Role[] = useSelector(getUserRoles)
 
-  useEffect(() => {
-    if (!token()) {
-      navigate(`/${AdminRoutes.root}/${AdminRoutes.login}`)
-    }
-    else if (!roles.length) {
-      dispatch(fetchMeAction())
-    }
-  }, [])
+  const toggleMenu = () => {
+    dispatch(toggleMenuAction())
+  }
 
-
-  return (
-    <div className="header">
-      <div className="logo-container"><Logo/><div>ПММ <br/>Админпанель</div></div>
-      <div className="menu">
+  if(shown) {
+    return (
+      <div className="side-menu">
         <Link to="/" className="p1">Расписание</Link>
+        <Link to={`/${AdminRoutes.root}/${AdminRoutes.departments}`} onClick={toggleMenu} className="p1">Кафедры</Link>
+        <Link to={`/${AdminRoutes.root}/${AdminRoutes.positions}`} onClick={toggleMenu} className="p1">Должности</Link>
+        <Link to={`/${AdminRoutes.root}/${AdminRoutes.employees}`} onClick={toggleMenu} className="p1">Сотрудники</Link>
       </div>
-    </div>
-  )
+    )
+  }
+  return null
 }
 
-export default Header
+export default Menu

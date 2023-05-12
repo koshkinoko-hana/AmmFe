@@ -16,7 +16,6 @@ const Departments: React.FC = () => {
   const loading = useSelector(getDepartmentLoading)
 
   useEffect(() => {
-    debugger
     dispatch(fetchDepartmentListAction())
   }, [])
 

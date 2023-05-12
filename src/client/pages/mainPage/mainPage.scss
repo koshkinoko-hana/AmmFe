@@ -1,0 +1,189 @@
+@import "src/common/styles/index";
+@import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+.client__main {
+
+  .top-block {
+    background: $color-grey10;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: block;
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+
+      .container__top-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 60px;
+        padding: 60px 0 0;
+        overflow: hidden;
+        width: $grid-desktop;
+        justify-self: center;
+        position: relative;
+
+        @media (max-width: $grid-tablet-max) {
+          padding: 60px;
+          justify-content: flex-start;
+        }
+
+        .button {
+          margin-top: 80px;
+
+          @media (max-width: $grid-tablet-max) {
+            margin-top: 40px;
+            font-size: 16px;
+            padding: 15px;
+          }
+
+          @media (max-width: $grid-mobile-max) {
+            margin-top: 20px;
+          }
+        }
+
+        .info {
+          z-index: 50;
+        }
+
+        .image {
+          object-fit: contain;
+          width: 800px;
+
+          @media (max-width: $grid-laptop-max) {
+            width: 450px;
+          }
+
+
+          @media (max-width: $grid-tablet-max) {
+            position: absolute;
+            right: 60px;
+            bottom: 0;
+            z-index: 1;
+          }
+
+          @media (max-width: $grid-mobile-max) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .reasons-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: $grid-normal-extended;
+    padding: $grid-base-extended;
+    max-width: $grid-desktop;
+    margin: auto;
+
+    @media (max-width: $grid-laptop-max) {
+      grid-gap: $grid-base;
+    }
+
+    @media (max-width: $grid-tablet-max) {
+      grid-template-columns: repeat(2, 1fr);
+      padding: $grid-tiny-3x;
+    }
+
+    @media (max-width: $grid-mobile-max) {
+      grid-template-columns: 1fr;
+    }
+
+    .icon {
+      width: 130px;
+      height: 130px;
+    }
+
+    &__header {
+      font-weight: $font-weight-medium;
+      margin: $grid-tiny-3x 0 $grid-tiny;
+    }
+  }
+
+  .history-block {
+    max-width: $grid-desktop;
+    margin: auto;
+
+    .arrow-left-block {
+      position: absolute;
+      left: 180px;
+      bottom: 80px;
+    }
+
+    .arrow-right-block {
+      position: absolute;
+      right: 180px;
+      bottom: 80px;
+    }
+
+
+    @keyframes hidden-to-visible {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes from-25-to-visible {
+      from {
+        opacity: 0.25;
+        font-size: 80px;
+      }
+      to {
+        opacity: 1;
+        font-size: 100px;
+      }
+    }
+
+    .item {
+      height: 500px;
+      padding: 30px 30px 60px;
+
+      &__text {
+        height: calc(100% - 125px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        text-align: left;
+        > * {
+          opacity: 0;
+          animation: hidden-to-visible 2s ease-in alternate-reverse;
+        }
+      }
+
+      .year {
+        color: #F8D15A !important;
+        font-weight: 600 !important;
+        font-size: 80px !important;
+        line-height: 110px !important;
+        background: transparent !important;
+        opacity: 0.25 !important;
+        position: relative;
+        animation: from-25-to-visible 2s ease-in alternate-reverse;
+      }
+
+    }
+
+    .selected {
+      .item__text {
+        > * {
+          opacity: 1 !important;
+          animation: hidden-to-visible 2s ease-in;
+        }
+      }
+
+      .year {
+        opacity: 1 !important;
+        font-size: 100px !important;
+        animation: from-25-to-visible 2s ease-in;
+      }
+    }
+  }
+}

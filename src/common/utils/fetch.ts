@@ -82,6 +82,34 @@ export async function post<T>(
   )
 }
 
+export async function upload(
+  url: string,
+  file: File,
+  // ignoredStatuses: number[] = [],
+): Promise<any> {
+  const data = new FormData()
+  data.append('file', file)
+  return await fetch(url, { // Your POST endpoint
+    method: 'POST',
+    headers: {
+      authorization: `Bearer ${token()}`,
+    },
+    body: data
+  }).then(
+    response => response.json() // if the response is a JSON object
+  ).then(
+    success => {
+      console.log(success)
+      return success
+    }
+  ).catch(
+    error => {
+      console.log(error)
+      throw error
+    } // Handle the error response object
+  )
+}
+
 export async function putRequest<T>(
   url: string,
   body: object,

@@ -8,7 +8,7 @@ import { getCurrentDepartment } from '@admin/ducks/selectors/department'
 import { DepartmentNew } from '@admin/ducks/types/department'
 import { closeDialogueAction } from '@common/ducks/slice/dialogue'
 import { useDispatch, useSelector } from 'react-redux'
-import { FormData } from './types'
+import { FormData as FD } from './types'
 import Textarea from '@common/components/textarea'
 import TextInput from '@common/components/textInput'
 import React, { useCallback } from 'react'
@@ -22,9 +22,9 @@ const DepartmentDetails: React.FC = () => {
     register,
     handleSubmit,
     formState: { isSubmitting, isValid, errors }
-  } = useForm<FormData>({mode: 'onChange'})
+  } = useForm<FD>({mode: 'onChange'})
 
-  const onSubmit = useCallback((data: FormData) => {
+  const onSubmit = useCallback((data: FD) => {
     const {name, description } = data
     if (currentDepartment) {
       const department = {...currentDepartment}
@@ -56,7 +56,6 @@ const DepartmentDetails: React.FC = () => {
         error={errors.name?.type}
         register={register('name', {required: true, maxLength: 255, value: currentDepartment?.name || ''})}
         classList="full-width"
-
       />
       <Textarea
         label={'Описание кафедры'}

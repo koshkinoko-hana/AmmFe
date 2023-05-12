@@ -1,3 +1,4 @@
+import { Option } from '@common/components/select/types'
 
 export interface Department {
   id: number
@@ -15,6 +16,7 @@ export interface DepartmentNew {
 
 export interface DepartmentState {
   departments: Department[]
+  departmentOptions: Option[]
   loading: boolean
   current?: Department
 }

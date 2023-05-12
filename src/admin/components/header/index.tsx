@@ -1,7 +1,9 @@
 import './header.scss'
 import { fetchMeAction } from '@admin/ducks/actions/user'
+import { toggleMenuAction } from '@admin/ducks/reducer/app'
 import { getUserRoles } from '@admin/ducks/selectors/user'
 import { Role } from '@admin/ducks/types/user'
+import { Burger } from '@common/icons'
 import Logo from '@common/logo'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,6 +25,10 @@ const Header: React.FC = () => {
     }
   }, [])
 
+  const toggleMenu = () => {
+    dispatch(toggleMenuAction())
+  }
+
 
   return (
     <>
@@ -31,6 +37,7 @@ const Header: React.FC = () => {
         <div className="logo-container"><Logo/><div>ПММ <br/>Админпанель</div></div>
         <div className="menu">
           <Link to="/" className="p1">Расписание</Link>
+          <Burger onClick={toggleMenu}/>
         </div>
       </div>
     </>
