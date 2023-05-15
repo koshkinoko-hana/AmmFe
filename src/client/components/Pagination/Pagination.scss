@@ -1,0 +1,23 @@
+@import '@common/styles/colors';
+
+.pagination {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    &__btn {
+        user-select: none;
+        cursor: pointer;
+        display: flex;
+        text-align: center;
+        padding: 8px 15px;
+        border-radius: 10px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 130%;
+        &--active {
+            background-color: $color-blue10;
+            color: $color-blue80;
+        }
+    }
+}

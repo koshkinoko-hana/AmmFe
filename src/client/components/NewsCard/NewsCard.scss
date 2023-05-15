@@ -1,0 +1,39 @@
+@import '@common/styles/colors.scss';
+
+.news-card {
+    width: 454px;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: $color-grey10;
+    &__img {
+        width: 100%;
+        max-height: 250px;
+    }
+    &__title {
+        margin: 15px 30px 10px;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 125%;
+    }
+    &__desc {
+        margin: 10px 30px 45px;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 130%;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical; 
+        overflow: hidden;
+    }
+    &_footer {
+        margin: 0 30px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__date {
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 130%;
+        }
+    }
+}
