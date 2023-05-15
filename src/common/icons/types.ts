@@ -1,3 +1,3 @@
 export interface Props {
-  onClick: () => void
+  onClick?: () => void
 }
