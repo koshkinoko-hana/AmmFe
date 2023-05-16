@@ -1,13 +1,13 @@
 @import '@common/styles/colors';
+@import '@common/styles/fonts-desktop';
 @import '@common/styles/constants';
-@import '@common/styles/fonts-desktop.scss';
 
 .news_header {
     margin: 40px auto 60px;
     padding: 40px 60px;
     border-radius: 25px;
     background-color: $color-grey10;
-    width: $grid-desktop;
+    max-width: $grid-desktop;
     &_links {
         margin: 0;
         padding: 0;
@@ -46,5 +46,23 @@
     &__desc {
         color: #000;
         margin-bottom: 17px;
+    }
+}
+
+@media screen and (max-width: $grid-laptop-max) {
+    .news_header {
+        max-width: $grid-tablet-max;
+    }
+}
+
+@media screen and (max-width: $grid-tablet-max) {
+    .news_header {
+        max-width: $grid-mobile-max;
+    }
+}
+
+@media screen and (max-width: $grid-mobile-max) {
+    .news_header {
+        max-width: 80%;
     }
 }

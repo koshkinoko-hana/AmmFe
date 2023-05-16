@@ -1,5 +1,9 @@
+@import '@common/styles/index';
+
 .news-container {
     margin: 0 auto;
+    padding: 0 20px;
+    max-width: $grid-desktop;
     display: flex;
     flex-wrap: wrap;
     gap: 40px;

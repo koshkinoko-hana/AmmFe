@@ -1,7 +1,7 @@
-@import '@common/styles/colors.scss';
+@import '@common/styles/index';
 
 .news-card {
-    width: 454px;
+    width: 450px;
     border-radius: 25px;
     overflow: hidden;
     background-color: $color-grey10;
@@ -35,5 +35,11 @@
             font-size: 18px;
             line-height: 130%;
         }
+    }
+}
+
+@media screen and (max-width: $grid-tablet-max) {
+    .news-card {
+        width: 346px;
     }
 }
