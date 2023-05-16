@@ -2,11 +2,16 @@
 
 .news-container {
     margin: 0 auto;
-    padding: 0 20px;
     max-width: $grid-desktop;
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
     margin-bottom: 100px;
+}
+
+@media screen and (max-width: $grid-desktop) {
+    .news-container {
+        padding: 0 20px;
+    }
 }
