@@ -115,26 +115,22 @@
                 display: block;
                 width: 80px;
                 height: 80px;
-                img {
+                img.img1 {
                   width: 100%;
                   height: auto;
-                  &:nth-child(1) {
-                     display: block; 
-                  }
-                  &:nth-child(2) {
+                  display: block; 
+                }
+                img.img2 {
+                    width: 100%;
+                    height: auto;
                     display: none;
-                  }
                 }
                 
-                &:hover {
-                  img:nth-child(1) 
-                  {
+                &:hover img.img1{
                     display: none;
-                  }
-                  img:nth-child(2) 
-                  {
+                }
+                &:hover img.img2{
                   display: block;
-                  }
                 }
             }          
         }    

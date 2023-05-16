@@ -14,8 +14,8 @@ const Footer: React.FC = () => {
           <div className="links-container">
             <div className='logo-container'>
               <div className="icon-container">
-                <img src={IconBW} />
-                <img src={IconColor} />
+                <img className='img1' src={IconBW} />
+                <img className='img2' src={IconColor} />
               </div>
             </div>
             <div className='column'>
