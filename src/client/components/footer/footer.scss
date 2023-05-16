@@ -7,7 +7,7 @@
     flex-direction: column;
 
     a {
-        padding-bottom: 10px;
+        padding-bottom: $grid-small;
         line-height: 130%;
         color: $color-white;
         &:hover{
@@ -20,28 +20,28 @@
         width: 100%;
         @media (max-width: $grid-tablet-max) {
             .footer-container{
-                margin: 0 10px;
+                margin: 0 $grid-small;
             }
             .copyright-text{
-                margin: 0 10px;
+                margin: 0 $grid-small;
             }
         }
         @media (max-width: $grid-mobile-max) {
             .footer-container{
-                margin: 0 10px;
+                margin: 0 $grid-small;
             }
             .copyright-text{
-                margin: 0 10px;
+                margin: 0 $grid-small;
             }
         }
         @media (max-width: $grid-tablet-min) {
             .footer .footer-box{
-                margin: 39px 0;
+                margin: $grid-medium 0;
             }
             .footer-container{
                 display: flex;
                 flex-direction: column;
-                margin-left: 15px;
+                margin-left: $grid-tiny-3x;
 
                 .mobile-icon{
                     display: block;
@@ -53,25 +53,25 @@
                 }
                 .contacts-container{
                     align-self: self-start;
-                    margin-bottom: 25px;
+                    margin-bottom: $grid-base;
                 }
                 .links-container{
                     align-self: self-start;
                     .column{
-                        margin-right: 45px;
+                        margin-right: $grid-medium-extended;
                     }
-                    margin-bottom: 25px;
+                    margin-bottom: $grid-base;
                 }
             }
         }
         @media (max-width: 375px ){
             .footer .footer-box{
-                margin: 39px 0;
+                margin: $grid-medium 0;
             }
             .footer-container{
                 display: flex;
                 flex-direction: column;
-                margin-left: 15px;
+                margin-left: $grid-tiny-3x;
 
                 .logo-container{
                     display: none;
@@ -82,19 +82,19 @@
 
                     .logo-container{
                         display: flex;
-                        margin-bottom: 25px;
+                        margin-bottom: $grid-base;
                     }
                 }
                 .contacts-container{
                     align-self: self-start;
-                    margin-bottom: 25px;
+                    margin-bottom: $grid-base;
                 }
                 .links-container{
                     align-self: self-start;
                     .column{
-                        margin-right: 45px;
+                        margin-right: $grid-medium-extended;
                     }
-                    margin-bottom: 25px;
+                    margin-bottom: $grid-base;
                 }
             }
         }

@@ -1,8 +1,8 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/react-in-jsx-scope */
 import './footer.scss'
-import IconColor from '@/src/assets/IconColor.svg'
-import IconBW from '@/src/assets/IconBw.svg'
+import IconColor from '~/src/assets/IconColor.svg'
+import IconBW from '~/src/assets/IconBw.svg'
 import { Link } from 'react-router-dom'
 import  { Phone, Twitter, Vk, Marker } from '@/src/common/icons'
 const Footer: React.FC = () => {
@@ -32,12 +32,12 @@ const Footer: React.FC = () => {
           <div className='contacts-container'>
             <div className='column'>
               <div className='social-icons'>
-                <Link to="/" className="p2"><Vk/></Link>
-                <Link to="/" className="p2"><Twitter/></Link>
+                <Link to="https://vk.com/amm_vsu" className="p2"><Vk/></Link>
+                <Link to="https://twitter.com/amm_vsu" className="p2"><Twitter/></Link>
               </div>
               <div className='item'>
                 <Link to="/" className="p2">
-                  <a href="#" className='link'>
+                  <a href="tel:+74732208266" className='link'>
                     <span> <Phone /> </span>
                     <span> +7 (473) 2-208-266 </span>
                   </a>
