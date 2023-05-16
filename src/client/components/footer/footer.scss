@@ -143,9 +143,9 @@
                 .social-icons{
                     display: flex;
                     flex-direction: row;
-                    margin-bottom: 25px;
+                    margin-bottom: $grid-base;
                     a {
-                        padding-right: 15px;
+                        padding-right: $grid-tiny-3x;
                         padding-bottom: 0;
                     }
                 }
@@ -154,31 +154,32 @@
                     &:not(:last-child) {
                         padding-bottom: 10px;
                     }
-                    span{
+                    .link{
+                        .span-svg {
                         display: block;
-                        &:nth-child(1) {
-                            position: absolute;
-                            top: 0px;
-                            left: 0;
-                            width: 20px;
-                            height: 20px;
-                            padding-right: 10px;
-
-                            & svg {
-                                stroke: $color-white;
-                                fill: none;
-                            }
+                        position: absolute;
+                        top: 0px;
+                        left: 0;
+                        width: 20px;
+                        height: 20px;
+                        padding-right: $grid-small;
                         }
-                        &:nth-child(2) {
-                            padding-left: 22px;
+
+                        .span-svg svg {
+                            stroke: $color-white;
+                            fill: none;
+                        }
+                        .span-text {
+                            display: block;
+                            padding-left: $grid-base;
                             color: $color-white;
                         }
-                    }
-                    &:hover span{
-                        color: $color-blue80;
-                    }
-                    &:hover span svg{
-                        stroke: $color-blue80;
+                        &:hover span {
+                            color: $color-blue80;
+                        }
+                        &:hover span svg{
+                            stroke: $color-blue80;
+                        }
                     }
                 }
             }

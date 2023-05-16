@@ -38,16 +38,16 @@ const Footer: React.FC = () => {
               <div className='item'>
                 <Link to="/" className="p2">
                   <a href="tel:+74732208266" className='link'>
-                    <span> <Phone /> </span>
-                    <span> +7 (473) 2-208-266 </span>
+                    <span className='span-svg'> <Phone /> </span>
+                    <span className='span-text'> +7 (473) 2-208-266 </span>
                   </a>
                 </Link>
               </div>
               <div className='item'>
                 <Link to="/" className="p2">
                   <a href="#" className='link'>
-                    <span><Marker /></span>
-                    <span>г. Воронеж, Университетская пл. 1</span>
+                    <span className='span-svg'><Marker /></span>
+                    <span className='span-text'>г. Воронеж, Университетская пл. 1</span>
                   </a>
                 </Link>
               </div>
