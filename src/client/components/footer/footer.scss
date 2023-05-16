@@ -20,21 +20,21 @@
         width: 100%;
         @media (max-width: $grid-tablet-max) {
             .footer-container{
-                margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
+                margin: 0 10px;
             }
             .copyright-text{
-                margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
+                margin: 0 10px;
             }
         }
         @media (max-width: $grid-mobile-max) {
             .footer-container{
-                margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
+                margin: 0 10px;
             }
             .copyright-text{
-                margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
+                margin: 0 10px;
             }
         }
-        @media (max-width: 680px) {
+        @media (max-width: $grid-tablet-min) {
             .footer .footer-box{
                 margin: 39px 0;
             }
@@ -207,7 +207,7 @@
         display: none;
     }
     .copyright-text {
-        max-width: $grid-desktop; //1440
+        max-width: $grid-desktop; 
         font-weight: $font-weight-normal;
         font-size: $p4-font-size;
         color: $color-white;
