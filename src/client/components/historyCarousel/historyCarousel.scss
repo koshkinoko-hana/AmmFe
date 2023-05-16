@@ -4,12 +4,13 @@
   display: flex;
   justify-content: center;
   position: relative;
+  padding: 0 15px;
   &__container {
     width: $grid-desktop;
   }
   &__title {
     font-size: 46px;
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
     line-height: 110%;
     margin: 0 0 45px 0;
   }
@@ -64,7 +65,7 @@
       }
       &--active {
         span {
-          font-weight: 600;
+          font-weight: $font-weight-semibold;
           color: #D65E5A;
         }
         &::after {
@@ -77,14 +78,13 @@
   &_info {
     margin-top: 35px;
     &__title {
-      font-weight: 500;
-      font-size: 36px;
+      font-weight: $font-weight-medium;
       line-height: 130%;
     }
     &__desc {
       display: block;
-      margin-top: 20px;
-      padding-left: 15px;
+      margin-top: $grid-small * 2;
+      padding-left: $grid-tiny-3x;
       border-left: 2px solid #2377D9;
       font-size: 22px;
       line-height: 140%;
@@ -109,13 +109,10 @@
     &::after {
       display: block;
     }
-    &__container {
-      width: 90%;
-    }
     &_navigation {
       height: 122px;
       grid-template-columns: repeat(6, 48px);
-      grid-row-gap: 20px;
+      grid-row-gap: $grid-small * 2;
     }
   }
 }
