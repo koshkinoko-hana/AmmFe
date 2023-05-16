@@ -54,12 +54,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className='mobile-icon'>
-            <div className='logo-container'>
-              <div className="icon-container">
-                <img src={IconBW} />
-                <img src={IconColor} />
-              </div>
-            </div>
+            <img src={IconBW} />
           </div>
         </div>
         <div className="copyright-text">© Факультет ПММ, {d.getFullYear()}</div>

@@ -18,25 +18,14 @@
         max-width: $grid-desktop;
         margin: $grid-medium-extended 0;
         width: 100%;
-        @media (max-width: $grid-tablet-max) {
-            .footer-container{
-                margin: 0 $grid-small;
-            }
-            .copyright-text{
-                margin: 0 $grid-small;
-            }
-        }
-        @media (max-width: $grid-mobile-max) {
-            .footer-container{
-                margin: 0 $grid-small;
-            }
-            .copyright-text{
-                margin: 0 $grid-small;
+        @media (max-width: $grid-laptop-max) {
+            .footer-container, .copyright-text{
+                margin: 0  $grid-small;
             }
         }
         @media (max-width: $grid-tablet-min) {
             .footer .footer-box{
-                margin: $grid-medium 0;
+                margin: $grid-base 0;
             }
             .footer-container{
                 display: flex;
@@ -44,12 +33,7 @@
                 margin-left: $grid-tiny-3x;
 
                 .mobile-icon{
-                    display: block;
-                    align-self: self-start;
-
-                    .logo-container{
-                        display: none;
-                    }
+                    display: none;
                 }
                 .contacts-container{
                     align-self: self-start;
@@ -65,9 +49,11 @@
             }
         }
         @media (max-width: 375px ){
-            .footer .footer-box{
-                margin: $grid-medium 0;
+            .footer,
+            .footer-box{
+                margin: $grid-base 0;
             }
+            
             .footer-container{
                 display: flex;
                 flex-direction: column;
@@ -77,24 +63,23 @@
                     display: none;
                 }
                 .mobile-icon{
-                    display: block;
-                    align-self: self-start;
-
-                    .logo-container{
-                        display: flex;
+                        display: block; 
+                        width: 80px;
+                        height: 80px;
                         margin-bottom: $grid-base;
-                    }
+                        align-self: self-start;
+                        img.img1 {
+                          width: 100%;
+                          height: auto;
+                      }    
                 }
                 .contacts-container{
-                    align-self: self-start;
                     margin-bottom: $grid-base;
                 }
                 .links-container{
-                    align-self: self-start;
                     .column{
                         margin-right: $grid-medium-extended;
                     }
-                    margin-bottom: $grid-base;
                 }
             }
         }
