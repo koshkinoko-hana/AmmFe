@@ -64,8 +64,8 @@
                 }
                 .mobile-icon{
                         display: block; 
-                        width: 80px;
-                        height: 80px;
+                        width: $logo-size-base;
+                        height: $logo-size-base;
                         margin-bottom: $grid-base;
                         align-self: self-start;
                         img.img1 {
@@ -98,8 +98,8 @@
 
             .icon-container {
                 display: block;
-                width: 80px;
-                height: 80px;
+                width: $logo-size-base;
+                height: $logo-size-base;
                 img.img1 {
                   width: 100%;
                   height: auto;
@@ -128,7 +128,7 @@
             .column{
                 display: flex;
                 flex-direction: column;
-                margin-right: 80px;
+                margin-right: $logo-size-base;
             }
         }
         .contacts-container {
@@ -152,7 +152,7 @@
                 .item {
                     position: relative;
                     &:not(:last-child) {
-                        padding-bottom: 10px;
+                        padding-bottom: $grid-small;
                     }
                     .link{
                         .span-svg {
