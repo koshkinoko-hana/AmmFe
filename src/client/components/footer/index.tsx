@@ -1,6 +1,5 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/react-in-jsx-scope */
-import LogoBW from '@/src/common/logoBW'
 import './footer.scss'
 import IconColor from '@/src/assets/IconColor.svg'
 import IconBW from '@/src/assets/IconBw.svg'
@@ -51,6 +50,14 @@ const Footer: React.FC = () => {
                     <span>г. Воронеж, Университетская пл. 1</span>
                   </a>
                 </Link>
+              </div>
+            </div>
+          </div>
+          <div className='mobile-icon'>
+            <div className='logo-container'>
+              <div className="icon-container">
+                <img src={IconBW} />
+                <img src={IconColor} />
               </div>
             </div>
           </div>

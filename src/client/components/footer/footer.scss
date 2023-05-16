@@ -34,25 +34,68 @@
                 margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
             }
         }
-        @media (max-width: 680px ){
+        @media (max-width: 680px) {
+            .footer .footer-box{
+                margin: 39px 0;
+            }
             .footer-container{
                 display: flex;
                 flex-direction: column;
-                align-items: left;
+                margin-left: 15px;
+
+                .mobile-icon{
+                    display: block;
+                    align-self: self-start;
+
+                    .logo-container{
+                        display: none;
+                    }
+                }
+                .contacts-container{
+                    align-self: self-start;
+                    margin-bottom: 25px;
+                }
+                .links-container{
+                    align-self: self-start;
+                    .column{
+                        margin-right: 45px;
+                    }
+                    margin-bottom: 25px;
+                }
+            }
+        }
+        @media (max-width: 375px ){
+            .footer .footer-box{
+                margin: 39px 0;
+            }
+            .footer-container{
+                display: flex;
+                flex-direction: column;
+                margin-left: 15px;
 
                 .logo-container{
-                     margin-bottom: -106px;
+                    display: none;
                 }
-                // &:not(:last-child) {
-                //     border: 5px solid yellowgreen;   
-                // }
+                .mobile-icon{
+                    display: block;
+                    align-self: self-start;
 
-                // &:first-child {
-                //     border: 5px solid red;   
-                // }
-                // &:last-child {
-                //     border: 5px solid blue;   
-                // }
+                    .logo-container{
+                        display: flex;
+                        margin-bottom: 25px;
+                    }
+                }
+                .contacts-container{
+                    align-self: self-start;
+                    margin-bottom: 25px;
+                }
+                .links-container{
+                    align-self: self-start;
+                    .column{
+                        margin-right: 45px;
+                    }
+                    margin-bottom: 25px;
+                }
             }
         }
     }
@@ -61,8 +104,6 @@
         justify-content: space-between;
         align-items: center;
         color: $color-white;
-      
-
         .logo-container {
             
           display: flex;
@@ -161,6 +202,9 @@
                 }
             }
         }
+    }
+    .mobile-icon{
+        display: none;
     }
     .copyright-text {
         max-width: $grid-desktop; //1440
