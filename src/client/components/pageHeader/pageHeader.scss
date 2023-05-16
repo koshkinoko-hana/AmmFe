@@ -1,11 +1,8 @@
-@import '@common/styles/colors';
-@import '@common/styles/fonts-desktop';
-@import '@common/styles/constants';
-
+@import '@common/styles/index';
 .news_header {
-    margin: 40px auto 60px;
-    padding: 40px 60px;
-    border-radius: 25px;
+    margin: $grid-medium auto $grid-normal;
+    padding: $grid-medium $grid-normal;
+    border-radius: $grid-base;
     background-color: $color-grey10;
     max-width: $grid-desktop;
     &_links {
@@ -17,7 +14,7 @@
         gap: 12px;
         &__item {
             display: flex;
-            gap: 11px;
+            gap: $grid-small;
             span {
                 @include p4-desktop;
             }
@@ -27,7 +24,7 @@
         }
     }
     &__title {
-        margin: 20px 0 15px 0;
+        margin: $grid-small*2 0 $grid-tiny-3x 0;
         @include h1-desktop;
         display: inline-block;
         position: relative;
@@ -63,6 +60,6 @@
 
 @media screen and (max-width: $grid-mobile-max) {
     .news_header {
-        max-width: 80%;
+        margin: $grid-medium $grid-base-extended $grid-normal;
     }
 }

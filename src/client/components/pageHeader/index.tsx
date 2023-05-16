@@ -1,6 +1,6 @@
 import React from 'react'
 import { PathKey, Props } from '@client/components/pageHeader/types'
-import {HeaderArrow} from '@common/icons/HeaderArrow'
+import { HeaderArrow } from '@common/icons/HeaderArrow'
 import './pageHeader.scss'
 import { Link } from 'react-router-dom'
 import { ClientRoutes } from '~/common/types/routes'

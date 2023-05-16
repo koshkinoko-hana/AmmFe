@@ -1,8 +1,8 @@
 @import '@common/styles/index';
 
 .news-card {
-    width: 450px;
-    border-radius: 25px;
+    width: $news-card-width-desktop;
+    border-radius: $grid-base;
     overflow: hidden;
     background-color: $color-grey10;
     &__img {
@@ -10,15 +10,15 @@
         max-height: 250px;
     }
     &__title {
-        margin: 15px 30px 10px;
+        margin: $grid-tiny-3x $grid-base-extended $grid-small;
         font-size: 22px;
-        font-weight: 500;
+        font-weight: $font-weight-medium;
         line-height: 125%;
     }
     &__desc {
-        margin: 10px 30px 45px;
+        margin: $grid-small $grid-base-extended $grid-medium-extended;
         font-size: 18px;
-        font-weight: 400;
+        font-weight: $font-weight-normal;
         line-height: 130%;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -26,12 +26,12 @@
         overflow: hidden;
     }
     &_footer {
-        margin: 0 30px 25px;
+        margin: 0 $grid-base-extended $grid-base;
         display: flex;
         justify-content: space-between;
         align-items: center;
         &__date {
-            font-weight: 300;
+            font-weight: $font-weight-light;
             font-size: 18px;
             line-height: 130%;
         }
@@ -40,6 +40,6 @@
 
 @media screen and (max-width: $grid-tablet-max) {
     .news-card {
-        width: 346px;
+        width: $news-card-width-mobile;
     }
 }

@@ -5,13 +5,13 @@
     max-width: $grid-desktop;
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: $grid-medium;
     justify-content: center;
-    margin-bottom: 100px;
+    margin-bottom: $grid-big;
 }
 
 @media screen and (max-width: $grid-desktop) {
     .news-container {
-        padding: 0 20px;
+        padding: 0 $grid-small*2;
     }
 }

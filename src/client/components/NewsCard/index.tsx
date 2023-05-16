@@ -1,7 +1,7 @@
 import './NewsCard.scss'
 import React, { FC } from 'react'
 import { newsCard } from '~/client/pages/news/types'
-import {Slug} from '@common/icons/Slug'
+import { NewsCardLink } from '~/common/icons/NewsCardLink'
 
 export const NewsCard: FC<newsCard> = ({img, title, description, date, slug}) => {
   return (
@@ -12,7 +12,7 @@ export const NewsCard: FC<newsCard> = ({img, title, description, date, slug}) =>
       <div className="news-card_footer">
         <span className="news-card_footer__date">{date}</span>
         <a href={slug} target="_blank" rel="noreferrer">
-          <Slug />
+          <NewsCardLink />
         </a>
       </div>
     </div>

@@ -1,18 +1,18 @@
-@import '@common/styles/colors';
+@import '@common/styles/index';
 
 .pagination {
-    margin-top: 60px;
+    margin-top: $grid-normal;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: $grid-small;
     &__btn {
         user-select: none;
         cursor: pointer;
         display: flex;
         text-align: center;
-        padding: 8px 15px;
-        border-radius: 10px;
-        font-weight: 400;
+        padding: 8px $grid-tiny-3x;
+        border-radius: $grid-small;
+        font-weight: $font-weight-normal;
         font-size: 18px;
         line-height: 130%;
         &--active {
