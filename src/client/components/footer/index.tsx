@@ -1,12 +1,12 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/react-in-jsx-scope */
 import './footer.scss'
-import IconColor from '~/src/assets/IconColor.svg'
-import IconBW from '~/src/assets/IconBw.svg'
+import IconColor from '~/assets/IconColor.svg'
+import IconBW from '~/assets/IconBw.svg'
 import { Link } from 'react-router-dom'
-import  { Phone, Twitter, Vk, Marker } from '@/src/common/icons'
+import  { Phone, Twitter, Vk, Marker } from '~/common/icons'
 const Footer: React.FC = () => {
-  console.log('')
+  const d = new Date()
   return (
     <div className="footer">
       <div className='footer-box'>
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="copyright-text">© Факультет ПММ, 2022</div>
+        <div className="copyright-text">© Факультет ПММ, {d.getFullYear()}</div>
       </div>
     </div>
   )
