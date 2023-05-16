@@ -1,8 +1,5 @@
 @import "src/common/styles/index";
 .footer {
-    top: 0;
-    margin: 0;
-    z-index: 50;
     background-color: $color-key-primary;
     display: flex;
     justify-content: center;
@@ -18,21 +15,60 @@
         }
     }
     .footer-box{
+        max-width: $grid-desktop;
         margin: $grid-medium-extended 0;
-   }
+        width: 100%;
+        @media (max-width: $grid-tablet-max) {
+            .footer-container{
+                margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
+            }
+            .copyright-text{
+                margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
+            }
+        }
+        @media (max-width: $grid-mobile-max) {
+            .footer-container{
+                margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
+            }
+            .copyright-text{
+                margin: 0 10px; // Уменьшаем отступы при уменьшении ширины экрана
+            }
+        }
+        @media (max-width: 680px ){
+            .footer-container{
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+
+                .logo-container{
+                     margin-bottom: -106px;
+                }
+                // &:not(:last-child) {
+                //     border: 5px solid yellowgreen;   
+                // }
+
+                // &:first-child {
+                //     border: 5px solid red;   
+                // }
+                // &:last-child {
+                //     border: 5px solid blue;   
+                // }
+            }
+        }
+    }
     .footer-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: $color-white;
-        width: $grid-desktop; //1440
+      
 
-            
         .logo-container {
             
           display: flex;
           flex-direction: column;
           align-items: left;
+          margin-right: 80px;
 
             .icon-container {
                 display: block;
@@ -127,7 +163,7 @@
         }
     }
     .copyright-text {
-        width: $grid-desktop; //1440
+        max-width: $grid-desktop; //1440
         font-weight: $font-weight-normal;
         font-size: $p4-font-size;
         color: $color-white;
