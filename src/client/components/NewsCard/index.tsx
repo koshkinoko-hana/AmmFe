@@ -1,6 +1,5 @@
 import './NewsCard.scss'
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
 import { newsCard } from '~/client/pages/news/types'
 import {Slug} from '@common/icons/Slug'
 
