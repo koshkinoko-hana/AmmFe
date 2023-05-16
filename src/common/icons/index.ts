@@ -1,1 +1,5 @@
 export { Burger } from './Burger'
+export { Twitter } from './Twitter'
+export { Vk } from './VK'
+export { Phone } from './Phone'
+export { Marker } from './Marker'

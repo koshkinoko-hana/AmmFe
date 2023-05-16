@@ -1,7 +1,6 @@
 import './logo.scss'
 import React, { FC } from 'react'
 
-
 const Logo: FC = () => {
 
   return (

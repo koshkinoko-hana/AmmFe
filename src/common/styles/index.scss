@@ -34,6 +34,13 @@ a {
   &:hover {
     color: $color-blue80;
   }
+  &.light {
+    color: $color-white;
+
+    &:hover {
+      color: $color-blue80;
+    }
+  }
 }
 
 
@@ -256,4 +263,14 @@ ol {
       color: $color-blue80;
     }
   }
+}
+
+svg {
+  cursor: pointer;
+  border: none;
+  background: none;
+  fill: $color-white;
+  &:hover{
+    fill: $color-blue80;
+  }  
 }
