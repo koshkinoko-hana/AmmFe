@@ -9,16 +9,14 @@ import  { Phone, Twitter, Vk, Marker } from '@/src/common/icons'
 const Footer: React.FC = () => {
   console.log('')
   return (
-    <footer className="footer">
+    <div className="footer">
       <div className='footer-box'>
         <div className="footer-container">
           <div className="links-container">
-            <div className='column'>
-              <div className='logo-container'>
-                <div className="icon-container">
-                  <img src={IconBW} />
-                  <img src={IconColor} />
-                </div>
+            <div className='logo-container'>
+              <div className="icon-container">
+                <img src={IconBW} />
+                <img src={IconColor} />
               </div>
             </div>
             <div className='column'>
@@ -59,7 +57,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="copyright-text">© Факультет ПММ, 2022</div>
       </div>
-    </footer>
+    </div>
   )
 }
 
