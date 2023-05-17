@@ -1,0 +1,23 @@
+@import '@common/styles/index';
+
+.pagination {
+    margin-top: $grid-normal;
+    display: flex;
+    justify-content: center;
+    gap: $grid-small;
+    &__btn {
+        user-select: none;
+        cursor: pointer;
+        display: flex;
+        text-align: center;
+        padding: 8px $grid-tiny-3x;
+        border-radius: $grid-small;
+        font-weight: $font-weight-normal;
+        font-size: $font-size-default;
+        line-height: 130%;
+        &--active {
+            background-color: $color-blue10;
+            color: $color-blue80;
+        }
+    }
+}
