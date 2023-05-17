@@ -13,7 +13,7 @@
         padding: 8px $grid-tiny-3x;
         border-radius: $grid-small;
         font-weight: $font-weight-normal;
-        font-size: 18px;
+        font-size: $font-size-default;
         line-height: 130%;
         &--active {
             background-color: $color-blue10;

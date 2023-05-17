@@ -11,14 +11,13 @@
     }
     &__title {
         margin: $grid-tiny-3x $grid-base-extended $grid-small;
-        font-size: 22px;
         font-weight: $font-weight-medium;
         line-height: 125%;
     }
     &__desc {
         margin: $grid-small $grid-base-extended $grid-medium-extended;
-        font-size: 18px;
         font-weight: $font-weight-normal;
+        font-size: $font-size-default;
         line-height: 130%;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -32,7 +31,7 @@
         align-items: center;
         &__date {
             font-weight: $font-weight-light;
-            font-size: 18px;
+            font-size: $font-size-default;
             line-height: 130%;
         }
     }
