@@ -7,6 +7,7 @@ import Header from '~/client/components/pageHeader'
 import { ClientRoutes } from '~/common/types/routes'
 import { PathKey } from '~/client/components/pageHeader/types'
 import Accordion from '~/common/components/Accordion/Accordion'
+import ContactForm from './components/ContactForm'
 /* eslint-disable quotes */
 const QuestionPage: React.FC = () => {
   const accordionData = [
@@ -72,7 +73,10 @@ const QuestionPage: React.FC = () => {
         </div>
       </section>
       <section className='ask-a-question'>
-        <h2>Задать вопрос</h2>
+        <div className='ask-a-question__container'>
+          <h2>Задать вопрос</h2>
+          <ContactForm />
+        </div>
       </section>
     </div>
   )
