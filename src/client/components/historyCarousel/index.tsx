@@ -1,61 +1,27 @@
-import './index.scss'
-import { historyPoints } from '@client/pages/mainPage/constants'
-import { HistoryPoint } from '@client/pages/mainPage/types'
+import './historyCarousel.scss'
 import { Props } from './types'
-import useWindowDimensions from '@common/hooks/useWindowDimensions'
-import { SlideArrowLeft } from '@common/icons/SlideArrowLeft'
-import { SlideArrowRight } from '@common/icons/SlideArrowRight'
 import React, { useRef, useState } from 'react'
 
-const HistoryCarousel: React.FC<Props> = (props) => {
+const HistoryCarousel: React.FC<Props> = ({points}) => {
 
   const ref = useRef<HTMLDivElement>(null)
-
-  const [ currentScrollPosition, setCurrentScrollPosition ] = useState(0)
-  const { width } = useWindowDimensions()
-  const [ currentSlide, setCurrentSlide ] = useState(0)
-
-  const onArrowClick = (forward: boolean) => {
-    let newPosition
-    if (!ref.current) return
-    if (forward) {
-      newPosition = currentScrollPosition + width
-      setCurrentSlide((slide) => slide + 1)
-      if (ref.current.clientWidth - width < newPosition) {
-        newPosition = ref.current.clientWidth - width
-        setCurrentSlide(props.points.length - 1)
-      }
-    } else {
-      newPosition = currentScrollPosition - width
-      setCurrentSlide((slide) => slide - 1)
-      if (newPosition < 0) {
-        newPosition = 0
-        setCurrentSlide(0)
-      }
-    }
-
-    ref.current?.scrollTo({ left: newPosition })
-    setCurrentScrollPosition(newPosition)
-  }
+  const [ currentPoint, setCurrentPoint ] = useState(0)
 
   return (
-    <div ref={ref} className="history-carousel history-carousel__container">
-      <div className="slider">
-        {
-          historyPoints.map((history: HistoryPoint, i: number) => (
-            <div className={`item ${i===currentSlide ? 'selected' : ''}`} key={i}>
-              <p className="legend year">{history.year}</p>
-              <div className="item__text">
-                <h3 className="reasons-block__header">{history.header}</h3>
-                <p className="p2">{history.text}</p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-      <div className="arrows">
-        <SlideArrowLeft onClick={() => onArrowClick(false)}/>
-        <SlideArrowRight onClick={() => onArrowClick(true)}/>
+    <div ref={ref} className="history-carousel">
+      <div className="history-carousel__container">
+        <h2 className="history-carousel__title">История факультета</h2>
+        <ul className="history-carousel_navigation">
+          {points.map((point, i) => (
+            <li key={point.year} className={`history-carousel_navigation__item ${currentPoint === i ? 'history-carousel_navigation__item--active' : ''}`} onClick={() => setCurrentPoint(i)}>
+              <span>{point.year}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="history-carousel_info">
+          <h4 className="history-carousel_info__title">{points[currentPoint].header}</h4>
+          <p className="history-carousel_info__desc">{points[currentPoint].text}</p>
+        </div>
       </div>
     </div>
   )
