@@ -16,19 +16,19 @@ function App() {
 
   return (
     <Routes>
-      <Route path={`/${AdminRoutes.root}/${AdminRoutes.login}`} element={<Login/>}/>
-      <Route path={`/${AdminRoutes.root}`} element={<AdminRoute/>}>
-        <Route path={`${AdminRoutes.departments}`} element={<Departments/>} />
-        <Route path={`${AdminRoutes.positions}`} element={<Positions/>}/>
+      <Route path={`/${AdminRoutes.root}/${AdminRoutes.login}`} element={<Login />} />
+      <Route path={`/${AdminRoutes.root}`} element={<AdminRoute />}>
+        <Route path={`${AdminRoutes.departments}`} element={<Departments />} />
+        <Route path={`${AdminRoutes.positions}`} element={<Positions />} />
         <Route path={`${AdminRoutes.employees}`}>
-          <Route path="" element={<Employees/>}/>
-          <Route path="create" element={<Employee/>}/>
-          <Route path=":id" element={<Employee/>}/>
+          <Route path="" element={<Employees />} />
+          <Route path="create" element={<Employee />} />
+          <Route path=":id" element={<Employee />} />
         </Route>
       </Route>
       <Route path={'/'} element={<ClientRoute/>}>
         <Route path={`${ClientRoutes.home}`} element={<MainPage/>} />
-        <Route path={`${ClientRoutes.news}`} element={<NewsPage/>}/>
+        <Route path={`${ClientRoutes.news}`} element={<NewsPage/>} />
         {/* <Route path={`${ClientRoutes.positions}`} element={<Positions/>}/> */}
         {/*<Route path={`${ClientRoutes.employees}`}>*/}
         {/*  <Route path="" element={<Employees/>}/>*/}
