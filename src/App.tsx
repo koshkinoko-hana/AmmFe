@@ -8,10 +8,10 @@ import { Route, Routes } from 'react-router-dom'
 import ClientRoute from '~/client/components/clientRoute'
 import MainPage from '~/client/pages/mainPage'
 import NewsPage from '~/client/pages/news'
+import QuestionPage from '~/client/pages/questionPage'
 import Login from './admin/pages/login'
 import './common/styles/index.scss'
 import { AdminRoutes, ClientRoutes } from '@common/types/routes'
-import QuestionPage from '~/client/pages/questionPage'
 
 function App() {
 
