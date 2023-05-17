@@ -1,0 +1,64 @@
+@import '@common/styles/index';
+.news_header {
+    margin: $grid-medium auto $grid-normal;
+    padding: $grid-medium $grid-normal;
+    border-radius: $grid-base;
+    background-color: $color-grey10;
+    max-width: $grid-desktop;
+    &_links {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        &__item {
+            display: flex;
+            gap: $grid-small;
+            span {
+                @include p4-desktop;
+            }
+            &::before {
+                display: none;
+            }
+        }
+    }
+    &__title {
+        margin: $grid-small*2 0 $grid-tiny-3x 0;
+        font-size: 50px;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        &::after {
+            z-index: -1;
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -6px;
+            width: 100%;
+            height: 10px;
+            background-color: $color-blue40;
+        }
+    }
+    &__desc {
+        color: #000;
+    }
+}
+
+@media screen and (max-width: $grid-laptop-max) {
+    .news_header {
+        max-width: $grid-tablet-max;
+    }
+}
+
+@media screen and (max-width: $grid-tablet-max) {
+    .news_header {
+        max-width: $grid-mobile-max;
+    }
+}
+
+@media screen and (max-width: $grid-mobile-max) {
+    .news_header {
+        margin: $grid-medium $grid-base-extended $grid-normal;
+    }
+}

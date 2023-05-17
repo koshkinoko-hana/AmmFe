@@ -1,0 +1,17 @@
+@import '@common/styles/index';
+
+.news-container {
+    margin: 0 auto;
+    max-width: $grid-desktop;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-medium;
+    justify-content: center;
+    margin-bottom: $grid-big;
+}
+
+@media screen and (max-width: $grid-desktop) {
+    .news-container {
+        padding: 0 $grid-small*2;
+    }
+}

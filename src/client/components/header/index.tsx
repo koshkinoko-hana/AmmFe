@@ -23,7 +23,7 @@ const Header: React.FC = () => {
             <div className="logo-text">Факультет прикладной математики, информатики и механики</div>
           </div>
           <div className="menu">
-            <Link to="/" className="p1 mobile-hidden">Новости</Link>
+            <Link to="/news" className="p1 mobile-hidden">Новости</Link>
             <Link to="/" className="p1 mobile-hidden">Кафедры</Link>
             <Link to="/" className="p1 tablet-hidden">Галерея</Link>
             <Link to="/" className="p1 tablet-hidden">Контакты</Link>
