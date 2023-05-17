@@ -11,6 +11,7 @@ import NewsPage from '~/client/pages/news'
 import Login from './admin/pages/login'
 import './common/styles/index.scss'
 import { AdminRoutes, ClientRoutes } from '@common/types/routes'
+import QuestionPage from '~/client/pages/questionPage'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Route path={'/'} element={<ClientRoute/>}>
         <Route path={`${ClientRoutes.home}`} element={<MainPage/>} />
         <Route path={`${ClientRoutes.news}`} element={<NewsPage/>} />
+        <Route path={`${ClientRoutes.deanFaq}`} element={<QuestionPage/>} />
         {/* <Route path={`${ClientRoutes.positions}`} element={<Positions/>}/> */}
         {/*<Route path={`${ClientRoutes.employees}`}>*/}
         {/*  <Route path="" element={<Employees/>}/>*/}

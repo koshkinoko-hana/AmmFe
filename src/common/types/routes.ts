@@ -15,5 +15,6 @@ export enum ClientRoutes {
   departments = 'departments',
   employees = 'employees',
   positions = 'positions',
-  news = 'news'
+  news = 'news',
+  deanFaq = 'faq'
 }
