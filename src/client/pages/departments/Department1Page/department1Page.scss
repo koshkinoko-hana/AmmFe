@@ -1,0 +1,118 @@
+@import '@common/styles/index';
+
+.depart {
+    margin: 0 auto;
+    max-width: $grid-desktop;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+    
+    li::before, li::after {
+        content: '';
+        width: 0px;            
+    }
+    &__box{
+        width: 400px;
+        &__menu{
+            height: auto;
+            padding: 25px 30px;
+            border: 2px solid $color-grey80;
+            border-radius: 25px;
+            @include m4-desktop();
+            @media (max-width: $grid-mobile-max) {
+              @include p2-mobile();
+            }
+        
+            ul, li {
+                margin: 0px 0px 10px 0;
+                padding: 0px;
+            }
+    
+    
+            &__list{
+                text-decoration: none;
+    
+                &__item{
+    
+                }
+            }
+        }
+    }
+
+    &__body{
+        width: 100%;
+        h2 {
+            padding-bottom: 10px;
+        }
+
+        &__head{
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            &__img{
+                padding: 0;
+                width: 120px;
+                height: 120px;
+            }
+            &__text{
+                margin-bottom: 40px;
+                h3{
+                    margin-top: 0;
+                    font-weight: 500;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+        &__employees{
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: $grid-medium;
+        }
+
+        &__contacts{
+            display: flex;
+            flex-direction: column;
+        
+            &__column{
+                &__item{
+                    position: relative;
+                    &:not(:last-child) {
+                        padding-bottom: $grid-small;
+                    }
+                    &:last-child {
+                        padding-bottom: 100px;
+                    }
+                    .link{
+                        .span-svg {
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 25px;
+                        height: 25px;
+                        padding-right: 25px;
+                        }
+
+                        .span-svg svg {
+                            stroke: $color-key-primary;
+                            fill: none;
+                        }
+                        .span-text {
+                            display: block;
+                            padding-left: 35px;
+                            color: $color-key-primary;
+                        }
+                        &:hover span {
+                            color: $color-blue80;
+                        }
+                        &:hover span svg{
+                            stroke: $color-blue80;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -2,9 +2,9 @@ import Header from '~/client/components/pageHeader'
 import { PathKey } from '~/client/components/pageHeader/types'
 import { ClientRoutes } from '~/common/types/routes'
 import * as React from 'react'
-import './departmentPage.scss'
 import { cards } from './constants'
 import DepartmentCard from '~/client/components/DepartmentCard'
+import './departmentPage.scss'
 
 const DepartmentPage: React.FC = () => {
   console.log( ' ')

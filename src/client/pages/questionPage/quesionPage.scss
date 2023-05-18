@@ -1,10 +1,10 @@
 @import "src/common/styles/index";
 .body{
+    margin: auto;
     justify-content: center;
     align-items: center;
     max-width: $grid-desktop;
     flex-direction: column;
-    margin: auto;
 
     .selected a {
         background-color: #E5F7FE;

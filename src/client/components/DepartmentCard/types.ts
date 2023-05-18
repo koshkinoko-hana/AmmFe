@@ -4,3 +4,9 @@ export type departmentCard = {
     title: string
     link: string
 }
+
+export type employeeCard = {
+    img: string
+    name: string
+    descripton: string
+}
