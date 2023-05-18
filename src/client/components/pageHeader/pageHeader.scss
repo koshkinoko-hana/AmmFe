@@ -60,5 +60,12 @@
 @media screen and (max-width: $grid-mobile-max) {
     .news_header {
         margin: $grid-medium $grid-base-extended $grid-normal;
+        &__title {
+            font-size: $h1-font-size;
+            &::after {
+                bottom: 5px;
+                height: 5px;
+            }
+        }
     }
 }

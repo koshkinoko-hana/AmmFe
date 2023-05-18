@@ -1,6 +1,5 @@
 import React from 'react'
-import { PathKey, Props } from '@client/components/pageHeader/types'
-import { HeaderArrow } from '@common/icons/HeaderArrow'
+import { Props } from '@client/components/pageHeader/types'
 import './pageHeader.scss'
 import { Link } from 'react-router-dom'
 import { ClientRoutes } from '~/common/types/routes'
@@ -8,7 +7,7 @@ import { Home } from '~/common/icons/Home'
 import { NavItems } from './helpers'
 
 const PageHeader: React.FC<Props> = ({path, header, description}) => {
-
+  console.log(path)
   return (
     <div className="news_header">
       <ul className="news_header_links">

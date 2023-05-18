@@ -1,0 +1,40 @@
+@import '@common/styles/index';
+
+.details {
+    max-width: $grid-desktop;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    &__back {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        span {
+            font-size: $p3-font-size;
+            line-height: 130%;
+            color: $color-blue80;
+        }
+    }
+    &__img {
+        max-width: calc(100% - 40px);
+        border-radius: $grid-small*2;
+        margin-top: $grid-base-extended;
+        margin-bottom: $grid-medium;
+    }
+    &__date {
+        display: flex;
+        align-items: start;
+        gap: $grid-small-extended;
+        margin-bottom: $grid-small*2;
+        span {
+            font-size: $font-size-default;
+            line-height: 130%;
+            color: $color-grey90;
+        }
+    }
+}
+
+@media screen and (max-width: $grid-laptop-max) {
+    .details {
+        margin: 0 20px;
+    }
+}
