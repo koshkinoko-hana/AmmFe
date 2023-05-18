@@ -12,6 +12,7 @@ import QuestionPage from '~/client/pages/questionPage'
 import Login from './admin/pages/login'
 import './common/styles/index.scss'
 import { AdminRoutes, ClientRoutes } from '@common/types/routes'
+import DepartmentPage from './client/pages/departmentPage'
 
 function App() {
 
@@ -31,6 +32,18 @@ function App() {
         <Route path={`${ClientRoutes.home}`} element={<MainPage/>} />
         <Route path={`${ClientRoutes.news}`} element={<NewsPage/>} />
         <Route path={`${ClientRoutes.deanFaq}`} element={<QuestionPage/>} />
+        <Route path={`${ClientRoutes.departments}`} >
+          <Route path="" element={ <DepartmentPage/>} />
+          <Route path="Department1" element={<DepartmentPage />} />
+          <Route path="Department2" element={<DepartmentPage />} />
+          <Route path="Department3" element={<DepartmentPage />} />
+          <Route path="Department4" element={<DepartmentPage />} />
+          <Route path="Department5" element={<DepartmentPage />} />
+          <Route path="Department6" element={<DepartmentPage />} />
+          <Route path="Department7" element={<DepartmentPage />} />
+          <Route path="Department8" element={<DepartmentPage />} />
+          <Route path="Department9" element={<DepartmentPage />} />
+        </Route>
         {/* <Route path={`${ClientRoutes.positions}`} element={<Positions/>}/> */}
         {/*<Route path={`${ClientRoutes.employees}`}>*/}
         {/*  <Route path="" element={<Employees/>}/>*/}

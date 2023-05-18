@@ -1,0 +1,10 @@
+@import "src/common/styles/index";
+.department-container {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-medium;
+    justify-content: center;
+    max-width: $grid-desktop;
+    margin-bottom: $grid-big;
+}

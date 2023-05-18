@@ -1,13 +1,13 @@
 import ReactPaginate from 'react-paginate'
-import './quesionPage.scss'
 import React from 'react'
 import { PaginateRight } from '~/common/icons/PaginateRight'
 import { PaginateLeft } from '~/common/icons/PaginateLeft'
-import Header from '~/client/components/pageHeader'
 import { ClientRoutes } from '~/common/types/routes'
 import { PathKey } from '~/client/components/pageHeader/types'
+import Header from '~/client/components/pageHeader'
 import Accordion from '~/common/components/Accordion/Accordion'
 import ContactForm from './components/ContactForm'
+import './quesionPage.scss'
 /* eslint-disable quotes */
 const QuestionPage: React.FC = () => {
   const accordionData = [
