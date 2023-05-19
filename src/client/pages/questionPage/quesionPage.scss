@@ -20,9 +20,9 @@
         &__item__title {
           position: relative;
           width: 100%;
+          padding-right: 36px + 18px ;
           background-color: transparent;
           color: $color-key-primary;
-          border: none;
           border: 2px solid $color-grey60;
         }
 
@@ -57,7 +57,7 @@
             display: flex;
             align-items: center;
                   
-            @media (max-width: 450px) {
+            @media (max-width: 375px) {
               width: 100%;
               overflow-x: auto;
             }
@@ -117,3 +117,154 @@
       margin: 0  $grid-small;
     }
 }
+@media (max-width: $grid-laptop-max) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+      width: $grid-laptop-medium - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+      padding: 0 10px;
+      &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $grid-laptop-medium) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+      width: $grid-tablet-max - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+      padding: 0 10px;
+      &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $grid-tablet-max) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+      width: $grid-tablet-medium - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+      padding: 0 10px;
+      &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $grid-tablet-medium) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+      width: $grid-mobile-max - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+      padding: 0 10px;
+      &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $grid-mobile-max) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+      width: $grid-tablet-min - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+      padding: 0 10px;
+      &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $grid-tablet-min) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+        width: $grid-mobile-medium - $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+        padding: 0 10px;
+        &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $grid-mobile-medium) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+      width: $grid-mobile-small - $grid-small ;  /* Регулируйте процент в соответствии с вашими потребностями */
+      &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $grid-mobile-small) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+      width: $grid-mobile-extrasmall - $grid-small ;  /* Регулируйте процент в соответствии с вашими потребностями */
+      &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $grid-mobile-extrasmall) {
+  .FAQ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container{
+      width: $grid-mobile-min - $grid-small ;  /* Регулируйте процент в соответствии с вашими потребностями */
+      &__item__title{
+        justify-content: center;
+      }
+    }
+  }
+}
+// $grid-desktop: 1440px;
+// $grid-laptop-max: 1439px;
+// $grid-laptop-medium: 1199px;
+// $grid-tablet-max: 1023px;
+// $grid-tablet-medium: 991px;
+// $grid-tablet-min: 679px;
+// $grid-mobile-max: 767px;
+// $grid-mobile-medium: 599px;
+// $grid-mobile-small: 480px;
+// $grid-mobile-extrasmall: 420px;
+// $grid-mobile-min: 375px;

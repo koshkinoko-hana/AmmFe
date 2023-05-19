@@ -36,7 +36,7 @@
     }
     &__text{
         width: 450px;
-        height: 90px;
+        height: 120px;
     }
     &__input {
        box-sizing: border-box;
@@ -76,9 +76,68 @@
     bottom: -25px;
   }
   
-  @media screen and (max-width: 770px) {
+@media (max-width: $grid-mobile-max) {
     .contactForm {
-        width: 90%;  /* Регулируйте процент в соответствии с вашими потребностями */
+        width: $grid-tablet-min - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+        padding: 25px 15px;
+        &__text,
+        &__input {
+            width: $grid-tablet-min - (2 * $grid-base) - (2 * $grid-small) - 2 * 25px;
+        }
     }
 }
 
+@media (max-width: $grid-tablet-min) {
+    .contactForm {
+        width: $grid-mobile-medium - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+        &__text,
+        &__input {
+            width: $grid-mobile-medium - (2 * $grid-base) - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+@media (max-width: $grid-mobile-medium) {
+    .contactForm {
+        width: $grid-mobile-small - (2 * $grid-small);  /* Регулируйте процент в соответствии с вашими потребностями */
+        &__text,
+        &__input {
+            width: $grid-mobile-small  - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+@media (max-width: $grid-mobile-small) {
+    .contactForm {
+        width: $grid-mobile-extrasmall - (2 * $grid-small) ;  /* Регулируйте процент в соответствии с вашими потребностями */
+        &__text,
+        &__input {
+            width: $grid-mobile-extrasmall  - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+@media (max-width: $grid-mobile-extrasmall) {
+    .contactForm {
+        width: $grid-mobile-min - (2 * $grid-small);  /* Регулируйте процент в соответствии с вашими потребностями */
+        &__text,
+        &__input {
+            width: $grid-mobile-min  - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+// $grid-desktop: 1440px;
+// $grid-laptop-max: 1439px;
+// $grid-laptop-medium: 1199px;
+// $grid-tablet-max: 1023px;
+// $grid-tablet-medium: 991px;
+// $grid-tablet-min: 679px;
+// $grid-mobile-max: 767px;
+// $grid-mobile-medium: 599px;
+// $grid-mobile-small: 480px;
+// $grid-mobile-extrasmall: 420px;
+// $grid-mobile-min: 375px;
+
+//$grid-mobile-medium: 599px;
+//$grid-mobile-min: 375px;

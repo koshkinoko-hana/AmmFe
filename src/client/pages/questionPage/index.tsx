@@ -60,36 +60,37 @@ const QuestionPage: React.FC = () => {
           [PathKey.FAQ]: ClientRoutes.deanFaq
         }}
       />
-      <section className='FAQ'>
-        <h2>Часто задаваемые вопросы</h2>        
-        {accordionData.slice(offset, offset + perPage).map((item, index) => (
-          <Accordion
-            key={index}
-            title={item.title}
-            titleClass='FAQ__item__title'
-            arrowOpenClass='open'
-          >
-            
-            <div style={{ padding: '20px 30px' }}>{item.content} </div>
-          </Accordion>
-        ))}
+      <section  className='FAQ'>
+        <div className='FAQ__container'>
+          <h2>Часто задаваемые вопросы</h2>        
+          {accordionData.slice(offset, offset + perPage).map((item, index) => (
+            <Accordion
+              key={index}
+              title={item.title}
+              titleClass='FAQ__item__title'
+              arrowOpenClass='open'
+            >
+              <div style={{ padding: '20px 30px' }}>{item.content} </div>
+            </Accordion>
+          ))}
 
-        <div className='FAQ__paginator'>
-          <ReactPaginate 
-            containerClassName='FAQ__list' 
-            pageClassName='FAQ__list__item' 
-            pageLinkClassName='FAQ__list__item__link'
-            previousClassName='FAQ__list__arrow_left'
-            nextClassName='FAQ__list__arrow_right'
-            nextLabel={<PaginateRight />}
-            previousLabel={<PaginateLeft />}
-            breakClassName='FAQ__list__break'
-            breakLinkClassName='FAQ__list__break__link'
-            breakLabel="..."
-            pageCount={Math.ceil(accordionData.length / perPage)}
-            forcePage={1}
-            onPageChange={({ selected }) => { setOffset(Math.ceil(selected * perPage)) }}
-          />
+          <div className='FAQ__paginator'>
+            <ReactPaginate 
+              containerClassName='FAQ__list' 
+              pageClassName='FAQ__list__item' 
+              pageLinkClassName='FAQ__list__item__link'
+              previousClassName='FAQ__list__arrow_left'
+              nextClassName='FAQ__list__arrow_right'
+              nextLabel={<PaginateRight />}
+              previousLabel={<PaginateLeft />}
+              breakClassName='FAQ__list__break'
+              breakLinkClassName='FAQ__list__break__link'
+              breakLabel="..."
+              pageCount={Math.ceil(accordionData.length / perPage)}
+              forcePage={1}
+              onPageChange={({ selected }) => { setOffset(Math.ceil(selected * perPage)) }}
+            />
+          </div>
         </div>
       </section>
       <section className='ask-a-question'>
