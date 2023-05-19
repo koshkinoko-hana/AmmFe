@@ -2,19 +2,19 @@
 
 .depart {
     margin: 0 auto;
-    max-width: $grid-desktop;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 50px;
+    padding: 0 20px;
     
     li::before, li::after {
         content: '';
         width: 0px;            
     }
     &__box{
-        width: 400px;
         &__menu{
+            width: 400px;
             height: auto;
             padding: 25px 30px;
             border: 2px solid $color-grey80;
@@ -116,3 +116,23 @@
         }
     }
 }
+
+@mixin respond($breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      $cardWidth: map-get($cardWidths, $breakpoint) - (2 * $grid-base);
+      .depart {
+         $justifyContent: if( $cardWidth <  $grid-tablet-medium, center , space-between);
+         $flexDirection: if( $cardWidth <  $grid-tablet-medium, column , row);
+         $widthMenu: if( $cardWidth <  $grid-tablet-medium, 100% , 400px );
+
+         justify-content: $justifyContent;  
+         flex-direction: $flexDirection;
+         &__box__menu{
+            width:  $widthMenu;  
+         }
+      }
+    }
+  }
+  @each $breakpoint, $width in $breakpoints {
+    @include respond($breakpoint);
+  }
