@@ -29,3 +29,30 @@ $grid-border-radius: 12px;
 $icon-size-base: 32px;
 
 $logo-size-base: 80px;
+
+$breakpoints: (
+  laptop-max: $grid-laptop-max,
+  laptop-medium: $grid-laptop-medium,
+  tablet-max: $grid-tablet-max,
+  tablet-medium: $grid-tablet-medium,
+  mobile-max: $grid-mobile-max,
+  tablet-min: $grid-tablet-min,
+  mobile-medium: $grid-mobile-medium,
+  mobile-small: $grid-mobile-small,
+  mobile-extrasmall: $grid-mobile-extrasmall,
+  mobile-min: $grid-mobile-min
+);
+
+$card-base-width: 450px;
+$cardWidths: (
+  laptop-max: $grid-laptop-max,
+  laptop-medium: $grid-tablet-max,
+  tablet-max: $grid-tablet-medium,
+  tablet-medium: $grid-mobile-max,
+  mobile-max: $grid-tablet-min,
+  tablet-min: $grid-mobile-medium,
+  mobile-medium: $grid-mobile-small,
+  mobile-small: $grid-mobile-extrasmall,
+  mobile-extrasmall: $grid-mobile-min,
+  mobile-min:  $grid-mobile-min
+);

@@ -117,145 +117,48 @@
       margin: 0  $grid-small;
     }
 }
-@media (max-width: $grid-laptop-max) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-      width: $grid-laptop-medium - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
-      padding: 0 10px;
-      &__item__title{
-        justify-content: center;
+
+
+.FAQ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    padding: 0 10px;
+
+    &__item__title {
+      justify-content: center;
+    }
+  }
+}
+
+$widths: (
+  laptop-max: $grid-laptop-medium,
+  laptop-medium: $grid-tablet-max,
+  tablet-max: $grid-tablet-medium,
+  tablet-medium: $grid-mobile-max,
+  mobile-max: $grid-tablet-min,
+  tablet-min: $grid-mobile-medium,
+  mobile-medium: $grid-mobile-small,
+  mobile-small: $grid-mobile-extrasmall,
+  mobile-extrasmall: $grid-mobile-min
+);
+
+
+@mixin respond($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    .FAQ {
+      &__container {
+        width: map-get($widths, $breakpoint) - 2 * $grid-base;
       }
     }
   }
 }
 
-@media (max-width: $grid-laptop-medium) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-      width: $grid-tablet-max - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
-      padding: 0 10px;
-      &__item__title{
-        justify-content: center;
-      }
-    }
-  }
-}
-
-@media (max-width: $grid-tablet-max) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-      width: $grid-tablet-medium - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
-      padding: 0 10px;
-      &__item__title{
-        justify-content: center;
-      }
-    }
-  }
-}
-
-@media (max-width: $grid-tablet-medium) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-      width: $grid-mobile-max - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
-      padding: 0 10px;
-      &__item__title{
-        justify-content: center;
-      }
-    }
-  }
-}
-
-@media (max-width: $grid-mobile-max) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-      width: $grid-tablet-min - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
-      padding: 0 10px;
-      &__item__title{
-        justify-content: center;
-      }
-    }
-  }
-}
-
-@media (max-width: $grid-tablet-min) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-        width: $grid-mobile-medium - $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
-        padding: 0 10px;
-        &__item__title{
-        justify-content: center;
-      }
-    }
-  }
-}
-
-@media (max-width: $grid-mobile-medium) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-      width: $grid-mobile-small - $grid-small ;  /* Регулируйте процент в соответствии с вашими потребностями */
-      &__item__title{
-        justify-content: center;
-      }
-    }
-  }
-}
-
-@media (max-width: $grid-mobile-small) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-      width: $grid-mobile-extrasmall - $grid-small ;  /* Регулируйте процент в соответствии с вашими потребностями */
-      &__item__title{
-        justify-content: center;
-      }
-    }
-  }
-}
-
-@media (max-width: $grid-mobile-extrasmall) {
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__container{
-      width: $grid-mobile-min - $grid-small ;  /* Регулируйте процент в соответствии с вашими потребностями */
-      &__item__title{
-        justify-content: center;
-      }
-    }
-  }
+@each $breakpoint, $width in $breakpoints {
+  @include respond($breakpoint);
 }
 // $grid-desktop: 1440px;
 // $grid-laptop-max: 1439px;
