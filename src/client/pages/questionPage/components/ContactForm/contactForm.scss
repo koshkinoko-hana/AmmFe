@@ -8,6 +8,7 @@
     background-color: $color-blue10;
     border: 2px solid $color-grey80;
     border-radius: 25px;
+    transition: width 0.5s ease-in-out;
 
     &__name {
         position: relative;
@@ -64,6 +65,7 @@
     &__btn{
         margin: 40px 0 0 0 ;
     }
+    
 }
 
 .error_alert {
@@ -74,3 +76,9 @@
     bottom: -25px;
   }
   
+  @media screen and (max-width: 770px) {
+    .contactForm {
+        width: 90%;  /* Регулируйте процент в соответствии с вашими потребностями */
+    }
+}
+

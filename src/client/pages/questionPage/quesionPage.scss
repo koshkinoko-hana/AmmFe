@@ -13,10 +13,6 @@
         font-weight: $font-weight-semibold;
       }
       
-
-    .dean-question{
-
-    }
     .FAQ{
         li::before, li::after {
             content: '';            
@@ -116,6 +112,8 @@
         justify-content: center;
         margin-bottom: 100px;
       }
-
+    }
+    @media (max-width: $grid-laptop-max) {
+      margin: 0  $grid-small;
     }
 }

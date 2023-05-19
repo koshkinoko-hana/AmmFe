@@ -25,15 +25,22 @@ const Department1Page: React.FC = () => {
         <div className='depart__box'>
           <div className='depart__box__menu'>
             <ul className='depart__box__menu__list'>
-              <li className='depart__box__menu__list__item' >Заведующий кафедрой</li>
-              <li className='depart__box__menu__list__item'>Описание работы кафедры</li>
-              <li className='depart__box__menu__list__item'>Сотрудники</li>
-              <li className='depart__box__menu__list__item'>Контакты</li>            
+              <li className='depart__box__menu__list__item' >
+                <a href="#head">Заведующий кафедрой</a> 
+              </li>
+              <li className='depart__box__menu__list__item'>
+                <a href="#description">Описание работы кафедры</a>
+              </li>
+              <li className='depart__box__menu__list__item'>
+                <a href="#employees">Сотрудники</a> </li>
+              <li className='depart__box__menu__list__item'>
+                <a href="#contscts">Контакты</a> 
+              </li>            
             </ul>
           </div>
         </div>
         <div className='depart__body'>
-          <h2>Заведующий кафедрой</h2>
+          <h2 id="head">Заведующий кафедрой</h2>
           <div className='depart__body__head'>
             <div className='depart__body__head__img'>
               <img src={DepartmentHead} alt="" />
@@ -45,17 +52,17 @@ const Department1Page: React.FC = () => {
           </div>
           <div>
             <div>
-              <h2>Описание работы кафедры</h2>        
+              <h2 id="description">Описание работы кафедры</h2>        
               <p>Подготовка специалистов в области механики в Воронежском госуниверситете имеет глубокие корни и богатые традиции. У истоков Воронежской школы механиков стоял один из крупнейших советских ученых-механиков - Леонид Самуилович Лейбензон (1879-1951). Являясь прямым учеником Н.Е.Жуковского, он с 1913 по 1917 годы был профессором старейшего Юрьевского университета, на базе которого и был образован в 1918 году Воронежский государственный университет.</p>
             </div>
-            <h2>Сотрудники</h2>
+            <h2 id="employees">Сотрудники</h2>
             <div className='depart__body__employees'>
               <EmployeeCard img={noname} name='Бурлуцкая Мария Шаукатовна' descripton='Должность: профессор' />
               <EmployeeCard img={noname} name='Бурлуцкая Мария Шаукатовна' descripton='Должность: профессор' />
               <EmployeeCard img={noname} name='Тимошенко Юрий Константинович' descripton='Должность: профессор' />
               <EmployeeCard img={noname} name='Тимошенко Юрий Константинович' descripton='Должность: профессор' />
             </div>
-            <h2>Контакты</h2>
+            <h2 id="contscts">Контакты</h2>
             <div className='depart__body__contacts'>
               <div className='depart__body__contacts__column__item'>
                 <Link to="/" className="p2">
