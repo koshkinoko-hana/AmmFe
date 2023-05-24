@@ -1,4 +1,5 @@
 @import '@common/styles/index';
+
 .news_header {
     margin: $grid-medium auto $grid-normal;
     padding: $grid-medium $grid-normal;
@@ -11,7 +12,7 @@
         list-style: none;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: $grid-small-extended;
         &__item {
             display: flex;
             gap: $grid-small;
@@ -36,7 +37,7 @@
             position: absolute;
             bottom: -6px;
             width: 100%;
-            height: 10px;
+            height: $grid-small;
             background-color: $color-blue40;
         }
     }
@@ -63,8 +64,8 @@
         &__title {
             font-size: $h1-font-size;
             &::after {
-                bottom: 5px;
-                height: 5px;
+                bottom: $grid-tiny;
+                height: $grid-tiny;
             }
         }
     }

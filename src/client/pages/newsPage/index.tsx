@@ -7,8 +7,7 @@ import {NewsCard} from '~/client/components/NewsCard'
 import { Pagination } from '~/client/components/Pagination'
 import { useAppDispatch, useAppSelector } from '~/common/store'
 import { fetchNewsListAction } from '~/client/ducks/actions/news'
-
-const limit = 9
+import { limit } from './consts'
 
 const News: React.FC = () => {
   const { news } = useAppSelector(state => state.client.news)
@@ -31,7 +30,7 @@ const News: React.FC = () => {
         }}
       />
       <div className="news-container">
-        {news.slice(offset, offset + 9).map(newsCard => (
+        {news.slice(offset, offset + limit).map(newsCard => (
           <NewsCard key={Math.random()} {...newsCard} requiresPhoto={true}/>
         ))}
       </div>

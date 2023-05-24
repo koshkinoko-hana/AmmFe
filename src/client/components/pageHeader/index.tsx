@@ -7,7 +7,6 @@ import { Home } from '~/common/icons/Home'
 import { NavItems } from './helpers'
 
 const PageHeader: React.FC<Props> = ({path, header, description}) => {
-  console.log(path)
   return (
     <div className="news_header">
       <ul className="news_header_links">

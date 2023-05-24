@@ -35,6 +35,6 @@
 
 @media screen and (max-width: $grid-laptop-max) {
     .details {
-        margin: 0 20px;
+        margin: 0 $grid-small*2;
     }
 }
