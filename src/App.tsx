@@ -11,8 +11,10 @@ import NewsPage from '~/client/pages/news'
 import Login from './admin/pages/login'
 import './common/styles/index.scss'
 import { AdminRoutes, ClientRoutes } from '@common/types/routes'
+import DepartmentsPage from './client/pages/departmentPage'
+import DepartmentPage from './client/pages/departments/Department1Page'
 
-function App() {
+function App(): JSX.Element {
 
   return (
     <Routes>
@@ -29,6 +31,11 @@ function App() {
       <Route path={'/'} element={<ClientRoute/>}>
         <Route path={`${ClientRoutes.home}`} element={<MainPage/>} />
         <Route path={`${ClientRoutes.news}`} element={<NewsPage/>} />
+        <Route path={`${ClientRoutes.deanFaq}`} element={<QuestionPage/>} />
+        <Route path={`${ClientRoutes.departments}`} >
+          <Route path="" element={ <DepartmentsPage/>} />
+          <Route path=":id" element={<DepartmentPage/>} />
+        </Route>
         {/* <Route path={`${ClientRoutes.positions}`} element={<Positions/>}/> */}
         {/*<Route path={`${ClientRoutes.employees}`}>*/}
         {/*  <Route path="" element={<Employees/>}/>*/}

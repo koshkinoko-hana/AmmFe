@@ -12,6 +12,7 @@ type Props = {
   register: UseFormRegisterReturn
   classList?: string
   isMulti?: boolean
+  defaultValue: Option[]
   options: Option[]
   onChange: (values: MultiValue<Option> | SingleValue<Option>) => void
 }
@@ -22,12 +23,13 @@ const Select: FC<Props> = ({
   register,
   classList='',
   isMulti,
-  options,
+  defaultValue,
+  options, //опции для выбора
   onChange
 }: Props) => {
 
-  const onChangeCLick = (value: MultiValue<Option> | SingleValue<Option>) => {
-    onChange(value)
+  const onChangeCLick = (values: MultiValue<Option> | SingleValue<Option>) => {
+    onChange(values)
   }
 
   return (
@@ -50,6 +52,7 @@ const Select: FC<Props> = ({
           className={`${error ? 'is-invalid' : ''} ${classList}`}
           isMulti={isMulti}
           options={options}
+          defaultValue={defaultValue}
           {...register}
           onChange={onChangeCLick}
         />
