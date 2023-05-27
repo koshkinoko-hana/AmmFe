@@ -18,6 +18,8 @@ import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { apiAdmin } from '~/common/consts/general'
 import { get, post, putRequest } from '~/common/utils/fetch'
 
+
+
 function* fetchEmployees() {
   yield errorWrapper(function* () {
     try {
@@ -81,7 +83,7 @@ function* employeeWatcher() {
     takeLatest(fetchEmployeeAction.TRIGGER, fetchEmployee),
     takeLatest(saveEmployeeAction.TRIGGER, saveEmployee),
     takeLatest(updateEmployeeAction.TRIGGER, updateEmployee),
-    takeLatest(uploadPhoto.TRIGGER, saveImage)
+    takeLatest(uploadPhoto.TRIGGER, saveImage),
   ])
 }
 

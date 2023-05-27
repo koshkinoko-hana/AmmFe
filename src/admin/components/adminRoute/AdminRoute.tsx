@@ -21,7 +21,6 @@ const AdminRoute: React.FC = () => {
   const error = useSelector(getError)
 
   useEffect(() => {
-    debugger
     if(error) {
       switch (error) {
       case ApiError.UNAUTHORIZED:

@@ -7,7 +7,6 @@ import DepartmentCard from '~/client/components/DepartmentCard'
 import './departmentPage.scss'
 
 const DepartmentPage: React.FC = () => {
-  console.log( ' ')
   return (
     <>
       <div>

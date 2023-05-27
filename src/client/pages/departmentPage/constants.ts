@@ -14,54 +14,54 @@ export const cards: departmentCard[] = [
     img: departmentMAsk1,
     backgroundColor: '#F9E7E6',
     title: 'Математического и прикладного анализа',
-    link: 'Department1'
+    link: '1'
   },
   {
     img: departmentMAsk2,
     backgroundColor: '#E5F7FE',
     title: 'Вычислительной математики и прикладных информационных технологий',
-    link: 'Department2'
+    link: '2'
   },
   {
     img: departmentMAsk3,
     backgroundColor: '#FDFAF0',
     title: 'Математических методов исследования операций',
-    link: 'Department3'
+    link: '3'
   },
   {
     img: departmentMAsk4,
     backgroundColor: '#F9E7E6',
     title: 'Математического обеспечения ЭВМ',
-    link: 'Department4'
+    link: '4'
   },
   {
     img: departmentMAsk5,
     backgroundColor: '#E5F7FE',
     title: 'ERP-систем и бизнес процессов',
-    link: 'Department5'
+    link: '5'
   },
   {
     img: departmentMAsk6,
     backgroundColor: '#FDFAF0',
     title: 'Системного анализа и управления',
-    link: 'Department6'
+    link: '6'
   },
   {
     img: departmentMAsk7,
     backgroundColor: '#F9E7E6',
     title: 'Программного обеспечения и администрирования информационных систем',
-    link: 'Department7'
+    link: '7'
   },
   {
     img: departmentMAsk8,
     backgroundColor: '#E5F7FE',
     title: 'Лаборатория вычислительной техники',
-    link: 'Department8'
+    link: '8'
   },
   {
     img: departmentMAsk9,
     backgroundColor: '#FDFAF0',
     title: 'Механики и компьютерного моделирования',
-    link: 'Department9'
+    link: '9'
   },
 ]

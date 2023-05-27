@@ -12,8 +12,8 @@ import QuestionPage from '~/client/pages/questionPage'
 import Login from './admin/pages/login'
 import './common/styles/index.scss'
 import { AdminRoutes, ClientRoutes } from '@common/types/routes'
-import DepartmentPage from './client/pages/departmentPage'
-import Department1Page from './client/pages/departments/Department1Page'
+import DepartmentsPage from './client/pages/departmentPage'
+import DepartmentPage from './client/pages/departments/Department1Page'
 
 function App() {
 
@@ -34,16 +34,8 @@ function App() {
         <Route path={`${ClientRoutes.news}`} element={<NewsPage/>} />
         <Route path={`${ClientRoutes.deanFaq}`} element={<QuestionPage/>} />
         <Route path={`${ClientRoutes.departments}`} >
-          <Route path="" element={ <DepartmentPage/>} />
-          <Route path="Department1" element={<Department1Page />} />
-          <Route path="Department2" element={<Department1Page />} />
-          <Route path="Department3" element={<Department1Page />} />
-          <Route path="Department4" element={<Department1Page />} />
-          <Route path="Department5" element={<Department1Page />} />
-          <Route path="Department6" element={<Department1Page />} />
-          <Route path="Department7" element={<Department1Page />} />
-          <Route path="Department8" element={<Department1Page />} />
-          <Route path="Department9" element={<Department1Page />} />
+          <Route path="" element={ <DepartmentsPage/>} />
+          <Route path=":id" element={<DepartmentPage/>} />
         </Route>
         {/* <Route path={`${ClientRoutes.positions}`} element={<Positions/>}/> */}
         {/*<Route path={`${ClientRoutes.employees}`}>*/}

@@ -1,15 +1,36 @@
 import Header from '~/client/components/pageHeader'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ClientRoutes } from '~/common/types/routes'
 import { PathKey } from '~/client/components/pageHeader/types'
-import './department1Page.scss'
+import './departmentPage.scss'
 import DepartmentHead from '../../../../assets/Shashkin.png'
 import noname from '../../../../assets/noname.svg'
-import EmployeeCard from './components/employee'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Compass, Letter, PhoneBig } from '~/common/icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { getEmployeeLoading, getEmployees } from '~/admin/ducks/selectors/employee'
+import { fetchEmployeeListAction } from '~/admin/ducks/actions/employee'
+import EmployeeCard from './components/EmployeeCard'
+import { fetchPositionListAction } from '~/admin/ducks/actions/position'
+import { getPositions } from '~/admin/ducks/selectors/position'
 
-const Department1Page: React.FC = () => {
+const DepartmentPage: React.FC = () => {
+  const { id: id_department } = useParams()
+  const dispatch = useDispatch()
+  const employees = useSelector(getEmployees)
+  const positions = useSelector(getPositions)
+  const loading = useSelector(getEmployeeLoading)
+
+  
+
+  useEffect(() => {
+    dispatch(fetchEmployeeListAction())
+  }, [])
+
+  useEffect(() => {
+    dispatch(fetchPositionListAction())
+  }, [])
+
   return (
     <>
       <div>
@@ -57,10 +78,16 @@ const Department1Page: React.FC = () => {
             </div>
             <h2 id="employees">Сотрудники</h2>
             <div className='depart__body__employees'>
-              <EmployeeCard img={noname} name='Бурлуцкая Мария Шаукатовна' descripton='Должность: профессор' />
-              <EmployeeCard img={noname} name='Бурлуцкая Мария Шаукатовна' descripton='Должность: профессор' />
-              <EmployeeCard img={noname} name='Тимошенко Юрий Константинович' descripton='Должность: профессор' />
-              <EmployeeCard img={noname} name='Тимошенко Юрий Константинович' descripton='Должность: профессор' />
+              {!loading && ( 
+                employees.map((e) => {if (e.departments.some(department => department.id === Number(id_department))) 
+                  return (<EmployeeCard 
+                    key={e.id} 
+                    img={noname} 
+                    name={`${e.firstName} ${e.middleName} ${e.lastName}`} 
+                    descripton={`Должность: ${e.positions.map(e => e.name).join(', ')}`}
+                  />)
+                }))
+              }
             </div>
             <h2 id="contscts">Контакты</h2>
             <div className='depart__body__contacts'>
@@ -96,4 +123,4 @@ const Department1Page: React.FC = () => {
   )
 }
 
-export default Department1Page
+export default DepartmentPage
