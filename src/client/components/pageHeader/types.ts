@@ -13,4 +13,4 @@ export enum PathKey {
   DEPARTMENTS='Кафедры'
 }
 
-export type pathSet = Record<PathKey, ClientRoutes>;
+export type pathSet = Partial<Record<PathKey, ClientRoutes>>;
