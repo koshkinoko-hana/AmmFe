@@ -1,5 +1,3 @@
-import {ClientRoutes} from '@common/types/routes'
-
 export interface Props {
   header: string,
   description?: string,
@@ -11,4 +9,4 @@ export enum PathKey {
   NEWS='Новости'
 }
 
-export type pathSet = Record<PathKey, ClientRoutes>;
+export type pathSet = Record<string, string>;

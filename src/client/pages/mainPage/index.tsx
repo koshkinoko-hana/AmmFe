@@ -14,7 +14,6 @@ const MainPage: React.FC = () => {
         <ReasonsBlock />
         <HistoryBlock />
       </div>
-      <Footer />
     </>
   )
 }

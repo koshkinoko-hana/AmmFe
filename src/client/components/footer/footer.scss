@@ -1,5 +1,6 @@
 @import "src/common/styles/index";
 .footer {
+    margin-top: $grid-big;
     background-color: $color-key-primary;
     display: flex;
     justify-content: center;
