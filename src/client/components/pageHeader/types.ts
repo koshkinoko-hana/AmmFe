@@ -8,7 +8,9 @@ export interface Props {
 }
 
 export enum PathKey {
-  NEWS='Новости'
+  NEWS='Новости',
+  FAQ='Вопрос декану',
+  DEPARTMENTS='Кафедры'
 }
 
 export type pathSet = Record<PathKey, ClientRoutes>;
