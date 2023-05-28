@@ -1,3 +1,4 @@
+import React from 'react'
 import AdminRoute from '@admin/components/adminRoute/AdminRoute'
 import Departments from '@admin/pages/departments'
 import Employee from '@admin/pages/employee'
@@ -12,6 +13,7 @@ import QuestionPage from '~/client/pages/questionPage'
 import Login from './admin/pages/login'
 import './common/styles/index.scss'
 import { AdminRoutes, ClientRoutes } from '@common/types/routes'
+import NewsDetailsPage from './client/pages/newsDetailsPage'
 import DepartmentsPage from './client/pages/departmentPage'
 import DepartmentPage from './client/pages/departments/Department1Page'
 import AdminDepartmentPage from './admin/pages/departmentPage'
@@ -37,7 +39,8 @@ function App(): JSX.Element {
       </Route>
       <Route path={'/'} element={<ClientRoute/>}>
         <Route path={`${ClientRoutes.home}`} element={<MainPage/>} />
-        <Route path={`${ClientRoutes.news}`} element={<NewsPage/>} />
+        <Route path={`${ClientRoutes.news}`} element={<NewsPage/>}/>
+        <Route path={`${ClientRoutes.news}/:slug`} element={<NewsDetailsPage/>}/>
         <Route path={`${ClientRoutes.deanFaq}`} element={<QuestionPage/>} />
         <Route path={`${ClientRoutes.departments}`} >
           <Route path="" element={ <DepartmentsPage/>} />

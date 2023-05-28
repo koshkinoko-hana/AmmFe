@@ -1,5 +1,3 @@
-import {ClientRoutes} from '@common/types/routes'
-
 export interface Props {
   header: string,
   description?: string,
