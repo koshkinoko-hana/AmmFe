@@ -1,8 +1,7 @@
 import './departments.scss'
-import { fetchDepartmentListAction, setCurrentDepartmentAction, updateDepartmentAction } from '@admin/ducks/actions/department'
+import { fetchDepartmentListAction } from '@admin/ducks/actions/department'
 import { getDepartmentLoading, getDepartments } from '@admin/ducks/selectors/department'
 import ListItem from '@admin/pages/departments/listItem'
-import { Department } from '@common/components/types/department'
 import { openDialogueAction } from '@common/ducks/slice/dialogue'
 import { DialogueOption } from '@common/ducks/types/dialogueOption'
 import React, { useCallback, useEffect } from 'react'
@@ -27,10 +26,11 @@ const Departments: React.FC = () => {
   }, [])
 
   const updateDepartment = (id: number) => {
+    console.log('🚀 ~ file: index.tsx:29 ~ updateDepartment ~ id:', id)
     if(id === 0)
-      navigate(`/${AdminRoutes.root}/${AdminRoutes.employees}`)
+      navigate(`/${AdminRoutes.root}/${AdminRoutes.department}`)
     else
-      navigate(`/${AdminRoutes.root}/${AdminRoutes.employees}/${id}&${-1}`)
+      navigate(`/${AdminRoutes.root}/${AdminRoutes.department}/${id}`)
   } 
 
   if(id_default === undefined || id_default === '0'){

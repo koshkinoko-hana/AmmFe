@@ -14,6 +14,7 @@ import './common/styles/index.scss'
 import { AdminRoutes, ClientRoutes } from '@common/types/routes'
 import DepartmentsPage from './client/pages/departmentPage'
 import DepartmentPage from './client/pages/departments/Department1Page'
+import AdminDepartmentPage from './admin/pages/departmentPage'
 
 function App(): JSX.Element {
 
@@ -22,6 +23,11 @@ function App(): JSX.Element {
       <Route path={`/${AdminRoutes.root}/${AdminRoutes.login}`} element={<Login />} />
       <Route path={`/${AdminRoutes.root}`} element={<AdminRoute />}>
         <Route path={`${AdminRoutes.departments}`} element={<Departments />} />
+        <Route path={`${AdminRoutes.department}`} >
+          <Route path="" element={<AdminDepartmentPage />} />
+          <Route path="create" element={<AdminDepartmentPage />} />
+          <Route path=":id" element={<AdminDepartmentPage />} />
+        </Route>
         <Route path={`${AdminRoutes.positions}`} element={<Positions />} />
         <Route path={`${AdminRoutes.employees}`}>
           <Route path="" element={<Employees />} />
