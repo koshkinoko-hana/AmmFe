@@ -1,3 +1,5 @@
+import { ClientRoutes } from '~/common/types/routes'
+
 export interface Props {
   header: string,
   description?: string,
@@ -8,7 +10,7 @@ export interface Props {
 export enum PathKey {
   NEWS='Новости',
   FAQ='Вопрос декану',
-  DEPARTMENTS='Кафедры'
+  DEPARTMENTS='Кафедры',
 }
 
-export type pathSet = Partial<Record<PathKey, ClientRoutes>>;
+export type pathSet = Partial<Record<PathKey, ClientRoutes>>

@@ -5,13 +5,13 @@ import { get } from '~/common/utils/fetch'
 import { apiClient } from '~/common/consts/general'
 import { fetchNewsDetailsAction, fetchNewsListAction, fetchNewsPreviewAction } from '../actions/news'
 import { PayloadAction } from '@reduxjs/toolkit'
-import placeholderSvg from '@assets/placeholder_news.svg'
+//import placeholderSvg from '@assets/placeholder_news.svg'
 
 function* fetchNews(action: PayloadAction<number>) {
   yield errorWrapper(function* () {
     try {
       const res: {data: newsCard[]} = yield call(get, `${apiClient}/news?offset=${action.payload}&limit=9`)
-      res.data = res.data.map(item => ({...item, createdAt: item.createdAt.slice(0, 10).split('-').reverse().join('.'), photoPath: item.photoPath || placeholderSvg}))
+      res.data = res.data.map(item => ({...item, createdAt: item.createdAt.slice(0, 10).split('-').reverse().join('.'), photoPath: item.photoPath}))// || placeholderSvg}))
       yield put({ type: fetchNewsListAction.SUCCESS, payload: { news: res.data } })
     } catch (e: unknown) {
       yield put({ type: fetchNewsListAction.FAILURE })
