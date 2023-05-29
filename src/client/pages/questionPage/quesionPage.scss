@@ -1,0 +1,173 @@
+@import "src/common/styles/index";
+.body{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    max-width: $grid-desktop;
+    flex-direction: column;
+
+    .selected a {
+        background-color: #E5F7FE;
+        border-radius: 10px;
+        color: #207EED;
+        font-weight: $font-weight-semibold;
+      }
+      
+    .FAQ{
+        li::before, li::after {
+            content: '';            
+        }
+        &__item__title {
+          position: relative;
+          width: 100%;
+          padding-right: 36px + 18px ;
+          background-color: transparent;
+          color: $color-key-primary;
+          border: 2px solid $color-grey60;
+        }
+
+        &__item__title::before {
+          content: '';
+          width: 36px;
+          height: 36px;
+          position: absolute;
+          top: 8px;
+          right: 18px;
+          background-color: transparent;
+          background-image: url('../../../assets/arrow.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          transition: transform .3s ease-in-out;
+        }
+
+        &__item__title.open:before {
+          transform: rotate(180deg);
+          transition: transform .3s ease-in-out;
+        }
+        &__paginator{
+          display: flex;
+          align-items: center;          
+          justify-content: center;
+        }
+
+        &__list {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+                  
+            @media (max-width: 375px) {
+              width: 100%;
+              overflow-x: auto;
+            }
+      
+            &__item {
+              &:not(:last-child) {
+                margin-right: 8px;
+              }
+      
+              &:nth-last-child(2) {
+                border-right: none;
+              }
+      
+              &__link {
+                display: block;
+                border-radius: 10px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: #292929;
+              }
+            }
+      
+            &__break {
+              cursor: pointer;
+              margin: 0 8px;
+              padding: 0 8px;
+              height: 8px;
+              border-right: transparent;
+              border-left: transparent;
+      
+              &__link {
+                display: block;
+                height: 8px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #2d2d2d;
+              }
+            }
+        }
+    }
+    .ask-a-question{
+      &__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 100px;
+      }
+    }
+    @media (max-width: $grid-laptop-max) {
+      margin: 0  $grid-small;
+    }
+}
+
+
+.FAQ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    padding: 0 10px;
+
+    &__item__title {
+      justify-content: center;
+    }
+  }
+}
+
+$widths: (
+  laptop-max: $grid-laptop-medium,
+  laptop-medium: $grid-tablet-max,
+  tablet-max: $grid-tablet-medium,
+  tablet-medium: $grid-mobile-max,
+  mobile-max: $grid-tablet-min,
+  tablet-min: $grid-mobile-medium,
+  mobile-medium: $grid-mobile-small,
+  mobile-small: $grid-mobile-extrasmall,
+  mobile-extrasmall: $grid-mobile-min
+);
+
+
+@mixin respond($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    .FAQ {
+      &__container {
+        width: map-get($widths, $breakpoint) - 2 * $grid-base;
+      }
+    }
+  }
+}
+
+@each $breakpoint, $width in $breakpoints {
+  @include respond($breakpoint);
+}
+// $grid-desktop: 1440px;
+// $grid-laptop-max: 1439px;
+// $grid-laptop-medium: 1199px;
+// $grid-tablet-max: 1023px;
+// $grid-tablet-medium: 991px;
+// $grid-tablet-min: 679px;
+// $grid-mobile-max: 767px;
+// $grid-mobile-medium: 599px;
+// $grid-mobile-small: 480px;
+// $grid-mobile-extrasmall: 420px;
+// $grid-mobile-min: 375px;

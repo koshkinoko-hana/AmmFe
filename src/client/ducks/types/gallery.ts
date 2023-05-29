@@ -1,6 +1,3 @@
-
-
-
 export type Response = {
     data: GalleryCard[],
     total: number,
@@ -18,5 +15,6 @@ export type GalleryCard = {
 
 export type GalleryState = {
     loading: boolean,
+    total: number,
     photos: GalleryCard[],
 }

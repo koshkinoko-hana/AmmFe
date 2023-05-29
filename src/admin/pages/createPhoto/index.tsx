@@ -1,7 +1,6 @@
 import TextInput from '@common/components/textInput'
 import React, {
   ChangeEvent,
-  useCallback,
   useRef,
   useState
 } from 'react'
@@ -31,9 +30,11 @@ const CreatePhoto: React.FC = () => {
   }
 
   const onSubmit = ({title}: FormDataType) => {
+    console.log(2)
     const photo = new FormData()
     photo.append('title', title)
     if(uploadedFile) photo.append('file', uploadedFile, 'file')
+    console.log(photo.get('title'), photo.get('file'))
     dispatch(createPhotoAction(photo))
   }
   const onCancel = () => {

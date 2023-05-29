@@ -2,7 +2,7 @@ import { createRoutine } from 'redux-saga-routines'
 
 const name = 'gallery'
 
-export const deletePhotoAction = createRoutine(`${name}/DELETE`)
-export const createPhotoAction = createRoutine(`${name}/CREATE`)
-export const fetchPhotoAction = createRoutine(`${name}/FETCH`)
-export const fetchPhotoListAction = createRoutine(`${name}/FETCH_LIST`)
+export const deletePhotoAction = createRoutine(`admin/${name}/DELETE`)
+export const createPhotoAction = createRoutine(`admin/${name}/CREATE`)
+export const fetchPhotoAction = createRoutine(`admin/${name}/FETCH`)
+export const fetchPhotoListAction = createRoutine(`admin/${name}/FETCH_LIST`)

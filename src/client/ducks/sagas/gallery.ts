@@ -11,7 +11,7 @@ function* fetchGallery(action: PayloadAction<number>) {
     try {
       const res: Response = yield call(get, `${apiClient}/gallery?offset=${action.payload}&limit=8`)
       res.data = res.data.map(item => ({...item, createdAt: item.createdAt.slice(0, 10).split('-').reverse().join('.')}))
-      yield put({ type: fetchGalleryListAction.SUCCESS, payload: { photos: res.data } })
+      yield put({ type: fetchGalleryListAction.SUCCESS, payload: { photos: res.data, total: res.total } })
     } catch (e: unknown) {
       yield put({ type: fetchGalleryListAction.FAILURE })
       throw e

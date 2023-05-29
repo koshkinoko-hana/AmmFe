@@ -2,7 +2,7 @@ import './galleryPage.scss'
 import React, { useEffect } from 'react'
 import Header from '~/client/components/pageHeader'
 import { ClientRoutes } from '~/common/types/routes'
-import { Pagination } from '~/client/components/Pagination'
+import { Pagination } from '~/common/components/Pagination'
 import { PathKey } from '~/client/components/pageHeader/types'
 import { useAppSelector, useAppDispatch } from '~/common/store'
 import { fetchGalleryListAction } from '~/client/ducks/actions/gallery'
@@ -13,16 +13,12 @@ const limit = 8
 const Gallery: React.FC = () => {
   const [offset, setOffset] = React.useState(0)
 
-  const {photos} = useAppSelector(state => state.client.gallery)
+  const {photos, total} = useAppSelector(state => state.client.gallery)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(fetchGalleryListAction(offset))
   }, [offset])
-
-  useEffect(() => {
-    console.log(photos)
-  }, [photos])
 
   return (
     <div className="client__main">
@@ -33,12 +29,12 @@ const Gallery: React.FC = () => {
           [PathKey.NEWS]: ClientRoutes.gallery
         }}
       />
-      <div className="gallery-container">
-        {photos.map(photo => (
-          <GalleryCard key={photo.id} title={photo.title || ''} id={photo.id} path={photo.path} createdAt={photo.createdAt} size={'small'}/>
+      <div className="gallery">
+        {photos.map((photo, i) => (
+          <GalleryCard key={photo.id} title={photo.title || ''} id={photo.id} path={photo.path} createdAt={photo.createdAt} size={i === 0 ? 'big' : 'small'}/>
         ))}
       </div>
-      <Pagination offset={offset} setOffset={setOffset} limit={limit} total={1} />
+      <Pagination offset={offset} setOffset={setOffset} limit={limit} total={total} />
     </div>
   )
 }

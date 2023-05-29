@@ -9,6 +9,7 @@ export interface GalleryPhotoListItem extends GalleryPhoto {
 
 export interface GalleryState {
     loading: boolean
+    total: number
     photo: GalleryPhoto | null
     photos: GalleryPhotoListItem[]
   }

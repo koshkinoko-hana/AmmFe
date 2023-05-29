@@ -1,12 +1,15 @@
+import { ClientRoutes } from '~/common/types/routes'
+
 export interface Props {
-  header: string,
-  description?: string,
-  path: pathSet,
-  
+  header: string
+  description?: string
+  path: pathSet
 }
 
 export enum PathKey {
-  NEWS='Новости'
+  NEWS='Новости',
+  FAQ='Вопрос декану',
+  DEPARTMENTS='Кафедры',
 }
 
-export type pathSet = Record<string, string>;
+export type pathSet = Partial<Record<string, string>>;

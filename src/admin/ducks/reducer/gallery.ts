@@ -5,6 +5,7 @@ import { GalleryPhoto, GalleryPhotoListItem, GalleryState } from '../types/galle
   
 const initialState: GalleryState = {
   photos: [],
+  total: 0,
   photo: null,
   loading: false
 }
@@ -13,9 +14,9 @@ const gallery = createReducer(initialState, {
   [fetchPhotoListAction.TRIGGER]: (state) => {
     return { ...state, loading: true }
   },
-  [fetchPhotoListAction.SUCCESS]: (state, action: PayloadAction<{photos: GalleryPhotoListItem[]}>) => {
-    const { photos } = action.payload
-    return { ...state, loading: false, photos }
+  [fetchPhotoListAction.SUCCESS]: (state, action: PayloadAction<{photos: GalleryPhotoListItem[], total: number}>) => {
+    const { photos, total } = action.payload
+    return { ...state, loading: false, photos, total }
   },
   [fetchPhotoListAction.FAILURE]: (state) => {
     return { ...state, loading: false }

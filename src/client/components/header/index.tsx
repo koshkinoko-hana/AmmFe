@@ -20,12 +20,13 @@ const Header: React.FC = () => {
           <div className="header-container">
             <div className="logo-container">
               <Logo/>
-              <div className="logo-text">Факультет прикладной математики, информатики и механики</div>
+              <div className="logo-text p4">Факультет прикладной математики, информатики и механики</div>
             </div>
             <div className="menu">
               <Link to="/news" className="p1 mobile-hidden">Новости</Link>
-              <Link to="/" className="p1 mobile-hidden">Кафедры</Link>
+              <Link to="/departments" className="p1 mobile-hidden">Кафедры</Link>
               <Link to="/gallery" className="p1 tablet-hidden">Галерея</Link>
+              <Link to="/faq" className="p1 tablet-hidden">Вопрос декану</Link>
               <Link to="/" className="p1 tablet-hidden">Контакты</Link>
               <Link to="/" className="p1 mobile-hidden">Расписание</Link>
               <Burger onClick={toggleMenu}/>

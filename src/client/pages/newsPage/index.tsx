@@ -4,13 +4,13 @@ import Header from '~/client/components/pageHeader'
 import { PathKey } from '~/client/components/pageHeader/types'
 import { ClientRoutes } from '~/common/types/routes'
 import {NewsCard} from '~/client/components/NewsCard'
-import { Pagination } from '~/client/components/Pagination'
+import { Pagination } from '~/common/components/Pagination'
 import { useAppDispatch, useAppSelector } from '~/common/store'
 import { fetchNewsListAction } from '~/client/ducks/actions/news'
 import { limit } from './consts'
 
 const News: React.FC = () => {
-  const { news } = useAppSelector(state => state.client.news)
+  const { news, total } = useAppSelector(state => state.client.news)
   const dispatch = useAppDispatch()
 
   const [offset, setOffset] = React.useState(0)
@@ -34,7 +34,7 @@ const News: React.FC = () => {
           <NewsCard key={Math.random()} {...newsCard} requiresPhoto={true}/>
         ))}
       </div>
-      {news.length > limit && <Pagination offset={offset} setOffset={setOffset} limit={limit} total={news.length} />}
+      {news.length > limit && <Pagination offset={offset} setOffset={setOffset} limit={limit} total={total} />}
     </div>
   )
 }

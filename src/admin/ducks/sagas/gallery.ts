@@ -3,16 +3,15 @@ import { closeDialogueAction, setLoadingDialogueAction } from '@common/ducks/sli
 import { PayloadAction } from '@reduxjs/toolkit'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { apiAdmin } from '~/common/consts/general'
-import { del, get, post, postFormData } from '~/common/utils/fetch'
+import { del, get, postFormData } from '~/common/utils/fetch'
 import { GalleryPhoto, GalleryPhotoListItem } from '../types/gallery'
 import { createPhotoAction, deletePhotoAction, fetchPhotoAction, fetchPhotoListAction } from '../actions/gallery'
-import { token } from '~/common/utils/token'
   
-function* fetchPhotos() {
+function* fetchPhotos(action: PayloadAction<number>) {
   yield errorWrapper(function* () {
     try {
-      const res: {data: GalleryPhotoListItem[]} = yield call(get, `${apiAdmin}/gallery`)
-      yield put({ type: fetchPhotoListAction.SUCCESS, payload: { photos: res.data } })
+      const res: {data: GalleryPhotoListItem[], total: number} = yield call(get, `${apiAdmin}/gallery?offset=${action.payload}&limit=10`)
+      yield put({ type: fetchPhotoListAction.SUCCESS, payload: { photos: res.data, total: res.total } })
     } catch (e: unknown) {
       yield put({ type: fetchPhotoListAction.FAILURE })
       throw e
@@ -50,7 +49,7 @@ function* createPhoto(action: PayloadAction<FormData>) {
     try {
       console.log('saga', action.payload.get('title'), action.payload.get('file'))
       yield call(postFormData, `${apiAdmin}/gallery`, action.payload)
-      yield put({type: createPhotoAction})
+      yield put({type: createPhotoAction.SUCCESS})
       yield put(closeDialogueAction())
     } catch (e: unknown) {
       yield put(setLoadingDialogueAction(false))

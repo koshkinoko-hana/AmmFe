@@ -26,7 +26,6 @@
         }
     }
     &__title {
-        width: 100%;
         margin: $grid-small*2 0 $grid-tiny-3x 0;
         position: relative;
         display: inline-block;
@@ -40,9 +39,9 @@
                 content: '';
                 display: block;
                 position: absolute;
-                bottom: 6px;
+                bottom: 10px;
                 width: 100%;
-                height: 10px;
+                height: $grid-small;
             }
             &_blue40::after {
                 background-color: $color-blue40;

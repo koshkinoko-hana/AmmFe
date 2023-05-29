@@ -10,9 +10,9 @@ import placeholderSvg from '~/assets/placeholder_news.svg'
 function* fetchNews(action: PayloadAction<number>) {
   yield errorWrapper(function* () {
     try {
-      const res: {data: newsCard[]} = yield call(get, `${apiClient}/news?offset=${action.payload}&limit=9`)
-      res.data = res.data.map(item => ({...item, createdAt: item.createdAt.slice(0, 10).split('-').reverse().join('.'), photoPath: item.photoPath || placeholderSvg}))
-      yield put({ type: fetchNewsListAction.SUCCESS, payload: { news: res.data } })
+      const res: {data: newsCard[], total: number} = yield call(get, `${apiClient}/news?offset=${action.payload}&limit=9`)
+      res.data = res.data.map(item => ({...item, createdAt: item.createdAt.slice(0, 10).split('-').reverse().join('.'), photoPath: item.photoPath|| placeholderSvg}))
+      yield put({ type: fetchNewsListAction.SUCCESS, payload: { news: res.data, total: res.total } })
     } catch (e: unknown) {
       yield put({ type: fetchNewsListAction.FAILURE })
       throw e
