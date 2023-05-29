@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
             <img src={IconBW} />
           </div>
         </div>
-        <div className="copyright-text">© Факультет ПММ, {d.getFullYear()}</div>
+        <div className="copyright-text p4">© Факультет ПММ, {d.getFullYear()}</div>
       </div>
     </div>
   )

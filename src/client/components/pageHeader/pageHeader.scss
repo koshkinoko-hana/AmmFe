@@ -25,20 +25,33 @@
         }
     }
     &__title {
+        width: 100%;
         margin: $grid-small*2 0 $grid-tiny-3x 0;
-        font-size: 50px;
-        display: inline-block;
         position: relative;
+        display: inline-block;
         z-index: 1;
-        &::after {
-            z-index: -1;
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: -6px;
-            width: 100%;
-            height: $grid-small;
-            background-color: $color-blue40;
+        overflow: hidden;
+        padding: 5px;
+        text-overflow: ellipsis;
+        &--underlined {
+            &::after {
+                z-index: -1;
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 6px;
+                width: 100%;
+                height: $grid-small;
+            }
+            &_blue40::after {
+                background-color: $color-blue40;
+            }
+            &_red40::after {
+                background-color: $color-red40;
+            }
+            &_yellow40::after {
+                background-color: $color-yellow40;
+            }
         }
     }
     &__desc {

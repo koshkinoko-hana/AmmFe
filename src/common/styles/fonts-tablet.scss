@@ -1,64 +1,64 @@
 /** h1 **/
-$h1-font-family: 'Jost';
-$h1-font-size: 42px;
-$h1-line-height: 46.2px;
-$h1-font-weight: 600;
+$h1-tablet-font-family: 'Jost';
+$h1-tablet-font-size: 42px;
+$h1-tablet-line-height: 46.2px;
+$h1-tablet-font-weight: 600;
 
 @mixin h1-tablet() {
-  font-family: $h1-font-family;
-  font-size: $h1-font-size;
-  line-height: $h1-line-height;
-  font-weight: $h1-font-weight;
+  font-family: $h1-tablet-font-family;
+  font-size: $h1-tablet-font-size;
+  line-height: $h1-tablet-line-height;
+  font-weight: $h1-tablet-font-weight;
 }
 
 /** h2 **/
-$h2-font-family: 'Jost';
-$h2-font-size: 34px;
-$h2-line-height: 37.4px;
-$h2-font-weight: 600;
+$h2-tablet-font-family: 'Jost';
+$h2-tablet-font-size: 34px;
+$h2-tablet-line-height: 37.4px;
+$h2-tablet-font-weight: 600;
 
 @mixin h2-tablet() {
-  font-family: $h2-font-family;
-  font-size: $h2-font-size;
-  line-height: $h2-line-height;
-  font-weight: $h2-font-weight;
+  font-family: $h2-tablet-font-family;
+  font-size: $h2-tablet-font-size;
+  line-height: $h2-tablet-line-height;
+  font-weight: $h2-tablet-font-weight;
 }
 
 /** h3 **/
-$h3-font-family: 'Jost';
-$h3-font-size: 30px;
-$h3-line-height: 36px;
-$h3-font-weight: 400;
+$h3-tablet-font-family: 'Jost';
+$h3-tablet-font-size: 30px;
+$h3-tablet-line-height: 36px;
+$h3-tablet-font-weight: 400;
 
 @mixin h3-tablet() {
-  font-family: $h3-font-family;
-  font-size: $h3-font-size;
-  line-height: $h3-line-height;
-  font-weight: $h3-font-weight;
+  font-family: $h3-tablet-font-family;
+  font-size: $h3-tablet-font-size;
+  line-height: $h3-tablet-line-height;
+  font-weight: $h3-tablet-font-weight;
 }
 
 /** h4 **/
-$h4-font-family: 'Jost';
-$h4-font-size: 26px;
-$h4-line-height: 32.5px;
-$h4-font-weight: 400;
+$h4-tablet-font-family: 'Jost';
+$h4-tablet-font-size: 26px;
+$h4-tablet-line-height: 32.5px;
+$h4-tablet-font-weight: 400;
 
 @mixin h4-tablet() {
-  font-family: $h4-font-family;
-  font-size: $h4-font-size;
-  line-height: $h4-line-height;
-  font-weight: $h4-font-weight;
+  font-family: $h4-tablet-font-family;
+  font-size: $h4-tablet-font-size;
+  line-height: $h4-tablet-line-height;
+  font-weight: $h4-tablet-font-weight;
 }
 
 /** h5 **/
-$h5-font-family: 'Jost';
-$h5-font-size: 20px;
-$h5-line-height: 25px;
-$h5-font-weight: 400;
+$h5-tablet-font-family: 'Jost';
+$h5-tablet-font-size: 20px;
+$h5-tablet-line-height: 25px;
+$h5-tablet-font-weight: 400;
 
 @mixin h5-tablet() {
-  font-family: $h5-font-family;
-  font-size: $h5-font-size;
-  line-height: $h5-line-height;
-  font-weight: $h5-font-weight;
+  font-family: $h5-tablet-font-family;
+  font-size: $h5-tablet-font-size;
+  line-height: $h5-tablet-line-height;
+  font-weight: $h5-tablet-font-weight;
 }

@@ -1,118 +1,130 @@
-/** h1 **/
-$h1-font-family: 'Jost';
-$h1-font-size: 50px;
-$h1-line-height: 55px;
-$h1-font-weight: 600;
+$h1-desktop-font-family: 'Jost';
+$h1-desktop-font-size: 50px;
+$h1-desktop-line-height: 55px;
+$h1-desktop-font-weight: 600;
 
 @mixin h1-desktop() {
-  font-family: $h1-font-family;
-  font-size: $h1-font-size;
-  line-height: $h1-line-height;
-  font-weight: $h1-font-weight;
+  font-family: $h1-desktop-font-family;
+  font-size: $h1-desktop-font-size;
+  line-height: $h1-desktop-line-height;
+  font-weight: $h1-desktop-font-weight;
 }
 
 /** h2 **/
-$h2-font-family: 'Jost';
-$h2-font-size: 42px;
-$h2-line-height: 46.2px;
-$h2-font-weight: 600;
+$h2-desktop-font-family: 'Jost';
+$h2-desktop-font-size: 42px;
+$h2-desktop-line-height: 46.2px;
+$h2-desktop-font-weight: 600;
 
 @mixin h2-desktop() {
-  font-family: $h2-font-family;
-  font-size: $h2-font-size;
-  line-height: $h2-line-height;
-  font-weight: $h2-font-weight;
+  font-family: $h2-desktop-font-family;
+  font-size: $h2-desktop-font-size;
+  line-height: $h2-desktop-line-height;
+  font-weight: $h2-desktop-font-weight;
 }
 
 /** h3 **/
-$h3-font-family: 'Jost';
-$h3-font-size: 36px;
-$h3-line-height: 43.2px;
-$h3-font-weight: 400;
+$h3-desktop-font-family: 'Jost';
+$h3-desktop-font-size: 36px;
+$h3-desktop-line-height: 43.2px;
+$h3-desktop-font-weight: 400;
 
 @mixin h3-desktop() {
-  font-family: $h3-font-family;
-  font-size: $h3-font-size;
-  line-height: $h3-line-height;
-  font-weight: $h3-font-weight;
+  font-family: $h3-desktop-font-family;
+  font-size: $h3-desktop-font-size;
+  line-height: $h3-desktop-line-height;
+  font-weight: $h3-desktop-font-weight;
 }
 
 /** h4 **/
-$h4-font-family: 'Jost';
-$h4-font-size: 28px;
-$h4-line-height: 35px;
-$h4-font-weight: 400;
+$h4-desktop-font-family: 'Jost';
+$h4-desktop-font-size: 28px;
+$h4-desktop-line-height: 35px;
+$h4-desktop-font-weight: 400;
 
 @mixin h4-desktop() {
-  font-family: $h4-font-family;
-  font-size: $h4-font-size;
-  line-height: $h4-line-height;
-  font-weight: $h4-font-weight;
+  font-family: $h4-desktop-font-family;
+  font-size: $h4-desktop-font-size;
+  line-height: $h4-desktop-line-height;
+  font-weight: $h4-desktop-font-weight;
 }
 
 /** h5 **/
-$h5-font-family: 'Jost';
-$h5-font-size: 22px;
-$h5-line-height: 27.5px;
-$h5-font-weight: 400;
+$h5-desktop-font-family: 'Jost';
+$h5-desktop-font-size: 22px;
+$h5-desktop-line-height: 27.5px;
+$h5-desktop-font-weight: 400;
 
 @mixin h5-desktop() {
-  font-family: $h5-font-family;
-  font-size: $h5-font-size;
-  line-height: $h5-line-height;
-  font-weight: $h5-font-weight;
+  font-family: $h5-desktop-font-family;
+  font-size: $h5-desktop-font-size;
+  line-height: $h5-desktop-line-height;
+  font-weight: $h5-desktop-font-weight;
 }
 
 /** p1 - default **/
-$p1-font-family: 'Jost';
-$p1-font-size: 20px;
-$p1-line-height: 26px;
-$p1-font-weight: 400;
+$p1-desktop-font-family: 'Jost';
+$p1-desktop-font-size: 20px;
+$p1-desktop-line-height: 26px;
+$p1-desktop-font-weight: 400;
 
 @mixin p1-desktop() {
-  font-family: $p1-font-family;
-  font-size: $p1-font-size;
-  line-height: $p1-line-height;
-  font-weight: $p1-font-weight;
+  font-family: $p1-desktop-font-family;
+  font-size: $p1-desktop-font-size;
+  line-height: $p1-desktop-line-height;
+  font-weight: $p1-desktop-font-weight;
 }
 
 /** p2 **/
-$p2-font-family: 'Jost';
-$p2-font-size: 20px;
-$p2-line-height: 26px;
-$p2-font-weight: 400;
+$p2-desktop-font-family: 'Jost';
+$p2-desktop-font-size: 20px;
+$p2-desktop-line-height: 26px;
+$p2-desktop-font-weight: 400;
 
 @mixin p2-desktop() {
-  font-family: $p2-font-family;
-  font-size: $p2-font-size;
-  line-height: $p2-line-height;
-  font-weight: $p2-font-weight;
+  font-family: $p2-desktop-font-family;
+  font-size: $p2-desktop-font-size;
+  line-height: $p2-desktop-line-height;
+  font-weight: $p2-desktop-font-weight;
 }
 
 /** p3 **/
-$p3-font-family: 'Jost';
-$p3-font-size: 16px;
-$p3-line-height: 20.8px;
-$p3-font-weight: 400;
+$p3-desktop-font-family: 'Jost';
+$p3-desktop-font-size: 16px;
+$p3-desktop-line-height: 20.8px;
+$p3-desktop-font-weight: 400;
 
 @mixin p3-desktop() {
-  font-family: $p3-font-family;
-  font-size: $p3-font-size;
-  line-height: $p3-line-height;
-  font-weight: $p3-font-weight;
+  font-family: $p3-desktop-font-family;
+  font-size: $p3-desktop-font-size;
+  line-height: $p3-desktop-line-height;
+  font-weight: $p3-desktop-font-weight;
 }
 
 /** p4 **/
-$p4-font-family: 'Jost';
-$p4-font-size: 14px;
-$p4-line-height: 18.2px;
-$p4-font-weight: 400;
+$p4-desktop-font-family: 'Jost';
+$p4-desktop-font-size: 14px;
+$p4-desktop-line-height: 18.2px;
+$p4-desktop-font-weight: 400;
 
 @mixin p4-desktop() {
-  font-family: $p4-font-family;
-  font-size: $p4-font-size;
-  line-height: $p4-line-height;
-  font-weight: $p4-font-weight;
+  font-family: $p4-desktop-font-family;
+  font-size: $p4-desktop-font-size;
+  line-height: $p4-desktop-line-height;
+  font-weight: $p4-desktop-font-weight;
+}
+
+/** menu **/
+$m4-font-family: 'Jost';
+$m4-font-size: 18px;
+$m4-line-height: 130%;
+$m4-font-weight: 400;
+
+@mixin m4-desktop() {
+  font-family: $m4-font-family;
+  font-size: $m4-font-size;
+  line-height: $m4-line-height;
+  font-weight: $m4-font-weight;
 }
 
 /** menu **/

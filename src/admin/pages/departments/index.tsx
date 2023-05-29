@@ -26,12 +26,11 @@ const Departments: React.FC = () => {
   }, [])
 
   const updateDepartment = (id: number) => {
-    console.log('🚀 ~ file: index.tsx:29 ~ updateDepartment ~ id:', id)
     if(id === 0)
       navigate(`/${AdminRoutes.root}/${AdminRoutes.department}`)
     else
       navigate(`/${AdminRoutes.root}/${AdminRoutes.department}/${id}`)
-  } 
+  }
 
   if(id_default === undefined || id_default === '0'){
     return (

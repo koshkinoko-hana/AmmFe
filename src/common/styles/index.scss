@@ -165,6 +165,9 @@ p {
       @include p2-mobile();
     }
   }
+  &.p4 {
+    @include p4-desktop();
+  }
 }
 
 input {
