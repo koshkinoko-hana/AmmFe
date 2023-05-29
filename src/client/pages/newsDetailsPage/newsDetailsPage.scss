@@ -1,4 +1,4 @@
-@import '@common/styles/index';
+@import 'src/common/styles/index';
 
 .details {
     max-width: $grid-desktop;
@@ -9,7 +9,7 @@
         align-items: center;
         gap: 8px;
         span {
-            font-size: $p3-font-size;
+            font-size: $p3-desktop-font-size;
             line-height: 130%;
             color: $color-blue80;
         }

@@ -1,9 +1,9 @@
 import './mainPage.scss'
+import { NewsPreview } from '@client/components/NewsPreview'
 import HistoryBlock from '@client/pages/mainPage/components/historyBlock'
 import ReasonsBlock from '@client/pages/mainPage/components/reasonsBlock'
 import React from 'react'
 import TopBlock from '~/client/pages/mainPage/components/Slider/index'
-import Footer from '../../components/footer'
 
 const MainPage: React.FC = () => {
 
@@ -13,6 +13,7 @@ const MainPage: React.FC = () => {
         <TopBlock />
         <ReasonsBlock />
         <HistoryBlock />
+        <NewsPreview title={'Новости'}/>
       </div>
     </>
   )

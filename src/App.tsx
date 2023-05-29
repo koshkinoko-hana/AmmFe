@@ -1,3 +1,5 @@
+import NewsDetails from '@admin/pages/news'
+import NewsList from '@admin/pages/newsList'
 import React from 'react'
 import AdminRoute from '@admin/components/adminRoute/AdminRoute'
 import Departments from '@admin/pages/departments'
@@ -28,6 +30,11 @@ function App() {
           <Route path="" element={<Employees />} />
           <Route path="create" element={<Employee />} />
           <Route path=":id" element={<Employee />} />
+        </Route>
+        <Route path={`${AdminRoutes.news}`}>
+          <Route path="" element={<NewsList />} />
+          <Route path="create" element={<NewsDetails />} />
+          <Route path=":id" element={<NewsDetails />} />
         </Route>
       </Route>
       <Route path={'/'} element={<ClientRoute/>}>
