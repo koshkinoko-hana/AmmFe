@@ -10,7 +10,7 @@ import {
 } from '@admin/ducks/actions/employee'
 import { fetchPositionOptionsAction } from '@admin/ducks/actions/position'
 import { getDepartmentOptions } from '@admin/ducks/selectors/department'
-import { getCurrentEmployee, getEmployeeLoading } from '@admin/ducks/selectors/employee'
+import { getCurrentEmployee } from '@admin/ducks/selectors/employee'
 import { getPositionOptions } from '@admin/ducks/selectors/position'
 import { EmployeeNew, UploadedFileResponse } from '@admin/ducks/types/employee'
 import Select from '@common/components/select'

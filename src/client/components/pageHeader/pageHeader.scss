@@ -1,5 +1,6 @@
 @import '@common/styles/index';
 
+
 .news_header {
     margin: $grid-medium auto $grid-normal;
     padding: $grid-medium $grid-normal;
@@ -12,7 +13,7 @@
         list-style: none;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: $grid-small-extended;
         &__item {
             display: flex;
             gap: $grid-small;
@@ -74,5 +75,12 @@
 @media screen and (max-width: $grid-mobile-max) {
     .news_header {
         margin: $grid-medium $grid-base-extended $grid-normal;
+        &__title {
+            font-size: $h1-font-size;
+            &::after {
+                bottom: $grid-tiny;
+                height: $grid-tiny;
+            }
+        }
     }
 }
