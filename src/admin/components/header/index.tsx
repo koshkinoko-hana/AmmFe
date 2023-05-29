@@ -28,14 +28,14 @@ const Header: React.FC = () => {
   const toggleMenu = () => {
     dispatch(toggleMenuAction())
   }
-
-
   return (
     <>
       <div className="header__substrate"></div>
       <div className="header">
         <div className="logo-container"><Logo/><div>ПММ <br/>Админпанель</div></div>
         <div className="menu">
+          <Link to={`${AdminRoutes.departments}`} className="p1" >Кафедры</Link>
+          <Link to={`${AdminRoutes.employees}`} className="p1">Сотрудники</Link>
           <Link to="/" className="p1">Расписание</Link>
           <Burger onClick={toggleMenu}/>
         </div>

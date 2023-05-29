@@ -10,7 +10,6 @@ const adminReducer = combineReducers({
   department,
   employee,
   position,
-
   user,
 })
 

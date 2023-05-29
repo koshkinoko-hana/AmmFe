@@ -1,0 +1,143 @@
+@import "src/common/styles/index";
+.contactForm{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 750px;
+    padding: 45px 30px;
+    background-color: $color-blue10;
+    border: 2px solid $color-grey80;
+    border-radius: 25px;
+    transition: width 0.5s ease-in-out;
+
+    &__name {
+        position: relative;
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px 0px 0px 10px;
+        gap: 10px;
+        
+        width: 100%;
+        height: 21px;
+        
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+    }
+
+    &__label {
+        position: relative;
+    }
+    
+    &__label:not(:last-child) {
+        margin-bottom: 25px;
+    }
+    &__text{
+        width: 450px;
+        height: 120px;
+    }
+    &__input {
+       box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 15px 20px;
+        gap: 10px;
+        width: 450px;
+        height: 53px;
+        background:  $color-white;
+        border: 2px solid $color-grey80;
+        border-radius: 15px;
+        flex: none;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
+        &:hover {
+            border-color: $color-blue80;
+        }        
+    }
+    &__span {
+        margin-top: 30px;
+        margin-bottom: 12px;
+    }
+    &__btn{
+        margin: 40px 0 0 0 ;
+    }
+    
+}
+
+.error_alert {
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    left: 10px;
+    bottom: -25px;
+  }
+  
+@media (max-width: $grid-mobile-max) {
+    .contactForm {
+        width: $grid-tablet-min - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+        padding: 25px 15px;
+        &__text,
+        &__input {
+            width: $grid-tablet-min - (2 * $grid-base) - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+@media (max-width: $grid-tablet-min) {
+    .contactForm {
+        width: $grid-mobile-medium - 2 * $grid-base;  /* Регулируйте процент в соответствии с вашими потребностями */
+        &__text,
+        &__input {
+            width: $grid-mobile-medium - (2 * $grid-base) - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+@media (max-width: $grid-mobile-medium) {
+    .contactForm {
+        width: $grid-mobile-small - (2 * $grid-small);  /* Регулируйте процент в соответствии с вашими потребностями */
+        &__text,
+        &__input {
+            width: $grid-mobile-small  - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+@media (max-width: $grid-mobile-small) {
+    .contactForm {
+        width: $grid-mobile-extrasmall - (2 * $grid-small) ;  /* Регулируйте процент в соответствии с вашими потребностями */
+        &__text,
+        &__input {
+            width: $grid-mobile-extrasmall  - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+@media (max-width: $grid-mobile-extrasmall) {
+    .contactForm {
+        width: $grid-mobile-min - (2 * $grid-small);  /* Регулируйте процент в соответствии с вашими потребностями */
+        &__text,
+        &__input {
+            width: $grid-mobile-min  - (2 * $grid-small) - 2 * 25px;
+        }
+    }
+}
+
+// $grid-desktop: 1440px;
+// $grid-laptop-max: 1439px;
+// $grid-laptop-medium: 1199px;
+// $grid-tablet-max: 1023px;
+// $grid-tablet-medium: 991px;
+// $grid-tablet-min: 679px;
+// $grid-mobile-max: 767px;
+// $grid-mobile-medium: 599px;
+// $grid-mobile-small: 480px;
+// $grid-mobile-extrasmall: 420px;
+// $grid-mobile-min: 375px;
+
+//$grid-mobile-medium: 599px;
+//$grid-mobile-min: 375px;

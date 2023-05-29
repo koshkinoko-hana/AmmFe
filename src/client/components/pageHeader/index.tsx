@@ -15,7 +15,6 @@ const headers = {
 }
 
 const PageHeader: React.FC<Props> = ({path, header, description}) => {
-
   return (
     <div className="news_header">
       <ul className="news_header_links">

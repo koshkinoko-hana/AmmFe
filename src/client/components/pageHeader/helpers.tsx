@@ -8,7 +8,7 @@ export const NavItems: FC<{path: pathSet}> = ({path}) => {
   let pathsTillCur = ''
   return <>
     {keys.map(key => {
-      pathsTillCur += `/${key}`
+      pathsTillCur += `/${path[key]}`
       return <li key={key} className="news_header_links__item">
         <HeaderArrow />
         <Link to={pathsTillCur}>
