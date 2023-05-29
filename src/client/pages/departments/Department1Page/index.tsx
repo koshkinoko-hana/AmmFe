@@ -10,9 +10,9 @@ import { Compass, Letter, PhoneBig } from '~/common/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { getEmployeeLoading, getEmployees } from '~/admin/ducks/selectors/employee'
 import { fetchEmployeeListAction } from '~/admin/ducks/actions/employee'
+import EmployeeCard from './components/EmployeeCard'
 import { fetchPositionListAction } from '~/admin/ducks/actions/position'
 import { getPositions } from '~/admin/ducks/selectors/position'
-import EmployeeCard from './components/EmployeeCard'
 
 const DepartmentPage: React.FC = () => {
   const { id: id_department } = useParams()
