@@ -10,6 +10,7 @@ const ListItem = (props: ListItemProps) => {
       return
     }
     let value = ''
+    console.log('🚀 ~ file: listItem.tsx:14 ~ optionsToString ~ items:', items)
     items.forEach(item => {value += item.label + ', '})
     return value.length ? value.substring(0, value.length - 2) : '-'
 

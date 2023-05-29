@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom'
 import List from '~/common/components/list'
 
 const Employees: React.FC = () => {
-
   const dispatch = useDispatch()
   const employees = useSelector(getEmployees)
   const loading = useSelector(getEmployeeLoading)
@@ -25,26 +24,46 @@ const Employees: React.FC = () => {
 
   const updateEmployee = (id: number) => {
     navigate(`/${AdminRoutes.root}/${AdminRoutes.employees}/${id}`)
-  }
+  } 
 
   return (
-    loading ?
-      <>loading</> :
-      employees &&
-      <div className="container employees">
-        <div className="employees__header">
-          <h1>Сотрудники</h1>
-          <button onClick={createEmployee}>Новая</button>
+    loading ? (
+      <>loading</>
+    ) : (
+      employees && (
+        <div className="container employees">
+          <div className="employees__header">
+            <h1>Сотрудники</h1>
+            <button onClick={createEmployee}>Новая</button>
+          </div>
+          <List
+            itemsRender={[
+              <ListItem key="header" bold={true} />,
+
+              employees.map((e) => {
+                const positions = e.positions.map((item) => ({ id: item.id, name: item.name, value: item.id, label: item.name }))
+                const departments = e.departments.map((item) => ({ id: item.id, name: item.name, value: item.id, label: item.name }))
+                {
+                  return (
+                    <ListItem 
+                      employee={{
+                        id: e.id,
+                        name: `${e.lastName} ${e.firstName} ${e.middleName}`,
+                        positions,
+                        departments,            
+                      }} 
+                      key={e.id} 
+                      onClick={() => updateEmployee(e.id)}
+                    />
+                  )
+                }
+              }),
+            ]}
+          />
         </div>
-        <List itemsRender={[
-          <ListItem key="header" bold={true}/>,
-          ...employees.map((e) => <ListItem employee={{
-            ...e,
-            name: `${e.lastName} ${e.firstName} ${e.middleName}`
-          }} key={e.id} onClick={updateEmployee}/>)
-        ]}/>
-      </div>
+      )
+    )
   )
 }
-
 export default Employees
+

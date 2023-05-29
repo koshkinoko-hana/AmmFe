@@ -30,7 +30,7 @@ import { FileDrop } from 'react-file-drop'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { PropsValue } from 'react-select/dist/declarations/src/types'
+import { MultiValue, PropsValue, SingleValue } from 'react-select/dist/declarations/src/types'
 import { FormData } from './types'
 
 const Employee: React.FC = () => {
@@ -45,6 +45,14 @@ const Employee: React.FC = () => {
   const [chosenDepartments, setChosenDepartments] = useState<PropsValue<Option>>([])
   const [uploadedFile, setUploadedFile] = useState<UploadedFileResponse | null>(null)
 
+  const handlePositionsChange: (values: MultiValue<Option> | SingleValue<Option>) => void = (values) => {
+    setChosenPositions(Array.isArray(values) ? values : [values])
+  }
+
+  const handleDepartmentsChange: (values: MultiValue<Option> | SingleValue<Option>) => void = (values) => {
+    setChosenDepartments(Array.isArray(values) ? values : [values])
+  }
+
   useEffect(() => {
     if (id) {
       dispatch(fetchEmployeeAction({id}))
@@ -53,13 +61,7 @@ const Employee: React.FC = () => {
     dispatch(fetchDepartmentOptionsAction())
   }, [])
 
-  useEffect(() => {
-    if(currentEmployee) {
-      setChosenPositions(currentEmployee.positions)
-      setChosenDepartments(currentEmployee.departments)
-    }
-  }, [currentEmployee])
-
+  
   const {
     register,
     handleSubmit,
@@ -76,8 +78,10 @@ const Employee: React.FC = () => {
 
   const onSubmit = useCallback((data: FormData) => {
     const { firstName, middleName, lastName, description } = data
-    if (currentEmployee) {
+    if (currentEmployee && id) {
       const employee = { ...currentEmployee }
+
+      employee.id =  parseInt(id)
       employee.firstName = firstName
       employee.middleName = middleName
       employee.lastName = lastName
@@ -86,19 +90,21 @@ const Employee: React.FC = () => {
       employee.departments = chosenDepartments as Option[]
       employee.photoId = uploadedFile?.id
       dispatch(updateEmployeeAction(employee))
-    } else {
+    }
+    else
+    {
       const employee: EmployeeNew = {
         firstName,
         middleName,
         lastName,
         description,
-        positions: (chosenPositions as Option[]).map(p => p.value as number),
+        positions: (chosenPositions as Option[]).map(d => d.value as number),
         departments: (chosenDepartments as Option[]).map(d => d.value as number),
         photoId: uploadedFile?.id,
       }
       dispatch(saveEmployeeAction(employee))
     }
-  }, [])
+  }, [chosenPositions, chosenDepartments, currentEmployee])
 
   const onCancel = useCallback(() => {
     navigate(-1)
@@ -112,6 +118,12 @@ const Employee: React.FC = () => {
   const buttonDisabled = () => (!isValid || isSubmitting)
 
   if(!id || currentEmployee) {
+    const initialPositions = currentEmployee?.positions.map(item => ({ 
+      id: item.id, 
+      name: item.name, 
+      value: item.value, 
+      label: item.label 
+    })) || []
     return (
       <div className="employee">
         <form className="employee--form" onSubmit={handleSubmit(onSubmit)}>
@@ -154,19 +166,21 @@ const Employee: React.FC = () => {
           />
           <Select
             options={positions}
-            onChange={setChosenPositions}
+            onChange={handlePositionsChange}
             isMulti={true}
             label="Должности"
             // onBlur={onBlur}
+            defaultValue={currentEmployee?.positions || []}
             classList="full-width"
-            register={register('positions', { value: currentEmployee?.positions || [] })}
+            register={register('positions',{ value: currentEmployee?.positions || []})}
           />
           <Select
             options={departments}
-            onChange={setChosenDepartments}
+            onChange={handleDepartmentsChange}
             isMulti={true}
             label="Кафедры"
             classList="full-width"
+            defaultValue={currentEmployee?.departments|| []}
             register={register('departments', { value: currentEmployee?.departments || [] })}
           />
           <input
