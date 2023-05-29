@@ -4,6 +4,7 @@ import Menu from '@admin/components/menu'
 import Dialogue from '@common/components/dialogue'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import Footer from '../footer'
 
 const ClientRoute: React.FC = () => {
   
@@ -13,6 +14,7 @@ const ClientRoute: React.FC = () => {
       <Menu/>
       <Dialogue/>
       <Outlet />
+      <Footer />
     </>
   )
 }
