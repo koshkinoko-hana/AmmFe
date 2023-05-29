@@ -12,6 +12,7 @@ import Login from './admin/pages/login'
 import './common/styles/index.scss'
 import { AdminRoutes, ClientRoutes } from '@common/types/routes'
 import NewsDetailsPage from './client/pages/newsDetailsPage'
+import Gallery from './client/pages/galleryPage'
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
         <Route path={`${ClientRoutes.home}`} element={<MainPage/>} />
         <Route path={`${ClientRoutes.news}`} element={<NewsPage/>}/>
         <Route path={`${ClientRoutes.news}/:slug`} element={<NewsDetailsPage/>}/>
-        {/* <Route path={`${ClientRoutes.positions}`} element={<Positions/>}/> */}
+        <Route path={`${ClientRoutes.gallery}`} element={<Gallery/>}/>
         {/*<Route path={`${ClientRoutes.employees}`}>*/}
         {/*  <Route path="" element={<Employees/>}/>*/}
         {/*  <Route path="create" element={<Employee/>}/>*/}

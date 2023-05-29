@@ -1,7 +1,7 @@
-export interface GalleryCard {
+export interface GalleryCardType {
     id: number,
     title: string,
-    url: string,
+    path: string,
     createdAt: string
     size: 'big' | 'small'
 }

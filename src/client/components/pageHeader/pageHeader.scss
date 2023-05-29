@@ -76,7 +76,6 @@
     .news_header {
         margin: $grid-medium $grid-base-extended $grid-normal;
         &__title {
-            font-size: $h1-font-size;
             &::after {
                 bottom: $grid-tiny;
                 height: $grid-tiny;

@@ -25,7 +25,7 @@ const Header: React.FC = () => {
             <div className="menu">
               <Link to="/news" className="p1 mobile-hidden">Новости</Link>
               <Link to="/" className="p1 mobile-hidden">Кафедры</Link>
-              <Link to="/" className="p1 tablet-hidden">Галерея</Link>
+              <Link to="/gallery" className="p1 tablet-hidden">Галерея</Link>
               <Link to="/" className="p1 tablet-hidden">Контакты</Link>
               <Link to="/" className="p1 mobile-hidden">Расписание</Link>
               <Burger onClick={toggleMenu}/>

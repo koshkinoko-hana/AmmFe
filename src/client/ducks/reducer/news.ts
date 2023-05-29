@@ -8,12 +8,13 @@ import { newsCard, newsDetails, NewsState } from '../types/news'
   
   
 const initialState: NewsState = {
+  loading: false,
   news: [],
   newsPreview: [],
   details: {} as newsDetails,
 }
   
-const department = createReducer(initialState, {
+const news = createReducer(initialState, {
   [fetchNewsListAction.TRIGGER]: (state) => {
     return { ...state, loading: true }
   },
@@ -46,5 +47,5 @@ const department = createReducer(initialState, {
   },
 })
   
-export default department
+export default news
   
