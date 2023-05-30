@@ -1,4 +1,4 @@
-import { errorWrapper } from '~/admin/ducks/sagas/sagaWrapper'
+import { errorWrapper } from '@client/ducks/sagas/sagaWrapper'
 import { newsCard, newsDetails } from '../types/news'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { get } from '~/common/utils/fetch'
