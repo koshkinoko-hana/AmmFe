@@ -7,9 +7,10 @@ type Props = {
   error?: string
   register: UseFormRegisterReturn
   classList?: string
+  disabled?: boolean
 }
 
-const Textarea: FC<Props> = ({label, error, register, classList=''}: Props) => {
+const Textarea: FC<Props> = ({label, error, register, classList='', disabled}: Props) => {
 
   return (
     <>
@@ -35,6 +36,7 @@ const Textarea: FC<Props> = ({label, error, register, classList=''}: Props) => {
           rows={3}
           className={`${error ? 'is-invalid' : ''} ${classList}`}
           {...register}
+          disabled={disabled}
         />
       </div>
     </>

@@ -5,7 +5,6 @@ import { PaginateLeft } from '~/common/icons/PaginateLeft'
 import { PaginateRight } from '~/common/icons/PaginateRight'
 
 export const Pagination: FC<Props> = ({total, offset, setOffset, limit}) => {
-  console.log(total, limit, offset)
   return (
     <div className='pagination'>
       <div className="pagination__btn" onClick={() => setOffset(offset - limit > 0 ? offset - limit : 0)}>

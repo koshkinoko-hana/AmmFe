@@ -1,5 +1,5 @@
 import ReactPaginate from 'react-paginate'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { PaginateRight } from '~/common/icons/PaginateRight'
 import { PaginateLeft } from '~/common/icons/PaginateLeft'
 import { ClientRoutes } from '~/common/types/routes'
@@ -8,54 +8,25 @@ import Header from '~/client/components/pageHeader'
 import Accordion from '~/common/components/Accordion/Accordion'
 import ContactForm from './components/ContactForm'
 import './quesionPage.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchQuestionListAction } from '@client/ducks/actions/faq'
+import { getQuestions } from '@client/ducks/selectors/faq'
 /* eslint-disable quotes */
 const QuestionPage: React.FC = () => {
-  const accordionData = [
-    {
-      title: 'У вас есть специальность программист? Или где можно выучится на программиста?',
-      content: 'На нашем факультет ведется обучение по направлениям, на которых готовят специалистов математико-информационного профиля, в том числе и программистов. В частности, на направлениях "Математическое обеспечение и администрирование информационных систем" и "Фундаментальные информатика и информационные технологии".'
-    },
-    {
-      title: 'Есть ли на Вашем факультете заочная форма обучения?',
-      content: 'Ответ на вопрос 2'
-    },
-    {
-      title: 'На "бизнес-информатике" вступительные эказмены ЕГЭ остались те же самые (математика, обществознание, русский язык)?',
-      content: 'На нашем факультет ведется обучение по направлениям, на которых готовят специалистов математико-информационного профиля, в том числе и программистов. В частности, на направлениях "Математическое обеспечение и администрирование информационных систем" и "Фундаментальные информатика и информационные технологии".'
-    },
-    {
-      title: 'Когда в 2014 году состоится день открытых дверей на Вашем факультете?',
-      content: 'Ответ на вопрос 2'
-    },
-    {
-      title: 'У вас есть специальность программист? Или где можно выучится на программиста?',
-      content: 'На нашем факультет ведется обучение по направлениям, на которых готовят специалистов математико-информационного профиля, в том числе и программистов. В частности, на направлениях "Математическое обеспечение и администрирование информационных систем" и "Фундаментальные информатика и информационные технологии".'
-    },
-    {
-      title: 'Есть ли на Вашем факультете заочная форма обучения?',
-      content: 'Ответ на вопрос 2'
-    },
-    {
-      title: 'На "бизнес-информатике" вступительные эказмены ЕГЭ остались те же самые (математика, обществознание, русский язык)?',
-      content: 'На нашем факультет ведется обучение по направлениям, на которых готовят специалистов математико-информационного профиля, в том числе и программистов. В частности, на направлениях "Математическое обеспечение и администрирование информационных систем" и "Фундаментальные информатика и информационные технологии".'
-    },
-    {
-      title: 'Когда в 2014 году состоится день открытых дверей на Вашем факультете?',
-      content: 'Ответ на вопрос 2'
-    },
-    {
-      title: 'В следующем году готовлюсь поступать на "бизнес-информатику". Планируется ли создание бюджетных мест? И хотелось бы узнать проходные баллы на коммерческое отделение и стоимость обучения за год.',
-      content: 'На нашем факультет ведется обучение по направлениям, на которых готовят специалистов математико-информационного профиля, в том числе и программистов. В частности, на направлениях "Математическое обеспечение и администрирование информационных систем" и "Фундаментальные информатика и информационные технологии".'
-    }
-  ]
   const [offset, setOffset] = React.useState(0)
   const [perPage, setPerPage] = React.useState(5)
+  const dispatch = useDispatch()
+  const questionsList = useSelector(getQuestions)
+
+  useEffect(() => {
+    dispatch(fetchQuestionListAction())
+  }, [])
 
   return (
     <div className='body'>
       <Header
         header={'Вопрос декану'}
-        description={'Здесь вы можете напрямую задать вопрос декану факультета ПММ проф. Шашкину Александру Ивановичу и через некоторое время получить на него ответ. <br> Ваш вопрос, в зависимости от сложности и загруженности декана, может рассматриваться сроком до 2х недель'}
+        description={'Здесь вы можете напрямую задать вопрос декану факультета ПММ проф. Шашкину Александру Ивановичу и через некоторое время получить на него ответ. Ваш вопрос, в зависимости от сложности и загруженности декана, может рассматриваться сроком до 2х недель'}
         path={{
           [PathKey.FAQ]: ClientRoutes.deanFaq
         }}
@@ -63,14 +34,14 @@ const QuestionPage: React.FC = () => {
       <section  className='FAQ'>
         <div className='FAQ__container'>
           <h2>Часто задаваемые вопросы</h2>
-          {accordionData.slice(offset, offset + perPage).map((item, index) => (
+          {questionsList.slice(offset, offset + perPage).map((item, index) => (
             <Accordion
               key={index}
-              title={item.title}
+              title={item.question}
               titleClass='FAQ__item__title'
               arrowOpenClass='open'
             >
-              <div style={{ padding: '20px 30px' }}>{item.content} </div>
+              <div style={{ padding: '20px 30px' }}>{item.answer} </div>
             </Accordion>
           ))}
 
@@ -86,8 +57,8 @@ const QuestionPage: React.FC = () => {
               breakClassName='FAQ__list__break'
               breakLinkClassName='FAQ__list__break__link'
               breakLabel="..."
-              pageCount={Math.ceil(accordionData.length / perPage)}
-              forcePage={1}
+              pageCount={Math.ceil(questionsList.length / perPage)}
+              forcePage={0}
               onPageChange={({ selected }) => { setOffset(Math.ceil(selected * perPage)) }}
             />
           </div>
