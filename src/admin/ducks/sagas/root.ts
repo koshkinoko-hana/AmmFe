@@ -4,6 +4,7 @@ import positionWatcher from '@admin/ducks/sagas/position'
 import { all } from 'redux-saga/effects'
 import userWatcher from './user'
 import newsWatcher from '~/client/ducks/sagas/news'
+import faqWatcher from '@admin/ducks/sagas/faq'
 
 export default function* adminSaga() {
   yield all([
@@ -11,6 +12,7 @@ export default function* adminSaga() {
     employeeWatcher(),
     positionWatcher(),
     userWatcher(),
-    newsWatcher()
+    newsWatcher(),
+    faqWatcher(),
   ])
 }

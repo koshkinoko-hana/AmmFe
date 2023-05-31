@@ -16,6 +16,8 @@ import DepartmentsPage from './client/pages/departmentPage'
 import DepartmentPage from './client/pages/departments/Department1Page'
 import NewsDetailsPage from './client/pages/newsDetailsPage'
 import AdminDepartmentPage from './admin/pages/departmentPage'
+import AdminFaqPage from './admin/pages/deanFaqPage'
+import Question from './admin/pages/deanFaq'
 
 function App(): JSX.Element {
 
@@ -34,6 +36,11 @@ function App(): JSX.Element {
           <Route path="" element={<Employees/>}/>
           <Route path="create" element={<Employee/>}/>
           <Route path=":id" element={<Employee/>}/>
+        </Route>
+        <Route path={`${AdminRoutes.faq}`}>
+          <Route path="" element={<AdminFaqPage/>}/>
+          <Route path="create" element={<Question/>}/>
+          <Route path=":id" element={<Question/>}/>
         </Route>
       </Route>
       <Route path={'/'} element={<ClientRoute/>}>
