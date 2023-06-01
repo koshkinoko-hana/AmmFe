@@ -31,19 +31,15 @@ function* fetchCurrentQuestion(action: PayloadAction<{ id: number }>) {
 }
 
 function* saveCurrentQuestion(action: PayloadAction<Faq>) {
-  console.log('🚀 ~ file: faq.ts:44 ~ yielderrorWrapper ~ Question:', action.payload)
   yield errorWrapper(function* () {
     const res: Faq = yield call(post, `${apiAdmin}/faqs`, action.payload)
-    console.log('🚀 ~ file: faq.ts:44 ~ yielderrorWrapper ~ Question:', res)
     yield put({ type: saveCurrentQuestionAction.SUCCESS, payload: res })
   })
 }
 
 function* updateCurrentQuestion(action: PayloadAction<Faq>) {
-  console.log('🚀 ~ file: faq.ts:44 ~ saveCurrentQuestionAction ~ Question:', action.payload)
   yield errorWrapper(function* () {
     const res: Faq = yield call(putRequest, `${apiAdmin}/faqs/${action.payload.id}`,action.payload)
-    console.log('🚀 ~ file: faq.ts:44 ~ saveCurrentQuestionAction ~ Question:', res)
     yield put({ type: updateCurrentQuestionAction.SUCCESS, payload: res })
   })
 }

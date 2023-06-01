@@ -28,8 +28,6 @@ const AdminRoute: React.FC = () => {
         break
       case ApiError.FORBIDDEN:
       case ApiError.NOT_FOUND:
-        // navigate(`/${CommonRoutes.notFound}`)
-        console.log('not found')
         break
       }
       dispatch(clearErrorAction())
