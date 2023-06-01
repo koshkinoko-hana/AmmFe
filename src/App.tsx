@@ -50,10 +50,11 @@ function App(): JSX.Element {
           <Route path="" element={<AdminFaqPage/>}/>
           <Route path="create" element={<Question/>}/>
           <Route path=":id" element={<Question/>}/>
-        <Route path={`${AdminRoutes.news}`}>
-          <Route path="" element={<NewsList />} />
-          <Route path="create" element={<NewsDetails />} />
-          <Route path=":id" element={<NewsDetails />} />
+          <Route path={`${AdminRoutes.news}`}>
+            <Route path="" element={<NewsList />} />
+            <Route path="create" element={<NewsDetails />} />
+            <Route path=":id" element={<NewsDetails />} />
+          </Route>
         </Route>
       </Route>
       <Route path={'/'} element={<ClientRoute/>}>

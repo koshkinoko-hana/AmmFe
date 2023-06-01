@@ -10,7 +10,7 @@ export enum AdminRoutes {
   employees = 'employees',
   news = 'news',
   positions = 'positions',
-  faq = 'faqs'
+  faq = 'faqs',
   gallery = 'gallery'
 }
 
