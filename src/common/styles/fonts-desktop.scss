@@ -126,3 +126,16 @@ $m4-font-weight: 400;
   line-height: $m4-line-height;
   font-weight: $m4-font-weight;
 }
+
+/** menu **/
+$m4-font-family: 'Jost';
+$m4-font-size: 18px;
+$m4-line-height: 130%;
+$m4-font-weight: 400;
+
+@mixin m4-desktop() {
+  font-family: $m4-font-family;
+  font-size: $m4-font-size;
+  line-height: $m4-line-height;
+  font-weight: $m4-font-weight;
+}

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { pathSet } from './types'
+import { PathKey, pathSet } from './types'
 import { HeaderArrow } from '~/common/icons/HeaderArrow'
 import { Link } from 'react-router-dom'
 
@@ -8,13 +8,17 @@ export const NavItems: FC<{path: pathSet}> = ({path}) => {
   let pathsTillCur = ''
   return <>
     {keys.map(key => {
-      pathsTillCur += `/${path[key]}`
-      return <li key={key} className="news_header_links__item">
-        <HeaderArrow />
-        <Link to={pathsTillCur}>
-          <span>{key}</span>
-        </Link>
-      </li>
+      if (key in path) {
+        pathsTillCur += `/${path[key as PathKey]}`
+        console.log('🚀 ~ file: helpers.tsx:17 ~ pathsTillCur:', pathsTillCur)
+      
+        return <li key={key} className="news_header_links__item">
+          <HeaderArrow />
+          <Link to={pathsTillCur}>
+            <span>{key}</span>
+          </Link>
+        </li>
+      }
     })}
   </>
 }

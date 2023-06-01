@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { IAccordion } from '~/common/types/common'
 import './Accordion.scss'
-import { PaginateRight } from '~/common/icons/PaginateRight'
+
 const Accordion = ({
   children,
   title,
