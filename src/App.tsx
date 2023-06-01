@@ -19,6 +19,8 @@ import DepartmentPage from './client/pages/departments/Department1Page'
 import NewsDetailsPage from './client/pages/newsDetailsPage'
 import Gallery from './client/pages/galleryPage'
 import AdminDepartmentPage from './admin/pages/departmentPage'
+import AdminFaqPage from './admin/pages/deanFaqPage'
+import Question from './admin/pages/deanFaq'
 import GalleryAdmin from './admin/pages/gallery'
 import CreatePhoto from './admin/pages/createPhoto'
 
@@ -44,6 +46,10 @@ function App(): JSX.Element {
           <Route path="create" element={<Employee/>}/>
           <Route path=":id" element={<Employee/>}/>
         </Route>
+        <Route path={`${AdminRoutes.faq}`}>
+          <Route path="" element={<AdminFaqPage/>}/>
+          <Route path="create" element={<Question/>}/>
+          <Route path=":id" element={<Question/>}/>
         <Route path={`${AdminRoutes.news}`}>
           <Route path="" element={<NewsList />} />
           <Route path="create" element={<NewsDetails />} />
