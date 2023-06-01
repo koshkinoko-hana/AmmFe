@@ -18,6 +18,8 @@ export type newsDetails = {
 }
 
 export type NewsState = {
+    loading: boolean,
+    total: number
     news: newsCard[],
     newsPreview: newsCard[],
     details: newsDetails
