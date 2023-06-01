@@ -10,7 +10,6 @@ export const NavItems: FC<{path: pathSet}> = ({path}) => {
     {keys.map(key => {
       if (key in path) {
         pathsTillCur += `/${path[key as PathKey]}`
-        console.log('🚀 ~ file: helpers.tsx:17 ~ pathsTillCur:', pathsTillCur)
       
         return <li key={key} className="news_header_links__item">
           <HeaderArrow />

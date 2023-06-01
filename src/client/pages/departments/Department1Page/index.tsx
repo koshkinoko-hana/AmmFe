@@ -41,10 +41,6 @@ const DepartmentPage: React.FC = () => {
     })
   }, [])
 
-  if(departments){
-    console.log('🚀 ~ file: index.tsx:36 ~ departments:',Number(id_department))
-  }
-  
   return (
     <>
       <div>

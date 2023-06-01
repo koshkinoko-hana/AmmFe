@@ -31,7 +31,6 @@ const Question: React.FC = () => {
 
   const onSubmit = useCallback((data: FormData) => { 
     const { firstName, middleName, lastName, email, question, answer, respondent } = data
-    console.log('🚀 ~ file: index.tsx:33 ~ onSubmit ~ data:', data)
     
     if (data && id) {
       const questionStr = { ...currentQuestion }
@@ -44,7 +43,6 @@ const Question: React.FC = () => {
       questionStr.question = question
       questionStr.answer = answer
       questionStr.respondent = respondent
-      console.log('🚀 ~ file: index.tsx:46 ~ onSubmit ~ questionStr:', questionStr)
       
       dispatch(updateCurrentQuestionAction(questionStr))
     }

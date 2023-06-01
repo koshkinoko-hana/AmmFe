@@ -3,8 +3,6 @@ import './HeadDepartmentCard.scss'
 import { headDepartmentCard } from '~/client/components/DepartmentCard/types'
 
 const HeadDepartmentCard: FC<headDepartmentCard> = ({ img, name, descripton }) => {
-  console.log('🚀 ~ file: index.tsx:6 ~ descripton:', descripton)
-  console.log('🚀 ~ file: index.tsx:6 ~ name:', name)
     
   return(
     <div className='depart__body__head'>

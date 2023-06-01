@@ -24,10 +24,8 @@ function* fetchEmployees() {
 }
 
 function* fetchEmployee(action: PayloadAction<{ id: number }>) {
-  console.log('~~~~@@@ id: ', action.payload.id)
   yield errorWrapper(function* () {
     try {
-      console.log(`${apiClient}/employee/${action.payload.id}`)
       const res: Employee = yield call(get, `${apiClient}/employee/${action.payload.id}`)
       yield put({ type: fetchEmployeeAction.SUCCESS, payload: { employee: res } })
     } catch (e: unknown) {

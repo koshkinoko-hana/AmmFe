@@ -32,8 +32,6 @@ const ContactForm = () => {
       answer: '',
       respondent: ''
     }
-    console.log('🚀 ~ file: index.tsx:35 ~ onSubmit ~ questionStr:', questionStr)
-    
     dispatch(saveQuestionAction(questionStr))
   }
   return (
