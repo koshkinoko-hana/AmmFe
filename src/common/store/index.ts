@@ -5,7 +5,7 @@ import adminSaga from '@admin/ducks/sagas/root'
 import clientSaga from '@client/ducks/sagas/root'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
-import clientReducer from '~/client/ducks/reducer'
+import client from '~/client/ducks/reducer'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { all } from 'redux-saga/effects'
 
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   admin,
   apiError,
   dialogue,
-  client: clientReducer
+  client, 
 })
 
 export const store = configureStore({

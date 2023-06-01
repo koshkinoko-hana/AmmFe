@@ -10,3 +10,9 @@ export type employeeCard = {
     name: string
     descripton: string
 }
+
+export type headDepartmentCard = {
+    img: string
+    name: string
+    descripton: string
+}
