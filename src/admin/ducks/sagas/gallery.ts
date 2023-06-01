@@ -6,11 +6,11 @@ import { apiAdmin } from '~/common/consts/general'
 import { del, get, postFormData } from '~/common/utils/fetch'
 import { GalleryPhoto, GalleryPhotoListItem } from '../types/gallery'
 import { createPhotoAction, deletePhotoAction, fetchPhotoAction, fetchPhotoListAction } from '../actions/gallery'
-  
-function* fetchPhotos(action: PayloadAction<number>) {
+
+function* fetchPhotos(action: PayloadAction<{offset: number, limit: number}>) {
   yield errorWrapper(function* () {
     try {
-      const res: {data: GalleryPhotoListItem[], total: number} = yield call(get, `${apiAdmin}/gallery?offset=${action.payload}&limit=10`)
+      const res: {data: GalleryPhotoListItem[], total: number} = yield call(get, `${apiAdmin}/gallery?offset=${action.payload.offset}&limit=${action.payload.limit}`)
       yield put({ type: fetchPhotoListAction.SUCCESS, payload: { photos: res.data, total: res.total } })
     } catch (e: unknown) {
       yield put({ type: fetchPhotoListAction.FAILURE })
@@ -47,7 +47,6 @@ function* deletePhoto(action: PayloadAction<{id: number}>) {
 function* createPhoto(action: PayloadAction<FormData>) {
   yield errorWrapper(function* () {
     try {
-      console.log('saga', action.payload.get('title'), action.payload.get('file'))
       yield call(postFormData, `${apiAdmin}/gallery`, action.payload)
       yield put({type: createPhotoAction.SUCCESS})
       yield put(closeDialogueAction())

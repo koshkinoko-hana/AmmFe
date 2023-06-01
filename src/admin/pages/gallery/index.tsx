@@ -19,14 +19,12 @@ const Gallery: React.FC = () => {
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {
-    dispatch(fetchPhotoListAction(offset))
+    dispatch(fetchPhotoListAction({offset, limit: 10}))
   }, [offset])
 
   const createPhoto = () => {
     navigate(`/${AdminRoutes.root}/${AdminRoutes.gallery}/create`)
   }
-
-  console.log(photos)
 
   return (
     loading ?
