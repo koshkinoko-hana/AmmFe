@@ -1,0 +1,25 @@
+@import '@common/styles/index';
+.depart {
+    &__body{
+
+        &__head{
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            &__img{
+                padding: 0;
+                width: 120px;
+                height: 120px;
+            }
+            &__text{
+                margin-bottom: 40px;
+                h3{
+                    margin-top: 0;
+                    font-weight: 500;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}
+
