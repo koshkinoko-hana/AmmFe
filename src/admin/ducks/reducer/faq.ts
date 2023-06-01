@@ -1,6 +1,8 @@
 import {
   fetchCurrentQuestionAction,
   fetchFaqListAction,
+  saveCurrentQuestionAction,
+  updateCurrentQuestionAction,
 } from '@admin/ducks/actions/faq'
 import { createReducer, PayloadAction } from '@reduxjs/toolkit'
 import { Faq, FaqState } from '@admin/ducks/types/faq'
@@ -29,6 +31,24 @@ const faq = createReducer(initialState, {
     return {  ...state, current: action.payload.faq, loading: false  }
   },
   [fetchCurrentQuestionAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
+  },
+  [saveCurrentQuestionAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [saveCurrentQuestionAction.SUCCESS]: (state) => {
+    return { ...state, loading: false }
+  },
+  [saveCurrentQuestionAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
+  },
+  [updateCurrentQuestionAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [updateCurrentQuestionAction.SUCCESS]: (state) => {
+    return { ...state, loading: false }
+  },
+  [updateCurrentQuestionAction.FAILURE]: (state) => {
     return { ...state, loading: false }
   },
 

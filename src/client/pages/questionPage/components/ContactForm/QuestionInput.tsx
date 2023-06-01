@@ -5,6 +5,7 @@ const QuestionInput = ({ register, errors }: IPageInput) => (
   <label className='contactForm__label'>
     <span className='contactForm__name'>Ваш вопрос</span>
     <textarea
+      {...register('text', {})}
       className='contactForm__text'
       placeholder=''
     />

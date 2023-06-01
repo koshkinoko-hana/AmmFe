@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './contactForm.scss'
 import NameInput from './NameInput'
 import { useForm } from 'react-hook-form'
@@ -7,8 +7,13 @@ import MiddlenameInput from './MiddlenameInput'
 import EmailInput from './EmailInput'
 import QuestionInput from './QuestionInput'
 import { IInputs } from '~/common/types/qstform'
+import { useDispatch } from 'react-redux'
+import { saveQuestionAction } from '~/client/ducks/actions/faq'
+import { QuestionStr } from '~/client/ducks/types/faq'
 
 const ContactForm = () => {
+  const dispatch = useDispatch()
+  
   const {
     register,
     formState: { errors },
@@ -16,9 +21,21 @@ const ContactForm = () => {
   } = useForm<IInputs>()
 
   const onSubmit = async (data: IInputs) => {
-    console.log(data)
-  }
+    const { name, surname, middlename, email, text } = data
 
+    const questionStr: QuestionStr = {
+      firstName: name,
+      middleName: middlename,
+      lastName: surname,
+      email: email,
+      question: text,
+      answer: '',
+      respondent: ''
+    }
+    console.log('🚀 ~ file: index.tsx:35 ~ onSubmit ~ questionStr:', questionStr)
+    
+    dispatch(saveQuestionAction(questionStr))
+  }
   return (
     <div className=''>
       <form 

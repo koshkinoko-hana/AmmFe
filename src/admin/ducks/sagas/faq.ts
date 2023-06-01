@@ -1,8 +1,8 @@
 import { apiAdmin } from '~/common/consts/general'
 import { errorWrapper } from './sagaWrapper'
-import { get } from '~/common/utils/fetch'
+import { get, post, putRequest } from '~/common/utils/fetch'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
-import { fetchCurrentQuestionAction, fetchFaqListAction } from '../actions/faq'
+import { fetchCurrentQuestionAction, fetchFaqListAction, saveCurrentQuestionAction, updateCurrentQuestionAction } from '../actions/faq'
 import { Faq } from '../types/faq'
 import { PayloadAction } from '@reduxjs/toolkit'
 
@@ -30,10 +30,30 @@ function* fetchCurrentQuestion(action: PayloadAction<{ id: number }>) {
   })
 }
 
+function* saveCurrentQuestion(action: PayloadAction<Faq>) {
+  console.log('🚀 ~ file: faq.ts:44 ~ yielderrorWrapper ~ Question:', action.payload)
+  yield errorWrapper(function* () {
+    const res: Faq = yield call(post, `${apiAdmin}/faqs`, action.payload)
+    console.log('🚀 ~ file: faq.ts:44 ~ yielderrorWrapper ~ Question:', res)
+    yield put({ type: saveCurrentQuestionAction.SUCCESS, payload: res })
+  })
+}
+
+function* updateCurrentQuestion(action: PayloadAction<Faq>) {
+  console.log('🚀 ~ file: faq.ts:44 ~ saveCurrentQuestionAction ~ Question:', action.payload)
+  yield errorWrapper(function* () {
+    const res: Faq = yield call(putRequest, `${apiAdmin}/faqs/${action.payload.id}`,action.payload)
+    console.log('🚀 ~ file: faq.ts:44 ~ saveCurrentQuestionAction ~ Question:', res)
+    yield put({ type: updateCurrentQuestionAction.SUCCESS, payload: res })
+  })
+}
+
 function* faqWatcher() {
   yield all([
     takeLatest(fetchFaqListAction.TRIGGER, fetchFaqs),
     takeLatest(fetchCurrentQuestionAction.TRIGGER, fetchCurrentQuestion),    
+    takeLatest(saveCurrentQuestionAction.TRIGGER, saveCurrentQuestion),
+    takeLatest(updateCurrentQuestionAction.TRIGGER, updateCurrentQuestion),
   ])
 }
   
