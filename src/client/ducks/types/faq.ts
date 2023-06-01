@@ -1,12 +1,16 @@
-export interface QuestionStr {
-    firstName: string
+export interface QuestionStrLight {
+  firstName: string
+  lastName: string
+  email: string
+  question: string
+  createdAt?: string
+  updatedAt?: string
+}
+export interface QuestionStr extends QuestionStrLight {
     middleName?: string
-    lastName: string
-    email: string,
-    question: string,
-    answer: string,
-    respondent: string
-  }
+    answer?: string
+    respondent?: string
+}
 
 export interface QuestionState {
     QuestionList: QuestionStr[]

@@ -6,10 +6,10 @@ import SurnmameInput from './SurnameInput'
 import MiddlenameInput from './MiddlenameInput'
 import EmailInput from './EmailInput'
 import QuestionInput from './QuestionInput'
-import { IInputs } from '~/common/types/qstform'
+import { IInputs } from '@common/types/qstform'
 import { useDispatch } from 'react-redux'
-import { saveQuestionAction } from '~/client/ducks/actions/faq'
-import { QuestionStr } from '~/client/ducks/types/faq'
+import { saveQuestionAction } from '@client/ducks/actions/faq'
+import { QuestionStr } from '@client/ducks/types/faq'
 
 const ContactForm = () => {
   const dispatch = useDispatch()
@@ -18,10 +18,13 @@ const ContactForm = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset
   } = useForm<IInputs>()
 
   const onSubmit = async (data: IInputs) => {
     const { name, surname, middlename, email, text } = data
+    console.log('🚀 ~ file: index.tsx:26 ~ onSubmit ~ data:', data)
+    
 
     const questionStr: QuestionStr = {
       firstName: name,
@@ -29,11 +32,13 @@ const ContactForm = () => {
       lastName: surname,
       email: email,
       question: text,
-      answer: '',
-      respondent: ''
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     }
     dispatch(saveQuestionAction(questionStr))
+    reset()
   }
+
   return (
     <div className=''>
       <form 

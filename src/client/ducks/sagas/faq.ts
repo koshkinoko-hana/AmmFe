@@ -38,9 +38,15 @@ function* fetchQuestion(action: PayloadAction<{ id: number }>) {
 
 function* saveQuestion(action: PayloadAction<QuestionStr>) {
   yield errorWrapper(function* () {
-    const res: QuestionStr = yield call(post, `${apiAdmin}/faqs`, action.payload)
-    yield put({ type: saveQuestionAction.SUCCESS, payload: res })
-  })
+    try {
+      console.log('🚀 ~ file: faq.ts:44 ~ yielderrorWrapper ~ payload:', action.payload)
+      const res: QuestionStr = yield call(post, `${apiAdmin}/faqs`, action.payload)
+      yield put({ type: saveQuestionAction.SUCCESS, payload: res })
+    }
+    catch (e: unknown) {
+      yield put({ type: fetchQuestionAction.FAILURE })
+      throw e
+    }})
 }
 
   

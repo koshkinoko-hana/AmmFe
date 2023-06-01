@@ -4,7 +4,7 @@ import newsWatcher from '~/client/ducks/sagas/news'
 import departmentWatcher from '~/client/ducks/sagas/department'
 import positionWatcher from '~/client/ducks/sagas/position'
 import galleryWatcher from './gallery'
-import QuestionWatcher from './faq'
+import QuestionWatcher from '~/client/ducks/sagas/faq'
 
 export default function* clientSaga() {
   yield all([
