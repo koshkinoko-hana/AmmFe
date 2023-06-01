@@ -1,0 +1,25 @@
+@import "src/common/styles/constants";
+@import "src/common/styles/colors";
+@import "src/common/styles/fonts";
+
+.news {
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr 1fr;
+    cursor: pointer;
+    grid-gap: $grid-small;
+
+    &__bold {
+      .p2 {
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}

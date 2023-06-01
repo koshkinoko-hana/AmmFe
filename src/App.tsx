@@ -1,3 +1,5 @@
+import NewsDetails from '@admin/pages/news'
+import NewsList from '@admin/pages/newsList'
 import React from 'react'
 import AdminRoute from '@admin/components/adminRoute/AdminRoute'
 import Departments from '@admin/pages/departments'
@@ -16,9 +18,12 @@ import DepartmentsPage from './client/pages/departmentPage'
 import DepartmentPage from './client/pages/departments/Department1Page'
 import NewsDetailsPage from './client/pages/newsDetailsPage'
 import AdminDepartmentPage from './admin/pages/departmentPage'
+import GalleryAdmin from './admin/pages/gallery'
+import CreatePhoto from './admin/pages/createPhoto'
 import Directions from './admin/pages/directions'
 import Direction from './admin/pages/direction'
 import DirectionsClient from './client/pages/directionsPage'
+import Gallery from './client/pages/galleryPage'
 
 function App(): JSX.Element {
 
@@ -33,6 +38,10 @@ function App(): JSX.Element {
           <Route path=":id" element={<AdminDepartmentPage/>}/>
         </Route>
         <Route path={`${AdminRoutes.positions}`} element={<Positions/>}/>
+        <Route path={`${AdminRoutes.gallery}`}>
+          <Route path="" element={<GalleryAdmin/>}/>
+          <Route path="create" element={<CreatePhoto/>}/>
+        </Route>
         <Route path={`${AdminRoutes.employees}`}>
           <Route path="" element={<Employees/>}/>
           <Route path="create" element={<Employee/>}/>
@@ -42,6 +51,11 @@ function App(): JSX.Element {
           <Route path="" element={<Directions/>}/>
           <Route path="create" element={<Direction/>}/>
           <Route path=":id" element={<Direction/>}/>
+        </Route>
+        <Route path={`${AdminRoutes.news}`}>
+          <Route path="" element={<NewsList />} />
+          <Route path="create" element={<NewsDetails />} />
+          <Route path=":id" element={<NewsDetails />} />
         </Route>
       </Route>
       <Route path={'/'} element={<ClientRoute/>}>
@@ -58,6 +72,7 @@ function App(): JSX.Element {
           <Route path=":id" element={<DepartmentPage/>}/>
         </Route>
         {/* <Route path={`${ClientRoutes.positions}`} element={<Positions/>}/> */}
+        <Route path={`${ClientRoutes.gallery}`} element={<Gallery/>}/>
         {/*<Route path={`${ClientRoutes.employees}`}>*/}
         {/*  <Route path="" element={<Employees/>}/>*/}
         {/*  <Route path="create" element={<Employee/>}/>*/}

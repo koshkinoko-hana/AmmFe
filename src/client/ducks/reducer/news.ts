@@ -8,18 +8,20 @@ import { newsCard, newsDetails, NewsState } from '../types/news'
   
   
 const initialState: NewsState = {
+  loading: false,
+  total: 0,
   news: [],
   newsPreview: [],
   details: {} as newsDetails,
 }
   
-const department = createReducer(initialState, {
+const news = createReducer(initialState, {
   [fetchNewsListAction.TRIGGER]: (state) => {
     return { ...state, loading: true }
   },
-  [fetchNewsListAction.SUCCESS]: (state, action: PayloadAction<{news: newsCard[]}>) => {
-    const { news } = action.payload
-    return { ...state, loading: false, news }
+  [fetchNewsListAction.SUCCESS]: (state, action: PayloadAction<{news: newsCard[], total: number}>) => {
+    const { news, total } = action.payload
+    return { ...state, loading: false, news, total }
   },
   [fetchNewsListAction.FAILURE]: (state) => {
     return { ...state, loading: false }
@@ -46,5 +48,5 @@ const department = createReducer(initialState, {
   },
 })
   
-export default department
+export default news
   
