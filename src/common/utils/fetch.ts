@@ -5,7 +5,7 @@ export async function request<T>(
   url: string,
   req: {
     method: string
-    body?: string
+    body?: string | FormData
     headers: { [key: string]: string }
   },
   // ignoredStatuses: number[] = [],
@@ -79,6 +79,20 @@ export async function post<T>(
       body: JSON.stringify(body),
     },
     // ignoredStatuses,
+  )
+}
+
+export async function postFormData<T>(
+  url: string,
+  body: FormData,
+): Promise<T | undefined> {
+  return await request<T>(
+    url,
+    {
+      method: 'POST',
+      headers: { authorization: `Bearer ${token()}` },
+      body
+    },
   )
 }
 

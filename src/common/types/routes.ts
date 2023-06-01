@@ -8,7 +8,9 @@ export enum AdminRoutes {
   departments = 'departments',
   department = 'department',
   employees = 'employees',
+  news = 'news',
   positions = 'positions',
+  gallery = 'gallery'
 }
 
 export enum ClientRoutes {
@@ -17,5 +19,6 @@ export enum ClientRoutes {
   employees = 'employees',
   positions = 'positions',
   news = 'news',
+  gallery = 'gallery',
   deanFaq = 'faq',
 }

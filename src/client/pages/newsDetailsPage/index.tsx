@@ -33,7 +33,7 @@ const NewsDetails: React.FC = () => {
       <div className="details">
         <Link to="/news" className='details__back'>
           <GoToPrevPage />
-          <span>Все новости</span>
+          <p className='p3'>Все новости</p>
         </Link>
         <img src={details.photoPath || placeholder} alt={details.photoAlt} className="details__img" />
         <div className="details__date">
