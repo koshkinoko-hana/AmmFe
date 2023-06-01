@@ -5,7 +5,6 @@ import { get } from '~/common/utils/fetch'
 import { apiClient } from '~/common/consts/general'
 import { fetchNewsDetailsAction, fetchNewsListAction, fetchNewsPreviewAction } from '../actions/news'
 import { PayloadAction } from '@reduxjs/toolkit'
-//import placeholderSvg from '@assets/placeholder_news.svg'
 
 function* fetchNews(action: PayloadAction<number>) {
   yield errorWrapper(function* () {

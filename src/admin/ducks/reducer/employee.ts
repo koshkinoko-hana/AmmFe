@@ -42,8 +42,8 @@ const employee = createReducer(initialState, {
   [saveEmployeeAction.SUCCESS]: (state) => {
     return { ...state, loading: false }
   },
-  [updateEmployeeAction.SUCCESS]: (state) => {
-    return { ...state, loading: false }
+  [updateEmployeeAction.SUCCESS]: (state, action: PayloadAction<Employee>) => {
+    return { ...state, loading: false, current: action.payload }
   },
   [saveEmployeeAction.FAILURE]: (state) => {
     return { ...state, loading: false }

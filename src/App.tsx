@@ -16,6 +16,9 @@ import DepartmentsPage from './client/pages/departmentPage'
 import DepartmentPage from './client/pages/departments/Department1Page'
 import NewsDetailsPage from './client/pages/newsDetailsPage'
 import AdminDepartmentPage from './admin/pages/departmentPage'
+import Directions from './admin/pages/directions'
+import Direction from './admin/pages/direction'
+import DirectionsClient from './client/pages/directionsPage'
 
 function App(): JSX.Element {
 
@@ -35,6 +38,11 @@ function App(): JSX.Element {
           <Route path="create" element={<Employee/>}/>
           <Route path=":id" element={<Employee/>}/>
         </Route>
+        <Route path={`${AdminRoutes.directions}`}>
+          <Route path="" element={<Directions/>}/>
+          <Route path="create" element={<Direction/>}/>
+          <Route path=":id" element={<Direction/>}/>
+        </Route>
       </Route>
       <Route path={'/'} element={<ClientRoute/>}>
         <Route path={`${ClientRoutes.home}`} element={<MainPage/>}/>
@@ -43,6 +51,10 @@ function App(): JSX.Element {
         <Route path={`${ClientRoutes.deanFaq}`} element={<QuestionPage/>}/>
         <Route path={`${ClientRoutes.departments}`}>
           <Route path="" element={<DepartmentsPage/>}/>
+          <Route path=":id" element={<DepartmentPage/>}/>
+        </Route>
+        <Route path={`${ClientRoutes.directions}`}>
+          <Route path="" element={<DirectionsClient/>}/>
           <Route path=":id" element={<DepartmentPage/>}/>
         </Route>
         {/* <Route path={`${ClientRoutes.positions}`} element={<Positions/>}/> */}

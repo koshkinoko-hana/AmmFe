@@ -1,0 +1,39 @@
+@import "@common/styles/index";
+
+.directions_container {
+    margin: 0 auto;
+    max-width: $grid-desktop;
+    .directions_list {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: $grid-medium;
+        justify-content: center;
+        margin-bottom: $grid-big;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .directions_list {
+        padding: 0 $grid-base;
+    }
+}
+
+@media screen and (max-width: $grid-laptop-max) {
+    .directions_container {
+        max-width: $grid-tablet-max;
+    }
+}
+
+@media screen and (max-width: $grid-tablet-max) {
+    .directions_container {
+        max-width: $grid-mobile-max;
+    }
+}
+
+@media screen and (max-width: $grid-mobile-max) {
+    .directions_container {
+        max-width: $grid-mobile-medium;
+    }
+}

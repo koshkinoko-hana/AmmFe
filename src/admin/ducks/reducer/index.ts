@@ -4,6 +4,7 @@ import employee from '@admin/ducks/reducer/employee'
 import position from '@admin/ducks/reducer/position'
 import user from '@admin/ducks/reducer/user'
 import { combineReducers } from '@reduxjs/toolkit'
+import direction from './direction'
 
 const adminReducer = combineReducers({
   app,
@@ -11,6 +12,7 @@ const adminReducer = combineReducers({
   employee,
   position,
   user,
+  direction
 })
 
 

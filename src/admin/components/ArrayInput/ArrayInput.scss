@@ -1,0 +1,39 @@
+@import '@common/styles/index';
+
+.input {
+    display: flex;
+    flex-direction: column;
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $grid-tiny $grid-base-extended;
+        background: #207EED;
+        color: #FFFFFF;
+        border: 2px solid #207EED;
+        border-radius: $grid-small-extended;
+        cursor: pointer;
+    }
+    .values {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: $grid-small;
+        &__item {
+            display: flex;
+            gap: $grid-small*2;
+            align-items: center;
+            &::before {
+                display: none;
+            }
+        }
+    }
+    .input_container {
+        padding-top: $grid-tiny-3x;
+        display: flex;
+        gap: $grid-small*2;
+        input {
+            flex-grow: 1;
+        }
+    }
+}

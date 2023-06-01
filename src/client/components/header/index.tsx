@@ -29,6 +29,7 @@ const Header: React.FC = () => {
               <Link to="/faq" className="p1 tablet-hidden">Вопрос декану</Link>
               <Link to="/" className="p1 tablet-hidden">Контакты</Link>
               <Link to="/" className="p1 mobile-hidden">Расписание</Link>
+              <Link to="/directions" className="p1 mobile-hidden">Направления</Link>
               <Burger onClick={toggleMenu}/>
             </div>
           </div>
