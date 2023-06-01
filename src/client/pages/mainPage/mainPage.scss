@@ -2,6 +2,7 @@
 @import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 .client__main {
+  min-height: calc(100vh - 110px - 100px);
   .reasons-block {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

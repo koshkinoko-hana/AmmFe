@@ -31,8 +31,8 @@ const Directions: React.FC = () => {
       <>loading</>
     ) : (
       directions && (
-        <div className="container employees">
-          <div className="employees__header">
+        <div className="container directions">
+          <div className="directions__header">
             <h1>Направления</h1>
             <button onClick={createDirection}>Новая</button>
           </div>

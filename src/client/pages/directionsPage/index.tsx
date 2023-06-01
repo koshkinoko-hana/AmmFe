@@ -1,11 +1,11 @@
 import './directionsPage.scss'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '~/client/components/pageHeader'
 import { PathKey } from '~/client/components/pageHeader/types'
 import { fetchDirectionListAction } from '~/client/ducks/actions/direction'
 import { useAppDispatch, useAppSelector } from '~/common/store'
 import { ClientRoutes } from '~/common/types/routes'
-import DirectionCard from '@client/components/DepartmentCard'
+import DirectionCard from '@client/components/DirectionCard'
 import departmentMAsk1 from '../../../assets/depIcon-red01MaskBlack.png'
 import departmentMAsk2 from '../../../assets/depIcon-blue01Mask.png'
 import departmentMAsk3 from '../../../assets/depIcon-yellow01.png'
@@ -25,9 +25,15 @@ const Directions: React.FC = () => {
   const magistracyDirections = directions.filter(direction => direction.type === 'Магистратура')
   const militaryDirections = directions.filter(direction => direction.type === 'Учеюный военный центр')
 
+  const [activeCard, setActiveCard] = useState<number | null>(null)
+
   useEffect(() => {
     dispatch(fetchDirectionListAction())
   }, [])
+
+  useEffect(() => {
+    console.log(undergraduateDirections.length, magistracyDirections.length, activeCard)
+  }, [activeCard])
 
   function getBackgroundcolor(i: number) {
     const colors = ['#F9E7E6', '#E5F7FE', '#FDFAF0']
@@ -53,7 +59,14 @@ const Directions: React.FC = () => {
           <h3 className='directions_title'>Направления бакалавриата</h3>
           <ul className='directions_list'>
             {undergraduateDirections.map((direction, i) => (
-              <DirectionCard key={direction.id} link={String(direction.id)} backgroundColor={getBackgroundcolor(i)} img={getImg(i)} title={direction.name}/>
+              <DirectionCard 
+                key={direction.id}
+                backgroundColor={getBackgroundcolor(i)} 
+                img={getImg(i)} 
+                direction={direction} 
+                isActive={i === activeCard} 
+                onClick={() => setActiveCard(i === activeCard ? null : i)} 
+              />
             ))}
           </ul>
         </> : <></>}
@@ -61,7 +74,14 @@ const Directions: React.FC = () => {
           <h3 className='directions_title'>Направления магистратуры</h3>
           <ul className='directions_list'>
             {magistracyDirections.map((direction, i) => (
-              <DirectionCard key={direction.id} link={String(direction.id)} backgroundColor={getBackgroundcolor(i)} img={getImg(i)} title={direction.name}/>
+              <DirectionCard 
+                key={direction.id}
+                backgroundColor={getBackgroundcolor(i)} 
+                img={getImg(i)} 
+                direction={direction} 
+                isActive={undergraduateDirections.length + i === activeCard} 
+                onClick={() => setActiveCard(undergraduateDirections.length + i === activeCard ? null : undergraduateDirections.length + i)} 
+              />
             ))}
           </ul>
         </> : <></>}
@@ -69,7 +89,14 @@ const Directions: React.FC = () => {
           <h3 className='directions_title'>Учебный военный центр ВГУ</h3>
           <ul className='directions_list'>
             {militaryDirections.map((direction, i) => (
-              <DirectionCard key={direction.id} link={String(direction.id)} backgroundColor={getBackgroundcolor(i)} img={getImg(i)} title={direction.name}/>
+              <DirectionCard 
+                key={direction.id}
+                backgroundColor={getBackgroundcolor(i)} 
+                img={getImg(i)} 
+                direction={direction} 
+                isActive={undergraduateDirections.length + magistracyDirections.length + i === activeCard}
+                onClick={() => setActiveCard(undergraduateDirections.length + magistracyDirections.length + i === activeCard ? null : undergraduateDirections.length + magistracyDirections.length + i)} 
+              />
             ))}
           </ul>
         </> : <></>}
