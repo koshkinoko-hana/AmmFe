@@ -9,8 +9,8 @@ import Accordion from '~/common/components/Accordion/Accordion'
 import ContactForm from './components/ContactForm'
 import './quesionPage.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchQuestionListAction } from '~/client/ducks/actions/faq'
-import { getQuestions } from '~/client/ducks/selectors/faq'
+import { fetchQuestionListAction } from '@client/ducks/actions/faq'
+import { getQuestions } from '@client/ducks/selectors/faq'
 /* eslint-disable quotes */
 const QuestionPage: React.FC = () => {
   const [offset, setOffset] = React.useState(0)
@@ -21,6 +21,8 @@ const QuestionPage: React.FC = () => {
   useEffect(() => {
     dispatch(fetchQuestionListAction())
   }, [])
+
+  console.log(`@@!! questionsList: ${questionsList}`)
 
   return (
     <div className='body'>

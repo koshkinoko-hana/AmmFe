@@ -32,8 +32,8 @@ const ContactForm = () => {
       lastName: surname,
       email: email,
       question: text,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }
     dispatch(saveQuestionAction(questionStr))
     reset()

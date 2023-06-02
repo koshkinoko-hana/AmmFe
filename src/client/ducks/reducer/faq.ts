@@ -18,6 +18,8 @@ const Question = createReducer(initialState, {
   },
   [fetchQuestionListAction.SUCCESS]: (state, action: PayloadAction<{QuestionList: QuestionStr[]}>) => {
     const { QuestionList } = action.payload
+    console.log('🚀 ~ file: faq.ts:21 ~ QuestionList:', QuestionList)
+    
     return { ...state, loggedIn: true, loading: false, QuestionList }
   },
   [fetchQuestionListAction.FAILURE]: (state) => {

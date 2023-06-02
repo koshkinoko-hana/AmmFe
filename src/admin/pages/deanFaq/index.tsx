@@ -10,12 +10,15 @@ import { FormData } from './types'
 import TextInput from '@common/components/textInput'
 import Textarea from '@common/components/textarea'
 import EmailInput from '~/client/pages/questionPage/components/ContactForm/EmailInput'
+import { getUserLoggedIn } from '~/admin/ducks/selectors/user'
 
 const Question: React.FC = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const currentQuestion = useSelector(getCurrentQuestion)
+  const loggedIn = useSelector(getUserLoggedIn)
+
 
   useEffect(() => {
     if (id) {
@@ -49,12 +52,10 @@ const Question: React.FC = () => {
   }, [ ])
   const onCancel = useCallback(() => {
     navigate(-1)
-    //    dispatch(clearQuestionAction())
   }, [])
 
   const buttonDisabled = () => (!isValid || isSubmitting)
 
-  //  if(!id || currentQuestion) 
   {
     if (currentQuestion === null || currentQuestion === undefined) {
       return null
@@ -69,6 +70,7 @@ const Question: React.FC = () => {
             error={errors.lastName?.type}
             register={register('lastName', { required: true, maxLength: 255, value: currentQuestion?.lastName || '' })}
             classList="full-width"
+            disabled={true}
           />
           <TextInput
             type="text"
@@ -80,6 +82,7 @@ const Question: React.FC = () => {
               value: currentQuestion?.firstName || ''
             })}
             classList="full-width"
+            disabled={true}
           />
           <TextInput
             type="text"
@@ -91,6 +94,7 @@ const Question: React.FC = () => {
               value: currentQuestion?.middleName || ''
             })}
             classList="full-width"
+            disabled={true}
           />
           <TextInput
             type="text"
@@ -102,12 +106,14 @@ const Question: React.FC = () => {
               value: currentQuestion?.email || ''
             })}
             classList="full-width"
+            disabled={true}
           />
           <Textarea
             label={'Вопрос'}
             error={errors.question?.type}
             register={register('question', { value: currentQuestion?.question || '' })}
             classList="full-width"
+            disabled={true}
           />
           <Textarea
             label={'Ответ'}
