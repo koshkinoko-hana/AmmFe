@@ -23,8 +23,6 @@ const ContactForm = () => {
 
   const onSubmit = async (data: IInputs) => {
     const { name, surname, middlename, email, text } = data
-    console.log('🚀 ~ file: index.tsx:26 ~ onSubmit ~ data:', data)
-    
 
     const questionStr: QuestionStr = {
       firstName: name,
@@ -33,7 +31,6 @@ const ContactForm = () => {
       email: email,
       question: text,
       createdAt: new Date(),
-      updatedAt: new Date(),
     }
     dispatch(saveQuestionAction(questionStr))
     reset()

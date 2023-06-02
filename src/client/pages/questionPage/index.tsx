@@ -22,8 +22,6 @@ const QuestionPage: React.FC = () => {
     dispatch(fetchQuestionListAction())
   }, [])
 
-  console.log(`@@!! questionsList: ${questionsList}`)
-
   return (
     <div className='body'>
       <Header

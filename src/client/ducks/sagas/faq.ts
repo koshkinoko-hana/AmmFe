@@ -13,11 +13,9 @@ import { get, post } from '~/common/utils/fetch'
   
   
 function* fetchQuestions() {
-  console.log('res: !!!~~~ fetchQuestions')
   yield errorWrapper(function* () {
     try {
       const res: QuestionStr[] = yield call(get, `${apiClient}/faqs`)
-      console.log(`res: !!!~~~ fetchQuestions ${res.map(e => e.id)}`)
       yield put({ type: fetchQuestionListAction.SUCCESS, payload: { QuestionList: res } })
     } catch (e: unknown) {
       yield put({ type: fetchQuestionListAction.FAILURE })
@@ -41,7 +39,6 @@ function* fetchQuestion(action: PayloadAction<{ id: number }>) {
 function* saveQuestion(action: PayloadAction<QuestionStr>) {
   yield errorWrapper(function* () {
     try {
-      console.log('🚀 ~ file: faq.ts:44 ~ yielderrorWrapper ~ payload:', action.payload)
       const res: QuestionStr = yield call(post, `${apiClient}/faqs`, action.payload)
       yield put({ type: saveQuestionAction.SUCCESS, payload: res })
     }
