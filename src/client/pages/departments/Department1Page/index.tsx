@@ -3,39 +3,53 @@ import React, { useEffect } from 'react'
 import { ClientRoutes } from '~/common/types/routes'
 import { PathKey } from '~/client/components/pageHeader/types'
 import './departmentPage.scss'
-import DepartmentHead from '../../../../assets/Shashkin.png'
-import noname from '../../../../assets/noname.svg'
+import DepartmentHead from '~/assets/Shashkin.png'
+import noname from '~/assets/noname.svg'
 import { Link, useParams } from 'react-router-dom'
 import { Compass, Letter, PhoneBig } from '~/common/icons'
-import { useDispatch, useSelector } from 'react-redux'
-import { getEmployeeLoading, getEmployees } from '~/admin/ducks/selectors/employee'
-import { fetchEmployeeListAction } from '~/admin/ducks/actions/employee'
+import { useSelector } from 'react-redux'
+import { getEmployeeLoading } from '~/client/ducks/selectors/employee'
+import { fetchEmployeeAction, fetchEmployeeListAction } from '~/client/ducks/actions/employee'
 import EmployeeCard from './components/EmployeeCard'
-import { fetchPositionListAction } from '~/admin/ducks/actions/position'
-import { getPositions } from '~/admin/ducks/selectors/position'
+import HeadDepartmentCard from './components/HeadDepartmentCard'
+import { fetchDepartmentListAction } from '~/client/ducks/actions/department'
+import { useAppDispatch, useAppSelector } from '~/common/store'
 
 const DepartmentPage: React.FC = () => {
   const { id: id_department } = useParams()
-  const dispatch = useDispatch()
-  const employees = useSelector(getEmployees)
-  const positions = useSelector(getPositions)
+  const { employees } = useAppSelector(state => state.client.employee)
+  const headDepart = useAppSelector(state => state.client.employee.current)
+  const { departments} = useAppSelector(state => state.client.department)
+  const dispatch = useAppDispatch()
+  //  const [headDepart, setHeadDepart ] = useState<Employee>()
   const loading = useSelector(getEmployeeLoading)
 
+  useEffect(() => {
+    Promise.all([
+      dispatch(fetchEmployeeListAction()),
+      dispatch(fetchDepartmentListAction()),
+    ]).then(() => {
+      if(id_department)
+      {
+        const employee = employees.find(
+          (e) => (e.departments.some(department => department.id === Number(id_department)) && e.positions.some(id_position => id_position.id === 1))
+        )
+        if( employee && employee.id ){
+          dispatch(fetchEmployeeAction( { id: employee.id } ))
+        }
+      }
+    })
+  }, [])
+
+  if(departments){
+    console.log('🚀 ~ file: index.tsx:36 ~ departments:',Number(id_department))
+  }
   
-
-  useEffect(() => {
-    dispatch(fetchEmployeeListAction())
-  }, [])
-
-  useEffect(() => {
-    dispatch(fetchPositionListAction())
-  }, [])
-
   return (
     <>
       <div>
         <Header 
-          header={'Кафедра математического и прикладного анализа'} 
+          header={departments.at(Number(id_department)-1)?.name || ''} 
           description={''} 
           path={{
             [PathKey.DEPARTMENTS]: ClientRoutes.departments
@@ -62,19 +76,11 @@ const DepartmentPage: React.FC = () => {
         </div>
         <div className='depart__body'>
           <h2 id="head">Заведующий кафедрой</h2>
-          <div className='depart__body__head'>
-            <div className='depart__body__head__img'>
-              <img src={DepartmentHead} alt="" />
-            </div>
-            <div className='depart__body__head__text'>
-              <h3>Шашкин Александр Иванович</h3>
-              <p>Доктор физико-математических наук, профессор, член президиума УМО классических университетов, академик International Academy of Refrigeration. Зам. председателя специализированного совета по защите кандидатских диссертаций (специальность – 01.02.04), член докторского совета (специальность – 01.02.04). Руководитель грантов РФФИ.</p>
-            </div>
-          </div>
+          <HeadDepartmentCard img={DepartmentHead} name={`${headDepart?.lastName} ${headDepart?.firstName} ${headDepart?.middleName}`} descripton={headDepart?.description || ''} /> 
           <div>
             <div>
               <h2 id="description">Описание работы кафедры</h2>        
-              <p>Подготовка специалистов в области механики в Воронежском госуниверситете имеет глубокие корни и богатые традиции. У истоков Воронежской школы механиков стоял один из крупнейших советских ученых-механиков - Леонид Самуилович Лейбензон (1879-1951). Являясь прямым учеником Н.Е.Жуковского, он с 1913 по 1917 годы был профессором старейшего Юрьевского университета, на базе которого и был образован в 1918 году Воронежский государственный университет.</p>
+              <p>{departments.at(Number(id_department)-1)?.description || ''}</p>
             </div>
             <h2 id="employees">Сотрудники</h2>
             <div className='depart__body__employees'>

@@ -18,6 +18,8 @@ import DepartmentsPage from './client/pages/departmentPage'
 import DepartmentPage from './client/pages/departments/Department1Page'
 import NewsDetailsPage from './client/pages/newsDetailsPage'
 import AdminDepartmentPage from './admin/pages/departmentPage'
+import AdminFaqPage from './admin/pages/deanFaqPage'
+import Question from './admin/pages/deanFaq'
 import GalleryAdmin from './admin/pages/gallery'
 import CreatePhoto from './admin/pages/createPhoto'
 import Directions from './admin/pages/directions'
@@ -51,6 +53,11 @@ function App(): JSX.Element {
           <Route path="" element={<Directions/>}/>
           <Route path="create" element={<Direction/>}/>
           <Route path=":id" element={<Direction/>}/>
+        </Route>
+        <Route path={`${AdminRoutes.faq}`}>
+          <Route path="" element={<AdminFaqPage/>}/>
+          <Route path="create" element={<Question/>}/>
+          <Route path=":id" element={<Question/>}/>
         </Route>
         <Route path={`${AdminRoutes.news}`}>
           <Route path="" element={<NewsList />} />
