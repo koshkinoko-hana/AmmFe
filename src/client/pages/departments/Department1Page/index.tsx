@@ -21,24 +21,20 @@ const DepartmentPage: React.FC = () => {
   const headDepart = useAppSelector(state => state.client.employee.current)
   const { departments} = useAppSelector(state => state.client.department)
   const dispatch = useAppDispatch()
-  //  const [headDepart, setHeadDepart ] = useState<Employee>()
   const loading = useSelector(getEmployeeLoading)
 
   useEffect(() => {
-    Promise.all([
-      dispatch(fetchEmployeeListAction()),
-      dispatch(fetchDepartmentListAction()),
-    ]).then(() => {
-      if(id_department)
-      {
-        const employee = employees.find(
-          (e) => (e.departments.some(department => department.id === Number(id_department)) && e.positions.some(id_position => id_position.id === 1))
-        )
-        if( employee && employee.id ){
-          dispatch(fetchEmployeeAction( { id: employee.id } ))
-        }
+    dispatch(fetchEmployeeListAction())
+    dispatch(fetchDepartmentListAction())
+    if(!loading && id_department && employees)
+    {
+      const employee = employees.find(
+        (e) => (e.departments.some(department => department.id === Number(id_department)) && e.positions.some(id_position => id_position.id === 1))
+      )
+      if( employee && employee.id ){
+        dispatch(fetchEmployeeAction( { id: employee.id } ))
       }
-    })
+    }
   }, [])
 
   return (
@@ -72,7 +68,7 @@ const DepartmentPage: React.FC = () => {
         </div>
         <div className='depart__body'>
           <h2 id="head">Заведующий кафедрой</h2>
-          <HeadDepartmentCard img={DepartmentHead} name={`${headDepart?.lastName} ${headDepart?.firstName} ${headDepart?.middleName}`} descripton={headDepart?.description || ''} /> 
+          <HeadDepartmentCard img={DepartmentHead} name={`${headDepart?.lastName || ''} ${headDepart?.firstName || ''} ${headDepart?.middleName || ''}`} descripton={headDepart?.description || ''} /> 
           <div>
             <div>
               <h2 id="description">Описание работы кафедры</h2>        
@@ -84,7 +80,7 @@ const DepartmentPage: React.FC = () => {
                 employees.map((e) => {if (e.departments.some(department => department.id === Number(id_department))) 
                   return (<EmployeeCard 
                     key={e.id} 
-                    img={noname} 
+                    img={e.photoPath || ''} 
                     name={`${e.firstName} ${e.middleName} ${e.lastName}`} 
                     descripton={`Должность: ${e.positions.map(e => e.name).join(', ')}`}
                   />)
