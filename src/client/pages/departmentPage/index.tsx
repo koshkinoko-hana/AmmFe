@@ -5,8 +5,11 @@ import * as React from 'react'
 import { cards } from './constants'
 import DepartmentCard from '~/client/components/DepartmentCard'
 import './departmentPage.scss'
+import { useSelector } from 'react-redux'
+import { getDepartments } from '~/client/ducks/selectors/department'
 
 const DepartmentPage: React.FC = () => {
+  const departments = useSelector(getDepartments)
   return (
     <>
       <div>
@@ -19,8 +22,14 @@ const DepartmentPage: React.FC = () => {
         />
       </div>
       <div className='department-container'>
-        {cards.map((card, index) => (<DepartmentCard key={index} {...card} />)) }
-      </div>
+        {departments.map((e, i) => (
+          <DepartmentCard
+            key={e.id}
+            title={e.name}
+            link={e.id.toString()}
+            eId={cards[i]}
+          />
+        ))}      </div>
     </>
   )
 
