@@ -68,7 +68,7 @@ const DepartmentPage: React.FC = () => {
         </div>
         <div className='depart__body'>
           <h2 id="head">Заведующий кафедрой</h2>
-          <HeadDepartmentCard img={DepartmentHead} name={`${headDepart?.lastName || ''} ${headDepart?.firstName || ''} ${headDepart?.middleName || ''}`} descripton={headDepart?.description || ''} /> 
+          <HeadDepartmentCard img={headDepart?.photoPath || ''} name={`${headDepart?.lastName || ''} ${headDepart?.firstName || ''} ${headDepart?.middleName || ''}`} descripton={headDepart?.description || ''} /> 
           <div>
             <div>
               <h2 id="description">Описание работы кафедры</h2>        
