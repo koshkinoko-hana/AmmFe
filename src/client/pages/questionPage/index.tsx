@@ -1,16 +1,20 @@
 import ReactPaginate from 'react-paginate'
 import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { PaginateRight } from '~/common/icons/PaginateRight'
 import { PaginateLeft } from '~/common/icons/PaginateLeft'
 import { ClientRoutes } from '~/common/types/routes'
-import { PathKey } from '~/client/components/pageHeader/types'
-import Header from '~/client/components/pageHeader'
 import Accordion from '~/common/components/Accordion/Accordion'
-import ContactForm from './components/ContactForm'
-import './quesionPage.scss'
-import { useDispatch, useSelector } from 'react-redux'
+
 import { fetchQuestionListAction } from '@client/ducks/actions/faq'
 import { getQuestions } from '@client/ducks/selectors/faq'
+import { PathKey } from '~/client/components/pageHeader/types'
+import Header from '~/client/components/pageHeader'
+
+import ContactForm from './components/ContactForm'
+import './quesionPage.scss'
+
 /* eslint-disable quotes */
 const QuestionPage: React.FC = () => {
   const [offset, setOffset] = React.useState(0)

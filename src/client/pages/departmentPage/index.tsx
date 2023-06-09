@@ -1,15 +1,25 @@
+import * as React from 'react'
+
 import Header from '~/client/components/pageHeader'
+import DepartmentCard from '~/client/components/DepartmentCard'
+import { getDepartments } from '~/client/ducks/selectors/department'
+import { fetchDepartmentListAction } from '~/client/ducks/actions/department'
 import { PathKey } from '~/client/components/pageHeader/types'
 import { ClientRoutes } from '~/common/types/routes'
-import * as React from 'react'
+
 import { cards } from './constants'
-import DepartmentCard from '~/client/components/DepartmentCard'
 import './departmentPage.scss'
-import { useSelector } from 'react-redux'
-import { getDepartments } from '~/client/ducks/selectors/department'
+import { useAppDispatch, useAppSelector } from '~/common/store'
 
 const DepartmentPage: React.FC = () => {
-  const departments = useSelector(getDepartments)
+  const departments = useAppSelector(getDepartments)
+  const dispatch = useAppDispatch()
+
+  React.useEffect(() => {
+    dispatch(fetchDepartmentListAction())
+  }, [])
+  console.log('🚀 ~ file: index.tsx:13 ~ link:', departments)
+
   return (
     <>
       <div>
@@ -29,7 +39,8 @@ const DepartmentPage: React.FC = () => {
             link={e.id.toString()}
             eId={cards[i]}
           />
-        ))}      </div>
+        ))}      
+      </div>
     </>
   )
 

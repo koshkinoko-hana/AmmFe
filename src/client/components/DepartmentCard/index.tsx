@@ -10,6 +10,8 @@ interface DepartmentCardProps {
 
 
 const DepartmentCard: FC<DepartmentCardProps> = ({link, title, eId}) => {
+  console.log('🚀 ~ file: index.tsx:13 ~ link:', link)
+  
   return(
     <Link to={link} className="p1">
       <div 

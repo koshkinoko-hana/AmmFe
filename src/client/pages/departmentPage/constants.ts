@@ -1,4 +1,4 @@
-import { departmentCard, departmentCardBack } from '~/client/components/DepartmentCard/types'
+import { departmentCardBack } from '@client/components/DepartmentCard/types'
 import departmentMAsk1 from '../../../assets/depIcon-red01MaskBlack.png'
 import departmentMAsk2 from '../../../assets/depIcon-blue01Mask.png'
 import departmentMAsk3 from '../../../assets/depIcon-yellow01.png'

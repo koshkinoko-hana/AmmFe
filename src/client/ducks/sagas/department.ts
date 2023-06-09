@@ -9,10 +9,12 @@ import { apiClient } from '~/common/consts/general'
 import { get } from '~/common/utils/fetch'
 
 function* fetchDepartments() {
+  
   yield errorWrapper(function* () {
     try {
       const res: Department[] = yield call(get, `${apiClient}/department`)
       yield put({ type: fetchDepartmentListAction.SUCCESS, payload: {departments: res} })
+      console.log('🚀 ~ file: department.ts:17 ~ yielderrorWrapper ~ res:', res)
     } catch (e: unknown) {
       yield put({ type: fetchDepartmentListAction.FAILURE })
       throw e
