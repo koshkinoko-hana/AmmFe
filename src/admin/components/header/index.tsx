@@ -36,6 +36,7 @@ const Header: React.FC = () => {
         <div className="menu">
           <Link to={`${AdminRoutes.departments}`} className="p1" >Кафедры</Link>
           <Link to={`${AdminRoutes.employees}`} className="p1">Сотрудники</Link>
+          <Link to={`${AdminRoutes.directions}`} className="p1">Направления</Link>
           <Link to={`${AdminRoutes.gallery}`} className="p1">Галерея</Link>
           <Link to={`${AdminRoutes.faq}`} className="p1">Вопрос декану</Link>
           <Link to="/" className="p1">Расписание</Link>

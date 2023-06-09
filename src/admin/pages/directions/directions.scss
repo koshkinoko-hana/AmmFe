@@ -1,0 +1,26 @@
+@import "src/common/styles/constants";
+@import "src/common/styles/colors";
+@import "src/common/styles/fonts";
+
+.directions {
+  max-width: 100%;
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: $grid-base-extended;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: $grid-normal repeat(8, 1fr);
+    cursor: pointer;
+    grid-gap: $grid-small;
+
+    &__bold {
+      .p2 {
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}
