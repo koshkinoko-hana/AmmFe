@@ -1,5 +1,4 @@
 import {
-  updateDepartmentListAction,
   uploadPhoto
 } from '@admin/ducks/actions/department'
 import {
@@ -9,7 +8,6 @@ import {
   updateEmployeeAction
 } from '@admin/ducks/actions/employee'
 import { errorWrapper } from '@admin/ducks/sagas/sagaWrapper'
-import { Department } from '@admin/ducks/types/department'
 import { Employee, EmployeeLight, EmployeeNew, UploadedFileResponse } from '@admin/ducks/types/employee'
 import { closeDialogueAction, setLoadingDialogueAction } from '@common/ducks/slice/dialogue'
 import { PayloadAction } from '@reduxjs/toolkit'
@@ -54,8 +52,8 @@ function* saveEmployee(action: PayloadAction<EmployeeNew>) {
 function* updateEmployee(action: PayloadAction<Employee>) {
   yield errorWrapper(function* () {
     try {
-      const res: Department = yield call(putRequest, `${apiAdmin}/employee/${action.payload.id}`, action.payload)
-      yield put(updateDepartmentListAction(res))
+      const res: Employee = yield call(putRequest, `${apiAdmin}/employee/${action.payload.id}`, action.payload)
+      yield put({type: updateEmployeeAction.SUCCESS, payload: res})
       yield put(closeDialogueAction())
     } catch (e: unknown) {
       yield put(setLoadingDialogueAction(false))
