@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 
 import { ClientRoutes } from '~/common/types/routes'
@@ -23,8 +22,8 @@ const DepartmentPage: React.FC = () => {
   const headDepart = useAppSelector(state => state.client.employee.current)
   const { departments} = useAppSelector(state => state.client.department)
   const dispatch = useAppDispatch()
-  const employeeLoading = useSelector(getEmployeeLoading)
-  const departmentLoading = useSelector(getDepartmentLoading)
+  const employeeLoading = useAppSelector(getEmployeeLoading)
+  const departmentLoading = useAppSelector(getDepartmentLoading)
 
   useEffect(() => {
     dispatch(fetchEmployeeListAction())
@@ -36,19 +35,20 @@ const DepartmentPage: React.FC = () => {
     if(!employeeLoading && id_department && !departmentLoading)
     {
       const employee = employees.find(
-        (e) => (e.departments.some(department => department.id === Number(id_department)) && e.positions.some(id_position => id_position.id === 1))
+        (e) => (e.departments.some(department => department.id === Number(id_department)) && 
+        e.positions.some(id_position => id_position.id === 1))
       )
       if( employee && employee.id ){
         dispatch(fetchEmployeeAction( { id: employee.id } ))
       }
     }
-  }, [])
+  }, [ id_department])
 
   return (
     <>
       <div>
         <Header 
-          header={departments.at(Number(id_department)-1)?.name || ''} 
+          header={(departments.find(department => department.id.toString() === id_department)?.name) || ''}
           description={''} 
           path={{
             [PathKey.DEPARTMENTS]: ClientRoutes.departments
@@ -74,8 +74,16 @@ const DepartmentPage: React.FC = () => {
           </div>
         </div>
         <div className='depart__body'>
-          <h2 id="head">Заведующий кафедрой</h2>
-          <HeadDepartmentCard img={headDepart?.photoPath || ''} name={`${headDepart?.lastName || ''} ${headDepart?.firstName || ''} ${headDepart?.middleName || ''}`} descripton={headDepart?.description || ''} /> 
+          {headDepart && headDepart.photoPath && (
+            <div>
+              <h2 id="head">Заведующий кафедрой</h2>
+              <HeadDepartmentCard
+                img={headDepart.photoPath}
+                name={`${headDepart.lastName} ${headDepart.firstName} ${headDepart.middleName}`}
+                description={headDepart.description || ''}
+              />
+            </div>
+          )}      
           <div>
             <div>
               <h2 id="description">Описание работы кафедры</h2>        

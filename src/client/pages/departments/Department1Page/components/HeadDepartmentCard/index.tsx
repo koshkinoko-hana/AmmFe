@@ -3,7 +3,7 @@ import './HeadDepartmentCard.scss'
 import { headDepartmentCard } from '~/client/components/DepartmentCard/types'
 import ShapedImg from '~/client/components/ShapedImg'
 
-const HeadDepartmentCard: FC<headDepartmentCard> = ({ img, name, descripton }) => {
+const HeadDepartmentCard: FC<headDepartmentCard> = ({ img, name, description }) => {
     
   return(
     <div className='depart__body__head'>
@@ -12,7 +12,7 @@ const HeadDepartmentCard: FC<headDepartmentCard> = ({ img, name, descripton }) =
       </div>
       <div className='depart__body__head__text'>
         <h3>{name}</h3>
-        <p>{descripton}</p>
+        <p>{description}</p>
       </div>
     </div>
   )

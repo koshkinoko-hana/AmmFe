@@ -18,7 +18,6 @@ const DepartmentPage: React.FC = () => {
   React.useEffect(() => {
     dispatch(fetchDepartmentListAction())
   }, [])
-  console.log('🚀 ~ file: index.tsx:13 ~ link:', departments)
 
   return (
     <>

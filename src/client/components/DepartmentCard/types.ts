@@ -18,5 +18,5 @@ export type employeeCard = {
 export type headDepartmentCard = {
     img: string
     name: string
-    descripton: string
+    description: string
 }
