@@ -51,7 +51,7 @@ const CustomImg: React.FC<CustomImgProps> = ({ src, alt, size }) => {
             context.lineWidth = 5
             context.strokeStyle = '#ff00ff'
             context.stroke()
-            
+
             const resizedImageUrl = canvas.toDataURL()
             resolve(resizedImageUrl)
           } else {
