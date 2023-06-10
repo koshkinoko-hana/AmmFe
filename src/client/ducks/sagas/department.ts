@@ -14,7 +14,6 @@ function* fetchDepartments() {
     try {
       const res: Department[] = yield call(get, `${apiClient}/department`)
       yield put({ type: fetchDepartmentListAction.SUCCESS, payload: {departments: res} })
-      console.log('🚀 ~ file: department.ts:17 ~ yielderrorWrapper ~ res:', res)
     } catch (e: unknown) {
       yield put({ type: fetchDepartmentListAction.FAILURE })
       throw e

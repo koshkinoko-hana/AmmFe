@@ -4,7 +4,6 @@ import { headDepartmentCard } from '~/client/components/DepartmentCard/types'
 import ShapedImg from '~/client/components/ShapedImg'
 
 const HeadDepartmentCard: FC<headDepartmentCard> = ({ img, name, description }) => {
-    
   return(
     <div className='depart__body__head'>
       <div className='depart__body__head__img'>

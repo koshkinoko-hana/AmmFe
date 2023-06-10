@@ -11,7 +11,7 @@ import { cards } from './constants'
 import './departmentPage.scss'
 import { useAppDispatch, useAppSelector } from '~/common/store'
 
-const DepartmentPage: React.FC = () => {
+const DepartmentsPage: React.FC = () => {
   const departments = useAppSelector(getDepartments)
   const dispatch = useAppDispatch()
 
@@ -44,4 +44,4 @@ const DepartmentPage: React.FC = () => {
   )
 
 }
-export default DepartmentPage
+export default DepartmentsPage

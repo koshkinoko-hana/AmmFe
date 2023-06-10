@@ -1,6 +1,6 @@
 import {
   fetchEmployeeAction,
-  fetchEmployeeListAction, 
+  fetchEmployeesByDepartmentAction,
 } from '@client/ducks/actions/employee'
 import { Employee, EmployeeState } from '@client/ducks/types/employee'
 import { createReducer, PayloadAction } from '@reduxjs/toolkit'
@@ -12,16 +12,6 @@ const initialState: EmployeeState = {
 }
 
 const employee = createReducer(initialState, {
-  [fetchEmployeeListAction.TRIGGER]: (state) => {
-    return { ...state, loading: true }
-  },
-  [fetchEmployeeListAction.SUCCESS]: (state, action: PayloadAction<{employees: Employee[]}>) => {
-    const { employees } = action.payload
-    return { ...state, loggedIn: true, loading: false, employees }
-  },
-  [fetchEmployeeListAction.FAILURE]: (state) => {
-    return { ...state, loading: false }
-  },
   [fetchEmployeeAction.TRIGGER]: (state) => {
     return { ...state, loading: true }
   },
@@ -29,6 +19,16 @@ const employee = createReducer(initialState, {
     return { ...state, current: action.payload.employee, loading: false }
   },
   [fetchEmployeeAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
+  },
+  [fetchEmployeesByDepartmentAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [fetchEmployeesByDepartmentAction.SUCCESS]: (state, action:  PayloadAction<{employees: Employee[]}>) => {
+    const { employees } = action.payload
+    return { ...state, loggedIn: true, loading: false, employees }
+  },
+  [fetchEmployeesByDepartmentAction.FAILURE]: (state) => {
     return { ...state, loading: false }
   },
 })

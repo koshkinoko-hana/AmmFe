@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
 interface CustomImgProps {
-  src: string;
-  alt: string;
-  size: number;
+  src: string
+  alt: string
+  size: number
 }
 
 const CustomImg: React.FC<CustomImgProps> = ({ src, alt, size }) => {
   const [imageUrl, setImageUrl] = useState<string>('')
 
   useEffect(() => {
+    let isMounted = true
+
     const resizeImageToSize = async (imageUrl: string, size: number): Promise<string> => {
       const response = await fetch(imageUrl)
       const blob = await response.blob()
@@ -44,13 +46,6 @@ const CustomImg: React.FC<CustomImgProps> = ({ src, alt, size }) => {
             context.clip()
 
             context.drawImage(img, (size - width) / 2, (size - height) / 2, width, height)
-            const outerRadius = size / 2
-            context.beginPath()
-            context.arc(size / 2, size / 2, outerRadius, 0, 2 * Math.PI)
-            context.closePath()
-            context.lineWidth = 5
-            context.strokeStyle = '#ff00ff'
-            context.stroke()
 
             const resizedImageUrl = canvas.toDataURL()
             resolve(resizedImageUrl)
@@ -65,10 +60,16 @@ const CustomImg: React.FC<CustomImgProps> = ({ src, alt, size }) => {
 
     const fetchImage = async () => {
       const resizedImageUrl = await resizeImageToSize(src, size)
-      setImageUrl(resizedImageUrl)
+      if (isMounted) {
+        setImageUrl(resizedImageUrl)
+      }
     }
 
     fetchImage()
+
+    return () => {
+      isMounted = false
+    }
   }, [src, size])
 
   return <img src={imageUrl} alt={alt} style={{ borderRadius: '50%' }} />
