@@ -44,6 +44,7 @@ const Employee: React.FC = () => {
   const [chosenPositions, setChosenPositions] = useState<PropsValue<Option>>([])
   const [chosenDepartments, setChosenDepartments] = useState<PropsValue<Option>>([])
   const [uploadedFile, setUploadedFile] = useState<UploadedFileResponse | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const handlePositionsChange: (values: MultiValue<Option> | SingleValue<Option>) => void = (values) => {
     setChosenPositions(Array.isArray(values) ? values : [values])
@@ -71,40 +72,52 @@ const Employee: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const onFileInputChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files![0]
-    const res = await upload(`${apiAdmin}/employee/photo`, file)
-    setUploadedFile(res)
+    setLoading(true)
+    try{
+      const file = event.target.files![0]
+      const res = await upload(`${apiAdmin}/employee/photo`, file)
+      setUploadedFile(res)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const onSubmit = useCallback((data: FormData) => {
-    const { firstName, middleName, lastName, description } = data
-    if (currentEmployee && id) {
-      const employee = { ...currentEmployee }
-
-      employee.id =  parseInt(id)
-      employee.firstName = firstName
-      employee.middleName = middleName
-      employee.lastName = lastName
-      employee.description = description
-      employee.positions = chosenPositions as Option[]
-      employee.departments = chosenDepartments as Option[]
-      employee.photoId = uploadedFile?.id
-      dispatch(updateEmployeeAction(employee))
-    }
-    else
-    {
-      const employee: EmployeeNew = {
-        firstName,
-        middleName,
-        lastName,
-        description,
-        positions: (chosenPositions as Option[]).map(d => d.value as number),
-        departments: (chosenDepartments as Option[]).map(d => d.value as number),
-        photoId: uploadedFile?.id,
+    setLoading(true)
+    try{
+      const { firstName, middleName, lastName, description } = data
+      if (currentEmployee && id) {
+        const employee = { ...currentEmployee }
+  
+        employee.id =  parseInt(id)
+        employee.firstName = firstName
+        employee.middleName = middleName
+        employee.lastName = lastName
+        employee.description = description
+        employee.positions = chosenPositions as Option[]
+        employee.departments = chosenDepartments as Option[]
+        employee.photoId = uploadedFile?.id
+        employee.photoPath = uploadedFile?.path
+        dispatch(updateEmployeeAction(employee))
       }
-      dispatch(saveEmployeeAction(employee))
+      else
+      {
+        const employee: EmployeeNew = {
+          firstName,
+          middleName,
+          lastName,
+          description,
+          positions: (chosenPositions as Option[]).map(d => d.value as number),
+          departments: (chosenDepartments as Option[]).map(d => d.value as number),
+          photoId: uploadedFile?.id,
+          photoPath: uploadedFile?.path
+        }
+        dispatch(saveEmployeeAction(employee))
+      }
+    } finally {
+      setLoading(false)
     }
-  }, [chosenPositions, chosenDepartments, currentEmployee])
+  }, [chosenPositions, chosenDepartments, currentEmployee, uploadedFile])
 
   const onCancel = useCallback(() => {
     navigate(-1)
@@ -116,6 +129,10 @@ const Employee: React.FC = () => {
       fileInputRef.current.click()
   }
   const buttonDisabled = () => (!isValid || isSubmitting)
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   if(!id || currentEmployee) {
     const initialPositions = currentEmployee?.positions.map(item => ({ 
@@ -191,11 +208,11 @@ const Employee: React.FC = () => {
           />
           <FileDrop
             onTargetClick={onTargetClick}>
-
             {
-              uploadedFile
-                ? <img src={uploadedFile.path} className="image"/>
-                : 'Drop some files here!'
+              currentEmployee?.photoPath ? <img src={currentEmployee.photoPath} className="image"/> :
+                (uploadedFile
+                  ? <img src={uploadedFile.path} className="image"/>
+                  : 'Drop some files here!')
             }
           </FileDrop>
           <div className="buttons">
