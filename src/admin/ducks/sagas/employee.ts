@@ -2,6 +2,7 @@ import {
   uploadPhoto
 } from '@admin/ducks/actions/department'
 import {
+  deleteEmployeeAction,
   fetchEmployeeAction,
   fetchEmployeeListAction,
   saveEmployeeAction,
@@ -14,7 +15,7 @@ import { PayloadAction } from '@reduxjs/toolkit'
 import { ImageType } from 'react-images-uploading/dist/typings'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { apiAdmin } from '~/common/consts/general'
-import { get, post, putRequest } from '~/common/utils/fetch'
+import { get, post, putRequest, del } from '~/common/utils/fetch'
 
 
 
@@ -46,6 +47,14 @@ function* saveEmployee(action: PayloadAction<EmployeeNew>) {
   yield errorWrapper(function* () {
     const res: Employee = yield call(post, `${apiAdmin}/employee`, action.payload)
     yield put({ type: saveEmployeeAction.SUCCESS, payload: res })
+  })
+}
+
+function* deleteEmployee(action: PayloadAction<{ id: number }>) {
+  console.log('🚀 ~ file: employee.ts:54 ~ function*deleteEmployee ~ id:', action.payload.id)
+  yield errorWrapper(function* () {
+    const res: Employee = yield call(del, `${apiAdmin}/employee/${action.payload.id}`)
+    yield put({ type: deleteEmployeeAction.SUCCESS, payload: res })
   })
 }
 
@@ -82,6 +91,7 @@ function* employeeWatcher() {
     takeLatest(saveEmployeeAction.TRIGGER, saveEmployee),
     takeLatest(updateEmployeeAction.TRIGGER, updateEmployee),
     takeLatest(uploadPhoto.TRIGGER, saveImage),
+    takeLatest(deleteEmployeeAction.TRIGGER, deleteEmployee),
   ])
 }
 

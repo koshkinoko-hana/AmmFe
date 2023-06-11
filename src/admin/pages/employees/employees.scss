@@ -3,6 +3,7 @@
 @import "src/common/styles/fonts";
 
 .employees {
+  margin: auto;
 
   &__header {
     display: flex;
@@ -12,7 +13,7 @@
 
   .item {
     display: grid;
-    grid-template-columns: $grid-normal 1fr 1fr 1fr;
+    grid-template-columns: $grid-normal 1fr 1fr 1fr $grid-normal;
     cursor: pointer;
     grid-gap: $grid-small;
 

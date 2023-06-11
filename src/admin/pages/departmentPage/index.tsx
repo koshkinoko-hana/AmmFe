@@ -64,7 +64,7 @@ const AdminDepartmentPage: React.FC = () => {
                         id: e.id,
                         name: `${e.lastName} ${e.firstName} ${e.middleName}`,
                         positions,
-                        departments,            
+                        departments,
                       }} 
                       key={e.id} 
                       onClick={() => updateEmployee(e.id)}

@@ -1,5 +1,5 @@
 import './employees.scss'
-import { fetchEmployeeListAction } from '@admin/ducks/actions/employee'
+import { deleteEmployeeAction, fetchEmployeeListAction } from '@admin/ducks/actions/employee'
 import { getEmployeeLoading, getEmployees } from '@admin/ducks/selectors/employee'
 import ListItem from '@admin/pages/employees/listItem'
 import { AdminRoutes } from '@common/types/routes'
@@ -24,6 +24,11 @@ const Employees: React.FC = () => {
 
   const updateEmployee = (id: number) => {
     navigate(`/${AdminRoutes.root}/${AdminRoutes.employees}/${id}`)
+  } 
+
+  const deleteEmployee = (id: number) => {
+    dispatch(deleteEmployeeAction({id}))
+    employees.filter(employee => employee.id !== id)
   } 
 
   return (
@@ -54,6 +59,7 @@ const Employees: React.FC = () => {
                       }} 
                       key={e.id} 
                       onClick={() => updateEmployee(e.id)}
+                      onDelete={() => deleteEmployee(e.id)}
                     />
                   )
                 }

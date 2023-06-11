@@ -30,8 +30,8 @@ const Gallery: React.FC = () => {
     loading ?
       <div>loading</div> :
       photos ?
-        <div className="container employees">
-          <div className="employees__header">
+        <div className="container gallery">
+          <div className="gallery__header">
             <h1>Галерея</h1>
             <button onClick={createPhoto}>Новая</button>
           </div>
