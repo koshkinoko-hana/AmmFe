@@ -51,7 +51,6 @@ function* saveEmployee(action: PayloadAction<EmployeeNew>) {
 }
 
 function* deleteEmployee(action: PayloadAction<{ id: number }>) {
-  console.log('🚀 ~ file: employee.ts:54 ~ function*deleteEmployee ~ id:', action.payload.id)
   yield errorWrapper(function* () {
     const res: Employee = yield call(del, `${apiAdmin}/employee/${action.payload.id}`)
     yield put({ type: deleteEmployeeAction.SUCCESS, payload: res })

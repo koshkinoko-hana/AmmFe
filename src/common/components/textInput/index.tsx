@@ -12,7 +12,6 @@ type Props = {
 }
 
 const TextInput: FC<Props> = ({label, type, error, register, classList='', disabled }: Props) => {
-
   return (
     <>
       {

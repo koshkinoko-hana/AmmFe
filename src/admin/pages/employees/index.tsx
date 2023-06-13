@@ -6,6 +6,7 @@ import { AdminRoutes } from '@common/types/routes'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { fetchEmployeeAction } from '~/client/ducks/actions/employee'
 import List from '~/common/components/list'
 
 const Employees: React.FC = () => {
@@ -32,14 +33,16 @@ const Employees: React.FC = () => {
   } 
 
   return (
-    loading ? (
-      <>loading</>
-    ) : (
-      employees && (
+    loading ? ( <>Загрузка...</> ) : ( employees && 
+      (
         <div className="container employees">
           <div className="employees__header">
             <h1>Сотрудники</h1>
-            <button onClick={createEmployee}>Новая</button>
+            <div className='employees__header__btn'>
+              <button 
+                onClick={createEmployee}
+              >Новый</button>
+            </div>
           </div>
           <List
             itemsRender={[
