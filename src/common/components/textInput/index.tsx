@@ -8,10 +8,10 @@ type Props = {
   error?: string
   register: UseFormRegisterReturn
   classList?: string
+  disabled?: boolean
 }
 
-const TextInput: FC<Props> = ({label, type, error, register, classList='' }: Props) => {
-
+const TextInput: FC<Props> = ({label, type, error, register, classList='', disabled }: Props) => {
   return (
     <>
       {
@@ -36,6 +36,7 @@ const TextInput: FC<Props> = ({label, type, error, register, classList='' }: Pro
           type={type}
           className={`${error ? 'is-invalid' : ''} ${classList}`}
           {...register}
+          disabled={disabled} 
         />
       </div>
     </>

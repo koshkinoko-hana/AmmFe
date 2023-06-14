@@ -15,6 +15,7 @@ export interface Employee extends EmployeeLight {
   description?: string
 }
 
+export const numHeadEmployee = 1
 
 export interface EmployeeNew {
   firstName: string
@@ -30,7 +31,8 @@ export interface EmployeeNew {
 
 export interface EmployeeState {
   loading: boolean
-  current?: Employee
+  headDepartment?: Employee
+  idDepartment?: number
   employees: Employee[]
 }
 

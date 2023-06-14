@@ -4,17 +4,21 @@ import './deanFaq.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCurrentQuestion } from '@admin/ducks/selectors/faq'
 import { useEffect } from 'react'
-import { fetchCurrentQuestionAction } from '@admin/ducks/actions/faq'
+import { fetchCurrentQuestionAction, updateCurrentQuestionAction } from '@admin/ducks/actions/faq'
 import { useForm } from 'react-hook-form'
 import { FormData } from './types'
 import TextInput from '@common/components/textInput'
 import Textarea from '@common/components/textarea'
+import EmailInput from '~/client/pages/questionPage/components/ContactForm/EmailInput'
+import { getUserLoggedIn } from '~/admin/ducks/selectors/user'
 
 const Question: React.FC = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const currentQuestion = useSelector(getCurrentQuestion)
+  const loggedIn = useSelector(getUserLoggedIn)
+
 
   useEffect(() => {
     if (id) {
@@ -29,17 +33,29 @@ const Question: React.FC = () => {
   } = useForm<FormData>({ mode: 'onChange' })
 
   const onSubmit = useCallback((data: FormData) => { 
-    const { firstName, middleName, lastName } = data
-  }, [])
+    const { firstName, middleName, lastName, email, question, answer, respondent } = data
+    
+    if (data && id) {
+      const questionStr = { ...currentQuestion }
 
+      questionStr.id =  parseInt(id)
+      questionStr.firstName = firstName
+      questionStr.middleName = middleName
+      questionStr.lastName = lastName
+      questionStr.email = email
+      questionStr.question = question
+      questionStr.answer = answer
+      questionStr.respondent = respondent
+      
+      dispatch(updateCurrentQuestionAction(questionStr))
+    }
+  }, [ ])
   const onCancel = useCallback(() => {
     navigate(-1)
-    //    dispatch(clearQuestionAction())
   }, [])
 
   const buttonDisabled = () => (!isValid || isSubmitting)
 
-  //  if(!id || currentQuestion) 
   {
     if (currentQuestion === null || currentQuestion === undefined) {
       return null
@@ -54,6 +70,7 @@ const Question: React.FC = () => {
             error={errors.lastName?.type}
             register={register('lastName', { required: true, maxLength: 255, value: currentQuestion?.lastName || '' })}
             classList="full-width"
+            disabled={true}
           />
           <TextInput
             type="text"
@@ -65,6 +82,7 @@ const Question: React.FC = () => {
               value: currentQuestion?.firstName || ''
             })}
             classList="full-width"
+            disabled={true}
           />
           <TextInput
             type="text"
@@ -76,13 +94,26 @@ const Question: React.FC = () => {
               value: currentQuestion?.middleName || ''
             })}
             classList="full-width"
-
+            disabled={true}
+          />
+          <TextInput
+            type="text"
+            label={'email'}
+            error={errors.email?.type}
+            register={register('email', {
+              required: true,
+              maxLength: 255,
+              value: currentQuestion?.email || ''
+            })}
+            classList="full-width"
+            disabled={true}
           />
           <Textarea
             label={'Вопрос'}
             error={errors.question?.type}
             register={register('question', { value: currentQuestion?.question || '' })}
             classList="full-width"
+            disabled={true}
           />
           <Textarea
             label={'Ответ'}

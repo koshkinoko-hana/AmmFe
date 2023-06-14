@@ -2,7 +2,7 @@ import { Department, DepartmentNew } from '@admin/ducks/types/department'
 import { createAction } from '@reduxjs/toolkit'
 import { createRoutine } from 'redux-saga-routines'
 
-const name = 'department'
+const name = 'department_admin'
 
 export const setCurrentDepartmentAction = createAction<Department>(`${name}/CURRENT`)
 export const clearCurrentDepartmentAction = createAction(`${name}/CLEAR_CURRENT`)

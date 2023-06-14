@@ -1,6 +1,7 @@
 import {
   fetchEmployeeAction,
   fetchEmployeeListAction,
+  fetchEmployeesByDepartmentAction,
 } from '@client/ducks/actions/employee'
 import { errorWrapper } from '@client/ducks/sagas/sagaWrapper'
 import { Employee, EmployeeLight } from '@client/ducks/types/employee'
@@ -24,10 +25,8 @@ function* fetchEmployees() {
 }
 
 function* fetchEmployee(action: PayloadAction<{ id: number }>) {
-  console.log('~~~~@@@ id: ', action.payload.id)
   yield errorWrapper(function* () {
     try {
-      console.log(`${apiClient}/employee/${action.payload.id}`)
       const res: Employee = yield call(get, `${apiClient}/employee/${action.payload.id}`)
       yield put({ type: fetchEmployeeAction.SUCCESS, payload: { employee: res } })
     } catch (e: unknown) {
@@ -37,10 +36,23 @@ function* fetchEmployee(action: PayloadAction<{ id: number }>) {
   })
 }
 
+function* fetchEmployeesByDepartment(action: PayloadAction<{ id_department: number }>) {
+  yield errorWrapper(function* () {
+    try {
+      const res: Employee[] = yield call(get, `${apiClient}/employee/by-department/${action.payload.id_department}`)
+      yield put({ type: fetchEmployeesByDepartmentAction.SUCCESS, payload: { employees: res } })
+    } catch (e: unknown) {
+      yield put({ type: fetchEmployeesByDepartmentAction.FAILURE })
+      throw e
+    }
+  })
+}
+
 function* employeeWatcher() {
   yield all([
     takeLatest(fetchEmployeeListAction.TRIGGER, fetchEmployees),
     takeLatest(fetchEmployeeAction.TRIGGER, fetchEmployee),
+    takeLatest(fetchEmployeesByDepartmentAction.TRIGGER, fetchEmployeesByDepartment),
   ])
 }
 

@@ -9,6 +9,7 @@ import { apiClient } from '~/common/consts/general'
 import { get } from '~/common/utils/fetch'
 
 function* fetchDepartments() {
+  
   yield errorWrapper(function* () {
     try {
       const res: Department[] = yield call(get, `${apiClient}/department`)

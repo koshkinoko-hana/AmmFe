@@ -6,6 +6,7 @@ import direction from './direction'
 import employee from '@client/ducks/reducer/employee'
 import position from '@client/ducks/reducer/position'
 import app from '@client/ducks/reducer/app'
+import faq from '@client/ducks/reducer/faq'
 
 const clientReducer = combineReducers({
   app,
@@ -13,8 +14,9 @@ const clientReducer = combineReducers({
   employee,
   position,
   news,
+  gallery,
+  faq,
   direction,
-  gallery
 })
 
 

@@ -9,4 +9,5 @@ export interface ListItemProps {
   }
   bold?: boolean
   onClick?: (id: number) => void
+  onDelete?: (id: number) => void
 }

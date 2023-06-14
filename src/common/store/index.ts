@@ -2,10 +2,10 @@ import apiError from '@common/ducks/reducer/apiError'
 import dialogue from '@common/ducks/slice/dialogue'
 import admin from '@admin/ducks/reducer'
 import adminSaga from '@admin/ducks/sagas/root'
+import client from '@client/ducks/reducer'
 import clientSaga from '@client/ducks/sagas/root'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
-import client from '~/client/ducks/reducer'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { all } from 'redux-saga/effects'
 
@@ -14,9 +14,9 @@ const middleware = [sagaMiddleware]
 
 const rootReducer = combineReducers({
   admin,
+  client, 
   apiError,
   dialogue,
-  client, 
 })
 
 export const store = configureStore({

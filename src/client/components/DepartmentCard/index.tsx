@@ -1,18 +1,24 @@
 import React, { FC } from 'react'
-import { departmentCard } from './types'
 import { Link } from 'react-router-dom'
 import './DepartmentCard.scss'
+import { departmentCardBack } from './types'
+interface DepartmentCardProps {
+  link: string;
+  title: string;
+  eId: departmentCardBack;
+}
 
-const DepartmentCard: FC<departmentCard> = ({img, title, link, backgroundColor}) => {
+const DepartmentCard: FC<DepartmentCardProps> = ({link, title, eId}) => {
+  
   return(
     <Link to={link} className="p1">
       <div 
         className='department__card'
-        style={{ backgroundColor }}
+        style={{ background: eId.backgroundColor }}
       >
         <h4 className='department__card__text'>{title}</h4>
         <img 
-          src={img} 
+          src={eId.img} 
           alt='department-icon' 
           className='department__card__pic'
         />
@@ -20,5 +26,6 @@ const DepartmentCard: FC<departmentCard> = ({img, title, link, backgroundColor})
     </Link>
   )
 }
+
 
 export default DepartmentCard
