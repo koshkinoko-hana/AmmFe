@@ -2,7 +2,7 @@ import { Position, PositionNew } from '@admin/ducks/types/position'
 import { createAction } from '@reduxjs/toolkit'
 import { createRoutine } from 'redux-saga-routines'
 
-const name = 'position'
+const name = 'position_admin'
 
 export const setCurrentPositionAction = createAction<Position>(`${name}/CURRENT`)
 export const setLoadingPositionAction = createAction<boolean>(`${name}/CURRENT`)

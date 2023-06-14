@@ -12,7 +12,8 @@ const headers = {
   'Контакты': 'yellow40',
   'Кафедры': 'red40', 
   'Вопрос декану': 'yellow40', 
-  'Галерея': 'red40'
+  'Галерея': 'red40',
+  'Направления': 'blue40'
 }
 
 const PageHeader: React.FC<Props> = ({path, header, description}) => {

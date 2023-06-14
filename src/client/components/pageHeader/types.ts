@@ -9,6 +9,7 @@ export enum PathKey {
   FAQ='Вопрос декану',
   DEPARTMENTS='Кафедры',
   CONTACTS='Контакты',
+  DIRECTIONS='Направления'
 }
 
 export type pathSet = Partial<Record<string, string>>;

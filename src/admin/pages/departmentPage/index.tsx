@@ -23,17 +23,14 @@ const AdminDepartmentPage: React.FC = () => {
     dispatch(fetchEmployeeListAction())
   }, [])
 
-  const createDepartment = useCallback(() => {
-    dispatch(openDialogueAction(DialogueOption.ADMIN_DEPARTMENT))
-  }, [])
+  // const createDepartment = useCallback(() => {
+  //   dispatch(openDialogueAction(DialogueOption.ADMIN_DEPARTMENT))
+  // }, [])
 
   const updateDepartment = useCallback(() => {
     dispatch(openDialogueAction(DialogueOption.ADMIN_DEPARTMENT))
   }, [])
 
-  // const updateDepartment = (id: number) => {
-  //   navigate(`/${AdminRoutes.root}/${AdminRoutes.departments}/${id}`)
-  // }
 
   const updateEmployee = (id: number) => {
     navigate(`/${AdminRoutes.root}/${AdminRoutes.employees}/${id}`)
@@ -67,7 +64,7 @@ const AdminDepartmentPage: React.FC = () => {
                         id: e.id,
                         name: `${e.lastName} ${e.firstName} ${e.middleName}`,
                         positions,
-                        departments,            
+                        departments,
                       }} 
                       key={e.id} 
                       onClick={() => updateEmployee(e.id)}

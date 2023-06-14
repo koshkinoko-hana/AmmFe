@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
 import './EmployeeCard.scss'
 import { employeeCard } from '~/client/components/DepartmentCard/types'
+import ShapedImg from '~/client/components/ShapedImg'
 
 const EmployeeCard: FC<employeeCard> = ({ img, name, descripton }) => {
   return(
     <div className='card'>
       <div className='card__img'>
-        <img src={img} alt="" />
+        <ShapedImg src={img} alt="" size={90}/>
       </div>
       <div className='card__text'>
         <h4>{name}</h4>

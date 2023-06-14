@@ -1,5 +1,6 @@
 import {
   clearEmployeeAction,
+  deleteEmployeeAction,
   fetchEmployeeAction,
   fetchEmployeeListAction, saveEmployeeAction,
   setEmployeeAction, updateEmployeeAction,
@@ -42,8 +43,8 @@ const employee = createReducer(initialState, {
   [saveEmployeeAction.SUCCESS]: (state) => {
     return { ...state, loading: false }
   },
-  [updateEmployeeAction.SUCCESS]: (state) => {
-    return { ...state, loading: false }
+  [updateEmployeeAction.SUCCESS]: (state, action: PayloadAction<Employee>) => {
+    return { ...state, loading: false, current: action.payload }
   },
   [saveEmployeeAction.FAILURE]: (state) => {
     return { ...state, loading: false }
@@ -60,6 +61,18 @@ const employee = createReducer(initialState, {
   [clearEmployeeAction.type]: (state) => {
     return { ...state, current: undefined }
   },
+  [deleteEmployeeAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [deleteEmployeeAction.SUCCESS]: (state, action: PayloadAction<{ id: number }>) => {
+    const id = action.payload.id
+    state.employees = state.employees.filter(employee => employee.id !== id)
+    state.loading = false
+  },
+  [deleteEmployeeAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
+  },
+
 })
 
 export default employee

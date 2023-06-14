@@ -6,6 +6,8 @@ import position from '@admin/ducks/reducer/position'
 import user from '@admin/ducks/reducer/user'
 import gallery from '@admin/ducks/reducer/gallery'
 import { combineReducers } from '@reduxjs/toolkit'
+import direction from './direction'
+import faq from '@admin/ducks/reducer/faq'
 
 const adminReducer = combineReducers({
   app,
@@ -15,7 +17,8 @@ const adminReducer = combineReducers({
   position,
   gallery,
   user,
+  direction,
+  faq,
 })
-
 
 export default adminReducer

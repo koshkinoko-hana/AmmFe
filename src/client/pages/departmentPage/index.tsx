@@ -1,12 +1,24 @@
+import * as React from 'react'
+
 import Header from '~/client/components/pageHeader'
+import DepartmentCard from '~/client/components/DepartmentCard'
+import { getDepartments } from '~/client/ducks/selectors/department'
+import { fetchDepartmentListAction } from '~/client/ducks/actions/department'
 import { PathKey } from '~/client/components/pageHeader/types'
 import { ClientRoutes } from '~/common/types/routes'
-import * as React from 'react'
-import { cards } from './constants'
-import DepartmentCard from '~/client/components/DepartmentCard'
-import './departmentPage.scss'
 
-const DepartmentPage: React.FC = () => {
+import { cards } from './constants'
+import './departmentPage.scss'
+import { useAppDispatch, useAppSelector } from '~/common/store'
+
+const DepartmentsPage: React.FC = () => {
+  const departments = useAppSelector(getDepartments)
+  const dispatch = useAppDispatch()
+
+  React.useEffect(() => {
+    dispatch(fetchDepartmentListAction())
+  }, [])
+
   return (
     <>
       <div>
@@ -19,10 +31,17 @@ const DepartmentPage: React.FC = () => {
         />
       </div>
       <div className='department-container'>
-        {cards.map((card, index) => (<DepartmentCard key={index} {...card} />)) }
+        {departments.map((e, i) => (
+          <DepartmentCard
+            key={e.id}
+            title={e.name}
+            link={e.id.toString()}
+            eId={cards[i]}
+          />
+        ))}      
       </div>
     </>
   )
 
 }
-export default DepartmentPage
+export default DepartmentsPage
