@@ -18,6 +18,7 @@ export enum AdminRoutes {
 export enum ClientRoutes {
   home = '',
   departments = 'departments',
+  contacts = 'contacts',
   employees = 'employees',
   positions = 'positions',
   news = 'news',

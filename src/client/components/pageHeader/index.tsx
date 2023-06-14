@@ -8,7 +8,8 @@ import { NavItems } from './helpers'
 
 
 const headers = {
-  'Новости': 'blue40', 
+  'Новости': 'blue40',
+  'Контакты': 'yellow40',
   'Кафедры': 'red40', 
   'Вопрос декану': 'yellow40', 
   'Галерея': 'red40',

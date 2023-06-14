@@ -8,6 +8,7 @@ export enum PathKey {
   NEWS='Новости',
   FAQ='Вопрос декану',
   DEPARTMENTS='Кафедры',
+  CONTACTS='Контакты',
   DIRECTIONS='Направления'
 }
 
