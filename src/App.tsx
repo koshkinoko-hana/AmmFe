@@ -1,5 +1,6 @@
 import NewsDetails from '@admin/pages/news'
 import NewsList from '@admin/pages/newsList'
+import Contacts from '@client/pages/contacts'
 import React from 'react'
 import AdminRoute from '@admin/components/adminRoute/AdminRoute'
 import Departments from '@admin/pages/departments'
@@ -59,6 +60,7 @@ function App(): JSX.Element {
           <Route path="" element={<DepartmentsPage/>}/>
           <Route path=":id" element={<DepartmentPage/>}/>
         </Route>
+        <Route path={`${ClientRoutes.contacts}`} element={<Contacts/>}/>
         <Route path={`${ClientRoutes.gallery}`} element={<Gallery/>}/>
         {/*<Route path={`${ClientRoutes.employees}`}>*/}
         {/*  <Route path="" element={<Employees/>}/>*/}

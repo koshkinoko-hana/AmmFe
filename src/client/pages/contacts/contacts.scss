@@ -1,0 +1,34 @@
+@import 'src/common/styles/index';
+
+.contacts {
+  max-width: $grid-desktop;
+  padding: $grid-small;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+
+  &--map {
+    border-radius: 25px;
+    border: 2px solid $color-blue80;
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  &--info-block {
+    display: flex;
+    flex-direction: column;
+    @include p2-desktop();
+    gap: 10px;
+
+    button {
+      margin-top: 25px;
+      width: 300px;
+    }
+
+    .address {
+      font-weight: $font-weight-medium;
+    }
+  }
+}
