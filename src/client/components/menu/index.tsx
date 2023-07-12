@@ -19,7 +19,11 @@ const Menu: React.FC = () => {
       <div className="side-menu">
         <Link to={`/${ClientRoutes.home}`} onClick={toggleMenu} className="p1">Главная</Link>
         <Link to={`/${ClientRoutes.departments}`} onClick={toggleMenu} className="p1">Кафедры</Link>
+        <Link to={`/${ClientRoutes.directions}`} className="p1 mobile-hidden">Направления</Link>
         <Link to={`/${ClientRoutes.news}`} onClick={toggleMenu} className="p1">Новости</Link>
+        <Link to={`/${ClientRoutes.gallery}`} className="p1 tablet-hidden">Галерея</Link>
+        <Link to={`/${ClientRoutes.deanFaq}`} className="p1 tablet-hidden">Вопрос декану</Link>
+        <Link to={`/${ClientRoutes.contacts}`} className="p1 tablet-hidden">Контакты</Link>
       </div>
     )
   }

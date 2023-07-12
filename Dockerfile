@@ -1,7 +1,7 @@
 
 # ==== CONFIGURE =====
 # Use a Node 16 base image
-FROM node:18.4.0 AS build
+FROM  --platform=linux/amd64 node:18.4.0 AS build
 # Set the working directory to /app inside the container
 WORKDIR /amm-fe
 # Copy app files
@@ -12,7 +12,7 @@ RUN npm ci
 # Build the app
 RUN npm run build
 
-FROM nginx:latest AS prod
+FROM  --platform=linux/amd64 nginx:latest AS prod
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
