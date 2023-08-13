@@ -18,7 +18,7 @@ import { AdminRoutes, ClientRoutes } from '@common/types/routes'
 import DepartmentsPage from './client/pages/departmentPage'
 import DepartmentPage from './client/pages/departments/Department1Page'
 import NewsDetailsPage from './client/pages/newsDetailsPage'
-import AdminDepartmentPage from './admin/pages/departmentPage'
+import AdminDepartmentDetails from './admin/pages/departmentDetails'
 import AdminFaqPage from './admin/pages/deanFaqPage'
 import Question from './admin/pages/deanFaq'
 import GalleryAdmin from './admin/pages/gallery'
@@ -36,9 +36,9 @@ function App(): JSX.Element {
       <Route path={`/${AdminRoutes.root}`} element={<AdminRoute/>}>
         <Route path={`${AdminRoutes.departments}`} element={<Departments/>}/>
         <Route path={`${AdminRoutes.department}`}>
-          <Route path="" element={<AdminDepartmentPage/>}/>
-          <Route path="create" element={<AdminDepartmentPage/>}/>
-          <Route path=":id" element={<AdminDepartmentPage/>}/>
+          <Route path="" element={<AdminDepartmentDetails/>}/>
+          <Route path="create" element={<AdminDepartmentDetails/>}/>
+          <Route path=":id" element={<AdminDepartmentDetails/>}/>
         </Route>
         <Route path={`${AdminRoutes.positions}`} element={<Positions/>}/>
         <Route path={`${AdminRoutes.gallery}`}>

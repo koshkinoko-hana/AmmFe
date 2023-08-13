@@ -1,4 +1,4 @@
 export type FormData = {
   name: string;
-  description: string
+  description?: string
 }

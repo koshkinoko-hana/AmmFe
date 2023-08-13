@@ -34,11 +34,11 @@ const DepartmentPage: React.FC = () => {
   }, [id_department])
 
   useEffect(() => {
-    const foundEmployee = employees.find((employee) => employee.positions && employee.positions.some((position) => position.id === 1))
-    if(foundEmployee)
-      setHeadDepart(foundEmployee)
-    else
-      setHeadDepart(null)
+    // const foundEmployee = employees.find((employee) => employee.positions && employee.positions.some((position) => position.id === 1))
+    // if(foundEmployee)
+    //   setHeadDepart(foundEmployee)
+    // else
+    //   setHeadDepart(null)
   }, [employees])
 
   return (
@@ -84,16 +84,16 @@ const DepartmentPage: React.FC = () => {
                 <p>{(departments.find(department => department.id.toString() === id_department)?.description) || ''}</p>
               </div>
               <h2 id="employees">Сотрудники</h2>
-              <div className='depart__body__employees'>
-                {!employeeLoading && (
-                  employees.map((e) => {
-                    return (<EmployeeCard
-                      key={e.id}
-                      img={e.photoPath || noname}
-                      name={`${e.firstName} ${e.middleName} ${e.lastName}`}
-                      descripton={`Должность: ${e.positions.map(e => e.name).join(', ')}`} />)
-                  }))}
-              </div>
+              {/*<div className='depart__body__employees'>*/}
+              {/*  {!employeeLoading && (*/}
+              {/*    employees.map((e) => {*/}
+              {/*      return (<EmployeeCard*/}
+              {/*        key={e.id}*/}
+              {/*        img={e.photoPath || noname}*/}
+              {/*        name={`${e.firstName} ${e.middleName} ${e.lastName}`}*/}
+              {/*        descripton={`Должность: ${e.positions.map(e => e.name).join(', ')}`} />)*/}
+              {/*    }))}*/}
+              {/*</div>*/}
               <h2 id="contscts">Контакты</h2>
               <div className='depart__body__contacts'>
                 <div className='depart__body__contacts__column__item'>

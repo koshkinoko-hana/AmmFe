@@ -97,17 +97,17 @@ const Direction: React.FC = () => {
           register={register('number', { required: true, maxLength: 255, value: currentDirection?.number || '' })}
           classList="full-width"
         />
-        <Select
-          label={'Тип'}
-          error={errors.type?.type}
-          register={register('type', { required: true, maxLength: 255, value: findOptionByValue(currentDirection?.type || '') || typeOptions[0] })}
-          classList="full-width"
-          onChange={(value) => {
-            setValue('type', (value as SingleValue<Option>)!)
-          }}
-          options={typeOptions}
-          defaultValue={[findOptionByValue(currentDirection?.type || '') || typeOptions[0]]}
-        />
+        {/*<Select*/}
+        {/*  label={'Тип'}*/}
+        {/*  error={errors.type?.type}*/}
+        {/*  register={register('type', { required: true, maxLength: 255, value: findOptionByValue(currentDirection?.type || '') || typeOptions[0] })}*/}
+        {/*  classList="full-width"*/}
+        {/*  onChange={(value) => {*/}
+        {/*    setValue('type', (value as SingleValue<Option>)!)*/}
+        {/*  }}*/}
+        {/*  options={typeOptions}*/}
+        {/*  defaultValue={[findOptionByValue(currentDirection?.type || '') || typeOptions[0]]}*/}
+        {/*/>*/}
         <TextInput
           type="text"
           label={'Название'}

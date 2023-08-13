@@ -2,15 +2,17 @@ import {
   clearEmployeeAction,
   deleteEmployeeAction,
   fetchEmployeeAction,
-  fetchEmployeeListAction, saveEmployeeAction,
+  fetchEmployeeListAction, fetchEmployeeOptionsAction, saveEmployeeAction,
   setEmployeeAction, updateEmployeeAction,
 } from '@admin/ducks/actions/employee'
 import { Employee, EmployeeState } from '@admin/ducks/types/employee'
+import { Option } from '@common/components/select/types'
 import { createReducer, PayloadAction } from '@reduxjs/toolkit'
 
 
 const initialState: EmployeeState = {
   employees: [],
+  options: [],
   loading: false
 }
 
@@ -23,6 +25,16 @@ const employee = createReducer(initialState, {
     return { ...state, loggedIn: true, loading: false, employees }
   },
   [fetchEmployeeListAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
+  },
+  [fetchEmployeeOptionsAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [fetchEmployeeOptionsAction.SUCCESS]: (state, action: PayloadAction<{options: Option[]}>) => {
+    const { options } = action.payload
+    return { ...state, loggedIn: true, loading: false, options }
+  },
+  [fetchEmployeeOptionsAction.FAILURE]: (state) => {
     return { ...state, loading: false }
   },
   [fetchEmployeeAction.TRIGGER]: (state) => {

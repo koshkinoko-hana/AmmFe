@@ -176,9 +176,7 @@ const Employee = () => {
   }
   else if(!id || currentEmployee)
   {
-    currentEmployee?.positions.map(item => ({ 
-      id: item.id, 
-      name: item.name, 
+    currentEmployee?.positions.map(item => ({
       value: item.value, 
       label: item.label 
     })) || []
@@ -223,28 +221,28 @@ const Employee = () => {
               register={register('description', { value: (currentEmployee?.description || '') })}
               classList="full-width"
             />
-            <Select
-              options={positions}
-              onChange={handlePositionsChange}
-              isMulti={true}
-              label="Должности"
-              defaultValue={currentEmployee?.positions || []}
-              classList="full-width"
-              register={register('positions', { 
-                value: currentEmployee?.positions || []
-              })}
-            />
-            <Select
-              options={departments}
-              onChange={handleDepartmentsChange}
-              isMulti={true}
-              label="Кафедры"
-              classList="full-width"
-              defaultValue={currentEmployee?.departments || []}
-              register={register('departments', { 
-                value: currentEmployee?.departments || []
-              })}
-            />
+            {/*<Select*/}
+            {/*  options={positions}*/}
+            {/*  onChange={handlePositionsChange}*/}
+            {/*  isMulti={true}*/}
+            {/*  label="Должности"*/}
+            {/*  defaultValue={currentEmployee?.positions || []}*/}
+            {/*  classList="full-width"*/}
+            {/*  register={register('positions', { */}
+            {/*    value: currentEmployee?.positions || []*/}
+            {/*  })}*/}
+            {/*/>*/}
+            {/*<Select*/}
+            {/*  options={departments}*/}
+            {/*  onChange={handleDepartmentsChange}*/}
+            {/*  isMulti={true}*/}
+            {/*  label="Кафедры"*/}
+            {/*  classList="full-width"*/}
+            {/*  defaultValue={currentEmployee?.departments || []}*/}
+            {/*  register={register('departments', { */}
+            {/*    value: currentEmployee?.departments || []*/}
+            {/*  })}*/}
+            {/*/>*/}
             <input
               onChange={onFileInputChange}
               ref={fileInputRef}

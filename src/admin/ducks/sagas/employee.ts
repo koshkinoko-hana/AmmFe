@@ -4,7 +4,7 @@ import {
 import {
   deleteEmployeeAction,
   fetchEmployeeAction,
-  fetchEmployeeListAction,
+  fetchEmployeeListAction, fetchEmployeeOptionsAction,
   saveEmployeeAction,
   updateEmployeeAction
 } from '@admin/ducks/actions/employee'
@@ -26,6 +26,18 @@ function* fetchEmployees() {
       yield put({ type: fetchEmployeeListAction.SUCCESS, payload: { employees: res } })
     } catch (e: unknown) {
       yield put({ type: fetchEmployeeListAction.FAILURE })
+      throw e
+    }
+  })
+}
+
+function* fetchEmployeeOptions() {
+  yield errorWrapper(function* () {
+    try {
+      const res: EmployeeLight[] = yield call(get, `${apiAdmin}/employee/options`)
+      yield put({ type: fetchEmployeeOptionsAction.SUCCESS, payload: { options: res } })
+    } catch (e: unknown) {
+      yield put({ type: fetchEmployeeOptionsAction.FAILURE })
       throw e
     }
   })
@@ -86,6 +98,7 @@ function* saveImage(action: PayloadAction<ImageType>) {
 function* employeeWatcher() {
   yield all([
     takeLatest(fetchEmployeeListAction.TRIGGER, fetchEmployees),
+    takeLatest(fetchEmployeeOptionsAction.TRIGGER, fetchEmployeeOptions),
     takeLatest(fetchEmployeeAction.TRIGGER, fetchEmployee),
     takeLatest(saveEmployeeAction.TRIGGER, saveEmployee),
     takeLatest(updateEmployeeAction.TRIGGER, updateEmployee),

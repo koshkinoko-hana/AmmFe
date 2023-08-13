@@ -49,8 +49,8 @@ const Employees: React.FC = () => {
               <ListItem key="header" bold={true} />,
 
               employees.map((e) => {
-                const positions = e.positions.map((item) => ({ id: item.id, name: item.name, value: item.id, label: item.name }))
-                const departments = e.departments.map((item) => ({ id: item.id, name: item.name, value: item.id, label: item.name }))
+                const positions = e.positions
+                const departments = e.departments
                 {
                   return (
                     <ListItem 
