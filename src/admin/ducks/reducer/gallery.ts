@@ -1,6 +1,6 @@
 import { createReducer, PayloadAction } from '@reduxjs/toolkit'
 import { createPhotoAction, deletePhotoAction, fetchPhotoAction, fetchPhotoListAction } from '../actions/gallery'
-import { GalleryPhoto, GalleryPhotoListItem, GalleryState } from '../types/gallery'
+import { GalleryPhoto, GalleryState } from '../types/gallery'
   
   
 const initialState: GalleryState = {
@@ -14,7 +14,7 @@ const gallery = createReducer(initialState, {
   [fetchPhotoListAction.TRIGGER]: (state) => {
     return { ...state, loading: true }
   },
-  [fetchPhotoListAction.SUCCESS]: (state, action: PayloadAction<{photos: GalleryPhotoListItem[], total: number}>) => {
+  [fetchPhotoListAction.SUCCESS]: (state, action: PayloadAction<{photos: GalleryPhoto[], total: number}>) => {
     const { photos, total } = action.payload
     return { ...state, loading: false, photos, total }
   },
@@ -60,4 +60,3 @@ const gallery = createReducer(initialState, {
 })
   
 export default gallery
-  

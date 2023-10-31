@@ -57,8 +57,6 @@ const Employees: React.FC = () => {
                       employee={{
                         id: e.id,
                         name: `${e.lastName} ${e.firstName} ${e.middleName}`,
-                        positions,
-                        departments,            
                       }} 
                       key={e.id} 
                       onClick={() => updateEmployee(e.id)}

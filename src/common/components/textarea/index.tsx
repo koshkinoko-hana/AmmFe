@@ -16,7 +16,7 @@ const Textarea: FC<Props> = ({label, error, register, classList='', disabled}: P
     <>
       {
         label &&
-          <p className={'p3'}>{label}</p>
+          <p className={'p3-label'}>{label}</p>
       }
       <div className="input__container">
 

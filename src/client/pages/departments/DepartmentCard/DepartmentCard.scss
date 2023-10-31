@@ -1,0 +1,49 @@
+@use 'sass:math';
+@import '@common/styles';
+
+.department__card{
+    position: relative;
+    border-radius: 25px;
+    width: $card-base-width;
+    height: $card-base-width;
+    overflow: hidden;
+}
+.department__card__pic {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.department__card__text {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 25px 30px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 125%;
+}
+
+@mixin respond($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    .department__card {
+       $cardWidth: map-get($cardWidths, $breakpoint) - (2 * $grid-base);
+       $picDimension:   if( $cardWidth <  480px, 0.98 * $cardWidth, 450px);
+       $fontSize:   if( $cardWidth <  480px, 20px, 28px);
+       width: $picDimension;  
+       height: $picDimension;
+       &__pic {
+          width: $picDimension;
+        }
+        &__text{
+            font-size: $fontSize;
+        }
+    }
+  }
+}
+@each $breakpoint, $width in $breakpoints {
+  @include respond($breakpoint);
+}
+    

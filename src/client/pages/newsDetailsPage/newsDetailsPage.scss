@@ -3,7 +3,12 @@
 .details {
     max-width: $grid-desktop;
     width: calc(100% - 40px);
-    margin: 0 auto;
+    margin: 0 $grid-normal;
+
+    @media (max-width: $grid-mobile-max) {
+        margin: 0 $grid-base;
+    }
+
     &__back {
         display: flex;
         align-items: center;
@@ -21,7 +26,7 @@
     }
     &__date {
         display: flex;
-        align-items: start;
+        align-items: flex-start;
         gap: $grid-small-extended;
         margin-bottom: $grid-small*2;
         span {

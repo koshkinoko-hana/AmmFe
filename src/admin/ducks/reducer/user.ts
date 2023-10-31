@@ -1,25 +1,52 @@
+import { fetchUserAction, fetchUserListAction, saveUserAction, updateUserAction } from '@admin/ducks/actions/user'
+import { User, UserLight, UserState } from '@admin/ducks/types/user'
 import { createReducer, PayloadAction } from '@reduxjs/toolkit'
-import { loginAction } from '@admin/ducks/actions/user'
-import { LoginSuccessPayload, UserState } from '@admin/ducks/types/user'
-import { token } from '~/common/utils/token'
 
 
 const initialState: UserState = {
-  loggedIn: !!token(),
-  roles: [],
+  users: [],
   loading: false
 }
 
 const user = createReducer(initialState, {
-  [loginAction.TRIGGER]: (state) => {
-    return { ...state, loggedIn: false, loading: true }
+  [fetchUserListAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
   },
-  [loginAction.SUCCESS]: (state, action: PayloadAction<LoginSuccessPayload>) => {
-    const { roles } = action.payload
-    return { ...state, loggedIn: true, loading: false, roles }
+  [fetchUserListAction.SUCCESS]: (state, action: PayloadAction<UserLight[]>) => {
+    return { ...state, loading: false, users: action.payload }
   },
-  [loginAction.FAILURE]: (state) => {
-    return { ...state, loggedIn: false, loading: false }
+  [fetchUserListAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
+  },
+  [fetchUserAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [fetchUserAction.SUCCESS]: (state, action:  PayloadAction<User>) => {
+    return { ...state, current: action.payload, loading: false }
+  },
+  [fetchUserAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
+  },
+  [saveUserAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [updateUserAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [updateUserAction.SUCCESS]: (state) => {
+    return { ...state, loading: false }
+  },
+  [updateUserAction.FAILURE]: (state, action: PayloadAction<User>) => {
+    return { ...state, loading: false, current: action.payload }
+  },
+  [saveUserAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [saveUserAction.SUCCESS]: (state, action: PayloadAction<User>) => {
+    return { ...state, loading: false, current: action.payload }
+  },
+  [saveUserAction.FAILURE]: (state) => {
+    return { ...state, loading: false }
   },
 })
 

@@ -1,5 +1,5 @@
 export enum CommonRoutes {
-  notFound = '/not-found',
+  notFound = 'not-found',
 }
 
 export enum AdminRoutes {
@@ -12,7 +12,8 @@ export enum AdminRoutes {
   positions = 'positions',
   faq = 'faqs',
   gallery = 'gallery',
-  directions = 'directions'
+  directions = 'directions',
+  users = 'users'
 }
 
 export enum ClientRoutes {

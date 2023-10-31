@@ -21,9 +21,9 @@ const Menu: React.FC = () => {
         <Link to={`/${ClientRoutes.departments}`} onClick={toggleMenu} className="p1">Кафедры</Link>
         <Link to={`/${ClientRoutes.directions}`} className="p1 mobile-hidden">Направления</Link>
         <Link to={`/${ClientRoutes.news}`} onClick={toggleMenu} className="p1">Новости</Link>
-        <Link to={`/${ClientRoutes.gallery}`} className="p1 tablet-hidden">Галерея</Link>
-        <Link to={`/${ClientRoutes.deanFaq}`} className="p1 tablet-hidden">Вопрос декану</Link>
-        <Link to={`/${ClientRoutes.contacts}`} className="p1 tablet-hidden">Контакты</Link>
+        <Link to={`/${ClientRoutes.gallery}`} onClick={toggleMenu} className="p1 tablet-hidden">Галерея</Link>
+        <Link to={`/${ClientRoutes.deanFaq}`} onClick={toggleMenu} className="p1 tablet-hidden">Вопрос декану</Link>
+        <Link to={`/${ClientRoutes.contacts}`} onClick={toggleMenu} className="p1 tablet-hidden">Контакты</Link>
       </div>
     )
   }

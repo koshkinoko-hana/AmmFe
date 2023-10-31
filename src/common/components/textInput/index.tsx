@@ -9,14 +9,15 @@ type Props = {
   register: UseFormRegisterReturn
   classList?: string
   disabled?: boolean
+  pattern?: string
 }
 
-const TextInput: FC<Props> = ({label, type, error, register, classList='', disabled }: Props) => {
+const TextInput: FC<Props> = ({label, type, error, register, classList='', disabled, pattern }: Props) => {
   return (
     <>
       {
         label &&
-          <p className={'p3'}>{label}</p>
+          <p className={'p3-label'}>{label}</p>
       }
       <div className="input__container">
 
@@ -34,6 +35,7 @@ const TextInput: FC<Props> = ({label, type, error, register, classList='', disab
         }
         <input 
           type={type}
+          pattern={pattern}
           className={`${error ? 'is-invalid' : ''} ${classList}`}
           {...register}
           disabled={disabled} 

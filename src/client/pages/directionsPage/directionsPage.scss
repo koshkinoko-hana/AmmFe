@@ -1,15 +1,18 @@
-@import "@common/styles/index";
+@import "src/common/styles";
 
 .directions_container {
-    margin: 0 auto;
+    margin: 0 $grid-normal;
     max-width: $grid-desktop;
     .directions_list {
         padding: 0;
-        margin: 0;
+        margin: 0 0 $grid-big 0;
         display: flex;
         flex-wrap: wrap;
         gap: $grid-medium;
-        margin-bottom: $grid-big;
+    }
+
+    @media (max-width: $grid-mobile-max) {
+        margin: 0 $grid-base;
     }
 }
 

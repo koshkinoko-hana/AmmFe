@@ -23,21 +23,6 @@ const ListItem = (props: ListItemProps) => {
       <p className="p2">
         {props.direction?.name || 'Название'}
       </p>
-      <p className="p2">
-        {props.direction?.features ? props.direction?.features.length ? props.direction?.features.join(', ') : '' : 'Особенности'}
-      </p>
-      <p className="p2">
-        {props.direction?.profiles ? props.direction?.profiles.length ? props.direction?.profiles.join(', ') : '' : 'Профили'}
-      </p>
-      <p className="p2">
-        {props.direction?.forms ? props.direction?.forms.length ? props.direction?.forms.join(', ') : '' : 'Формы обучения'}
-      </p>
-      <p className="p2">
-        {props.direction?.price === undefined ? 'Цена' : props.direction?.price}
-      </p>
-      <p className="p2">
-        {props.direction?.exams ? props.direction?.exams.length ? props.direction?.exams.join(', ') : '' : 'Вступительные испытания'}
-      </p>
     </div>
   )
 }

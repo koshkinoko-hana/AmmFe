@@ -1,4 +1,4 @@
-import { EmployeeShort } from '@admin/ducks/types/employee'
+import { EmployeePositionShort, EmployeeShort } from '@admin/ducks/types/employee'
 import { Option } from '@common/components/select/types'
 
 export interface DepartmentShort {
@@ -14,7 +14,10 @@ export interface DepartmentDetailed {
   head: EmployeeShort
   description?: string
   competencies: string[]
-  employees: EmployeeShort[]
+  employees: EmployeePositionShort[]
+  address: string
+  phones: string[]
+  email: string
 }
 
 export interface DepartmentRequest {
@@ -23,6 +26,9 @@ export interface DepartmentRequest {
   description?: string
   head: number
   competencies: string[]
+  address: string
+  phones: string[]
+  email: string
 }
 
 

@@ -1,4 +1,4 @@
-import { ApiError } from '@admin/ducks/types/apiError'
+import { ErrorCode } from '@admin/ducks/types/apiError'
 import { RootState } from '~/common/store'
 
-export const getError: (state: RootState) => ApiError | null = (state) => state.apiError.error
+export const getError: (state: RootState) => ErrorCode | null = (state) => state.apiError.error

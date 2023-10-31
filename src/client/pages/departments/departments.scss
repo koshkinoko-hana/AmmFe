@@ -1,0 +1,26 @@
+@import "src/common/styles";
+.department-container {
+    margin: 0 $grid-normal $grid-big;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-medium;
+    justify-content: center;
+    max-width: $grid-desktop;
+
+  @media (max-width: $grid-mobile-max) {
+    margin: 0 $grid-base;
+  }
+}
+
+@mixin respond($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    .department-container {
+       $cardWidth: map-get($cardWidths, $breakpoint) - (2 * $grid-base);
+       $padding:    if( $cardWidth <  480px, 20px, 30px);
+       padding: 0 $padding;
+    }
+  }
+}
+@each $breakpoint, $width in $breakpoints {
+  @include respond($breakpoint);
+}

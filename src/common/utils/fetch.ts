@@ -13,9 +13,18 @@ export async function request<T>(
   return await fetch(url, req)
     .then((res) => {
       if (!res.ok) {
+        debugger
+        if (res.status === 400 || res.status === 409) {
+          console.log(res.body)
+          return res.json().then((errorObj) => {
+            throw new RequestError(res.status, errorObj.message)
+          })
+        }
         throw new RequestError(res.status, res.statusText)
       }
-      return res.json() as Promise<T>
+      if(res.status !== 204) {
+        return res.json() as Promise<T>
+      }
     })
 }
 

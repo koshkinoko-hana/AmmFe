@@ -1,50 +1,70 @@
-import { errorAction } from '@admin/ducks/actions/apiError'
-import { errorWrapper } from '@admin/ducks/sagas/sagaWrapper'
+import { fetchUserAction, fetchUserListAction, saveUserAction, updateUserAction } from '@admin/ducks/actions/user'
+import { errorWrapper, saveWrapper, updateWrapper } from '@admin/ducks/sagas/sagaWrapper'
+import { User, UserLight } from '@admin/ducks/types/user'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { apiAdmin } from '~/common/consts/general'
-import { get, postUnauth } from '~/common/utils/fetch'
-import { RequestError } from '~/common/utils/request-error'
-import { setToken } from '~/common/utils/token'
-import { fetchMeAction, loginAction } from '../actions/user'
-import { LoginRequestPayload, LoginResponse } from '../types/user'
+import { get, post, putRequest } from '~/common/utils/fetch'
 
-function* auth(action: PayloadAction<LoginRequestPayload>) {
+function* fetchUserList() {
   yield errorWrapper(function* () {
     try {
-      const res: LoginResponse = yield call(postUnauth, `${apiAdmin}/auth`, action.payload)
-      setToken(res.authToken)
-      yield put({ type: loginAction.SUCCESS, payload: res })
+      const res: UserLight[] = yield call(get, `${apiAdmin}/users`)
+      yield put({ type: fetchUserListAction.SUCCESS, payload: { news: res } })
     } catch (e: unknown) {
-      yield put({ type: loginAction.FAILURE })
-      if ((e as RequestError).code === 404) {
-        yield put({ type: loginAction.FAILURE })
-      } else {
-        throw e
-      }
+      yield put({ type: fetchUserListAction.FAILURE })
+      throw e
     }
   })
 }
 
-function* fetchMe() {
+function* fetchUser(action: PayloadAction<{ slug: string }>) {
   yield errorWrapper(function* () {
     try {
-      const res: LoginResponse = yield call(get, `${apiAdmin}/user/me`)
-      yield put({ type: loginAction.SUCCESS, payload: res })
+      const res: User = yield call(get, `${apiAdmin}/users/${action.payload.slug}`)
+      yield put({ type: fetchUserAction.SUCCESS, payload: { employee: res } })
     } catch (e: unknown) {
-      if ((e as RequestError).code === 404) {
-        setToken('')
-        yield put(errorAction(401))
-      }
-      else throw e
+      yield put({ type: fetchUserAction.FAILURE })
+      throw e
     }
+  })
+}
+
+function* saveUser(action: PayloadAction<User>) {
+  yield errorWrapper(function* () {
+    yield saveWrapper(function* () {
+
+      try {
+        yield call(post, `${apiAdmin}/users`, action.payload)
+        yield put({ type: saveUserAction.SUCCESS, payload: action.payload })
+      } catch (e: unknown) {
+        yield put({ type: saveUserAction.FAILURE })
+        throw e
+      }
+    })
+  })
+}
+
+function* updateUser(action: PayloadAction<User>) {
+  yield errorWrapper(function* () {
+    yield updateWrapper(function* () {
+      try {
+        yield call(putRequest, `${apiAdmin}/users/${action.payload.id}`, action.payload)
+        yield put({ type: updateUserAction.SUCCESS, payload: action.payload})
+      } catch (e: unknown) {
+        yield put({ type: updateUserAction.FAILURE })
+        throw e
+      }
+    })
   })
 }
 
 function* userWatcher() {
   yield all([
-    takeLatest(loginAction.TRIGGER, auth),
-    takeLatest(fetchMeAction.TRIGGER, fetchMe)
+    takeLatest(fetchUserListAction.TRIGGER, fetchUserList),
+    takeLatest(fetchUserAction.TRIGGER, fetchUser),
+    takeLatest(saveUserAction.TRIGGER, saveUser),
+    takeLatest(updateUserAction.TRIGGER, updateUser),
   ])
 }
 

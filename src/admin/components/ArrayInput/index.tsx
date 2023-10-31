@@ -2,7 +2,7 @@ import './ArrayInput.scss'
 import React, { useState } from 'react'
 import { Props } from './types'
 
-const ArrayInput: React.FC<Props> = ({label, values, setValues}) => {
+const ArrayInput: React.FC<Props> = ({label, values, setValues, pattern}) => {
 
   const [value, setValue] = useState('')
 
@@ -23,7 +23,11 @@ const ArrayInput: React.FC<Props> = ({label, values, setValues}) => {
     <div className="input">
       <p className='p3'>{label}</p>
       <div className="input_container">
-        <input type="text" value={value} onChange={(e) => setValue(e.target.value)} />
+        <input
+          type="text"
+          value={value}
+          pattern={pattern}
+          onChange={(e) => setValue(e.target.value)} />
         <div className="btn" onClick={handleAdd}>
           <span>+</span>
         </div>

@@ -1,20 +1,20 @@
 @import 'src/common/styles/index';
 
 
-.news_header {
-    margin: $grid-medium auto $grid-normal;
+.page-header {
+    margin: $grid-medium $grid-normal $grid-normal;
     padding: $grid-medium $grid-normal;
     border-radius: $grid-base;
     background-color: $color-grey10;
     max-width: $grid-desktop;
-    &_links {
+    &__links {
         margin: 0;
         padding: 0;
         list-style: none;
         display: flex;
         align-items: center;
         gap: $grid-small-extended;
-        &__item {
+        &-item {
             display: flex;
             gap: $grid-small;
             span {
@@ -60,19 +60,19 @@
 }
 
 @media screen and (max-width: $grid-laptop-max) {
-    .news_header {
+    .page-header {
         max-width: $grid-tablet-max;
     }
 }
 
 @media screen and (max-width: $grid-tablet-max) {
-    .news_header {
+    .page-header {
         max-width: $grid-mobile-max;
     }
 }
 
 @media screen and (max-width: $grid-mobile-max) {
-    .news_header {
+    .page-header {
         margin: $grid-medium $grid-base-extended $grid-normal;
         &__title {
             &::after {

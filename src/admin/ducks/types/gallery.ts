@@ -3,13 +3,15 @@ export interface GalleryPhoto {
     title?: string
     path: string
 }
-export interface GalleryPhotoListItem extends GalleryPhoto {
-    createdAt: Date
+
+export interface CreateGalleryPhotoRequest {
+    title?: string
+    path: string
 }
 
 export interface GalleryState {
     loading: boolean
     total: number
     photo: GalleryPhoto | null
-    photos: GalleryPhotoListItem[]
+    photos: GalleryPhoto[]
   }

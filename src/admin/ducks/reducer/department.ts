@@ -1,9 +1,10 @@
 import {
   fetchDepartmentAction,
   fetchDepartmentListAction,
-  fetchDepartmentOptionsAction, saveDepartmentAction, updateDepartmentAction,
+  fetchDepartmentOptionsAction, saveDepartmentAction, updateDepartmentAction, updateDepartmentEmployeesAction,
 } from '@admin/ducks/actions/department'
 import { DepartmentDetailed, DepartmentShort, DepartmentState } from '@admin/ducks/types/department'
+import { EmployeePositionShort } from '@admin/ducks/types/employee'
 import { Option } from '@common/components/select/types'
 import { Action, createReducer, PayloadAction } from '@reduxjs/toolkit'
 
@@ -52,6 +53,15 @@ const department = createReducer(initialState, {
     return { ...state,  loading: false, error: false }
   },
   [updateDepartmentAction.FAILURE]: (state) => {
+    return { ...state, loading: false, error: true }
+  },
+  [updateDepartmentEmployeesAction.TRIGGER]: (state) => {
+    return { ...state, loading: true }
+  },
+  [updateDepartmentEmployeesAction.SUCCESS]: (state, action: PayloadAction<EmployeePositionShort[]>) => {
+    return { ...state,  loading: false, error: false, current: state.current && {...state.current, employees: action.payload}}
+  },
+  [updateDepartmentEmployeesAction.FAILURE]: (state) => {
     return { ...state, loading: false, error: true }
   },
   [saveDepartmentAction.TRIGGER]: (state) => {

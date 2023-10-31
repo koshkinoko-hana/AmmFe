@@ -8,12 +8,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   .item {
     display: grid;
     grid-template-columns: $grid-normal 7fr 12fr;
     cursor: pointer;
+    grid-gap: $grid-tiny-3x;
 
     &__bold {
       .p2 {

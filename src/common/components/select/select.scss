@@ -1,0 +1,30 @@
+@import "src/common/styles";
+
+.input {
+  &__container {
+    padding-top: $grid-tiny-3x;
+    position: relative;
+  }
+
+  &__error {
+    position: absolute;
+    font-size: $grid-small;
+    line-height: $grid-tiny-3x;
+    color: $color-red80;
+    top: 0;
+  }
+}
+
+.p3-label {
+  @include p3-desktop();
+  @media (max-width: $grid-mobile-max) {
+    @include p2-mobile();
+  }
+  margin-right: auto;
+  margin-top: $grid-small;
+  font-weight: 500;
+}
+
+.is-invalid {
+  border-color: $color-red80;
+}

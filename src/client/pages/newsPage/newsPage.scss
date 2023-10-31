@@ -1,13 +1,16 @@
-@import '@common/styles/index';
+@import 'src/common/styles';
 
 .news-container {
-    margin: 0 auto;
+    margin: 0 $grid-normal $grid-big;
     max-width: $grid-desktop;
     display: flex;
     flex-wrap: wrap;
     gap: $grid-medium;
     justify-content: center;
-    margin-bottom: $grid-big;
+
+    @media (max-width: $grid-mobile-max) {
+        margin: 0 $grid-base;
+    }
 }
 
 @media screen and (max-width: $grid-desktop) {

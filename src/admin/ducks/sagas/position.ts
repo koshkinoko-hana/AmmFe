@@ -6,7 +6,7 @@ import {
   updatePositionAction,
   updatePositionListAction
 } from '@admin/ducks/actions/position'
-import { errorWrapper } from '@admin/ducks/sagas/sagaWrapper'
+import { errorWrapper, saveWrapper, updateWrapper } from '@admin/ducks/sagas/sagaWrapper'
 import { PaginatedResponseWrapper } from '@admin/ducks/types/paginatedResponseWrapper'
 import { Position, PositionNew } from '@admin/ducks/types/position'
 import { Option } from '@common/components/select/types'
@@ -30,27 +30,31 @@ function* fetchPositions() {
 
 function* savePosition(action: PayloadAction<PositionNew>) {
   yield errorWrapper(function* () {
-    try {
-      const res: Position = yield call(post, `${apiAdmin}/position`, action.payload)
-      yield put(updatePositionListAction(res))
-      yield put(closeDialogueAction())
-    } catch (e: unknown) {
-      yield put(setLoadingPositionAction(false))
-      throw e
-    }
+    yield saveWrapper(function* () {
+      try {
+        const res: Position = yield call(post, `${apiAdmin}/position`, action.payload)
+        yield put(updatePositionListAction(res))
+        yield put(closeDialogueAction())
+      } catch (e: unknown) {
+        yield put(setLoadingPositionAction(false))
+        throw e
+      }
+    })
   })
 }
 
 function* updatePosition(action: PayloadAction<Position>) {
   yield errorWrapper(function* () {
-    try {
-      const res: Position = yield call(putRequest, `${apiAdmin}/position/${action.payload.id}`, action.payload)
-      yield put(updatePositionListAction(res))
-      yield put(closeDialogueAction())
-    } catch (e: unknown) {
-      yield put(setLoadingPositionAction(false))
-      throw e
-    }
+    yield updateWrapper(function* () {
+      try {
+        const res: Position = yield call(putRequest, `${apiAdmin}/position/${action.payload.id}`, action.payload)
+        yield put(updatePositionListAction(res))
+        yield put(closeDialogueAction())
+      } catch (e: unknown) {
+        yield put(setLoadingPositionAction(false))
+        throw e
+      }
+    })
   })
 }
 

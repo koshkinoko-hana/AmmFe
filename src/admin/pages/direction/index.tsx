@@ -6,13 +6,10 @@ import React, {
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { SingleValue } from 'react-select'
 import ArrayInput from '~/admin/components/ArrayInput'
 import { createDirectionAction, updateDirectionAction } from '~/admin/ducks/actions/direction'
 import { getDirections } from '~/admin/ducks/selectors/direction'
-import { DirectionNew } from '~/common/types/direction'
-import Select from '~/common/components/select'
-import { Option } from '~/common/components/select/types'
+import { DirectionNew } from '~/admin/ducks/types/direction'
 import { FormData } from './types'
 
 
@@ -40,7 +37,6 @@ const Direction: React.FC = () => {
     register,
     handleSubmit,
     control,
-    setValue,
     formState: { isSubmitting, isValid, errors }
   } = useForm<FormData>({ 
     mode: 'onChange',
@@ -97,17 +93,6 @@ const Direction: React.FC = () => {
           register={register('number', { required: true, maxLength: 255, value: currentDirection?.number || '' })}
           classList="full-width"
         />
-        {/*<Select*/}
-        {/*  label={'Тип'}*/}
-        {/*  error={errors.type?.type}*/}
-        {/*  register={register('type', { required: true, maxLength: 255, value: findOptionByValue(currentDirection?.type || '') || typeOptions[0] })}*/}
-        {/*  classList="full-width"*/}
-        {/*  onChange={(value) => {*/}
-        {/*    setValue('type', (value as SingleValue<Option>)!)*/}
-        {/*  }}*/}
-        {/*  options={typeOptions}*/}
-        {/*  defaultValue={[findOptionByValue(currentDirection?.type || '') || typeOptions[0]]}*/}
-        {/*/>*/}
         <TextInput
           type="text"
           label={'Название'}

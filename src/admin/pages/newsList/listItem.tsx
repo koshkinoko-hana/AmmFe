@@ -20,10 +20,10 @@ const ListItem = (props: ListItemProps) => {
         {props.news?.name || 'Заголовок'}
       </p>
       <p className="p2">
-        {props.news?.createdAt || 'Дата создания'}
+        {props.news ? (new Date(props.news.createdAt)).toDateString() : 'Дата создания'}
       </p>
       <p className="p2">
-        {props.news?.updatedAt || 'Дата обновления'}
+        {props.news? (props.news?.updatedAt ? (new Date(props.news?.updatedAt)).toDateString() : '-') : 'Oбновленo'}
       </p>
     </div>
   )

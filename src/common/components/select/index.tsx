@@ -1,6 +1,5 @@
-import './textarea.scss'
+import './select.scss'
 import { Option } from '@common/components/select/types'
-import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form/dist/types/form'
 import React, {FC} from 'react'
 
 import SelectInput, { SingleValue } from 'react-select'
@@ -14,8 +13,8 @@ type Props = {
   value?:  Option
   valueMulti?:  Option[]
   options: Option[]
-  onChange?: (value: SingleValue<Option>) => void
-  onChangeMulti?: (values: MultiValue<Option>) => void
+  onChange?: (value: Option) => void
+  onChangeMulti?: (values: Option[]) => void
   required?: boolean
 }
 
@@ -33,9 +32,9 @@ const Select: FC<Props> = ({
 
   const onChangeCLick = (values: MultiValue<Option> | SingleValue<Option>) => {
     if(isMulti) {
-      onChangeMulti && onChangeMulti(values as MultiValue<Option>)
+      onChangeMulti && onChangeMulti(values as Option[])
     } else {
-      onChange && onChange(values as SingleValue<Option>)
+      onChange && onChange(values as Option)
     }
   }
 
@@ -45,7 +44,7 @@ const Select: FC<Props> = ({
     <>
       {
         label &&
-          <p className={'p3'}>{label}</p>
+          <p className="p3-label">{label}</p>
       }
       <div className="input__container">
 

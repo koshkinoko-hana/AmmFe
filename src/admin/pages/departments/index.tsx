@@ -2,8 +2,6 @@ import './departments.scss'
 import { fetchDepartmentListAction } from '@admin/ducks/actions/department'
 import { getDepartmentLoading, getDepartments } from '@admin/ducks/selectors/department'
 import ListItem from '@admin/pages/departments/listItem'
-import { openDialogueAction } from '@common/ducks/slice/dialogue'
-import { DialogueOption } from '@common/ducks/types/dialogueOption'
 import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -22,46 +20,45 @@ const Departments: React.FC = () => {
   }, [])
 
   const createDepartment = useCallback(() => {
-    dispatch(openDialogueAction(DialogueOption.ADMIN_DEPARTMENT))
+    navigate(`/${AdminRoutes.root}/${AdminRoutes.department}`)
   }, [])
 
   const updateDepartment = (id: number) => {
-    if(id === 0)
-      navigate(`/${AdminRoutes.root}/${AdminRoutes.department}`)
-    else
-      navigate(`/${AdminRoutes.root}/${AdminRoutes.department}/${id}`)
+    navigate(`/${AdminRoutes.root}/${AdminRoutes.department}/${id}`)
   }
 
-  if(id_default === undefined || id_default === '0'){
+  if (id_default === undefined || id_default === '0') {
     return (
       loading ?
         <>loading</> :
-        departments &&
         <div className="container departments">
           <div className="departments__header">
             <h1>Кафедры</h1>
             <button onClick={createDepartment}>Новая</button>
           </div>
-          <List itemsRender={[
-            <ListItem department={{id: 'Id', name: 'Название', description: 'Описание'}} key="header" bold={true}/>,
-            ...departments.map((d) => <ListItem department={d} key={d.id} onClick={() => updateDepartment(d.id)}/>)
-          ]}/>
+          {departments &&
+           <List itemsRender={[
+             <ListItem department={{ id: 'Id', name: 'Название', description: 'Описание' }} key="header" bold={true}/>,
+             ...departments.map((d) => <ListItem department={d} key={d.id} onClick={() => updateDepartment(d.id)}/>)
+           ]}/>
+          }
         </div>
     )
   } else {
     return (
       loading ?
         <>loading</> :
-        departments &&
         <div className="container departments">
           <div className="departments__header">
             <h1>Кафедры</h1>
             <button onClick={createDepartment}>Новая</button>
           </div>
-          <List itemsRender={[
-            <ListItem department={{id: 'Id', name: 'Название', description: 'Описание'}} key="header" bold={true}/>,
-            ...departments.map((d) => <ListItem department={d} key={d.id} onClick={() => updateDepartment(d.id-1)}/>)
-          ]}/>
+          {departments &&
+           <List itemsRender={[
+             <ListItem department={{ id: 'Id', name: 'Название', description: 'Описание' }} key="header" bold={true}/>,
+             ...departments.map((d) => <ListItem department={d} key={d.id} onClick={() => updateDepartment(d.id - 1)}/>)
+           ]}/>
+          }
         </div>
     )
   }

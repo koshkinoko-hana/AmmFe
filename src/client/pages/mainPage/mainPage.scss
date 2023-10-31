@@ -9,7 +9,7 @@
     grid-gap: $grid-normal-extended;
     padding: $grid-base-extended;
     max-width: $grid-desktop;
-    margin: auto;
+    margin: 0 $grid-normal;
 
     @media (max-width: $grid-laptop-max) {
       grid-gap: $grid-base;
@@ -22,6 +22,7 @@
 
     @media (max-width: $grid-mobile-max) {
       grid-template-columns: 1fr;
+      margin: 0 $grid-base;
     }
 
     .icon {
