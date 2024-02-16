@@ -1,5 +1,5 @@
-import { loginAction } from '@admin/ducks/actions/user'
-import { getUserLoggedIn } from '@admin/ducks/selectors/user'
+import { loginAction } from '@admin/ducks/actions/me'
+import { getMeLoggedIn } from '@admin/ducks/selectors/me'
 import React, { FC, useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,7 +19,7 @@ const Login: FC = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const loggedIn = useSelector(getUserLoggedIn)
+  const loggedIn = useSelector(getMeLoggedIn)
 
   useEffect(() => {
     if(loggedIn) {

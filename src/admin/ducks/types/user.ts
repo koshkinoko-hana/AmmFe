@@ -5,12 +5,26 @@ export enum Role {
   CONTENT_MODERATOR = 'content_moderator',
   TEACHER_MODERATOR = 'teacher_moderator',
   COMPANY_MODERATOR = 'company_moderator',
+}
 
+
+export interface UserLight {
+  id?: number
+  login: string
+  fullName?: string
+  roles: Role[]
+}
+
+
+export interface User extends UserLight {
+  companyId?: number
+  companyName?: string
+  companyDescription?: string
 }
 
 export interface UserState {
-  loggedIn: boolean
-  roles: Role[]
+  users: UserLight[]
+  current?: User
   loading: boolean
 }
 

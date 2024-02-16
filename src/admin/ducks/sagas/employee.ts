@@ -1,14 +1,15 @@
 import {
+  fetchDepartmentAction,
   uploadPhoto
 } from '@admin/ducks/actions/department'
 import {
   deleteEmployeeAction,
   fetchEmployeeAction,
-  fetchEmployeeListAction,
+  fetchEmployeeListAction, fetchEmployeeOptionsAction,
   saveEmployeeAction,
   updateEmployeeAction
 } from '@admin/ducks/actions/employee'
-import { errorWrapper } from '@admin/ducks/sagas/sagaWrapper'
+import { errorWrapper, saveWrapper, updateWrapper } from '@admin/ducks/sagas/sagaWrapper'
 import { Employee, EmployeeLight, EmployeeNew, UploadedFileResponse } from '@admin/ducks/types/employee'
 import { closeDialogueAction, setLoadingDialogueAction } from '@common/ducks/slice/dialogue'
 import { PayloadAction } from '@reduxjs/toolkit'
@@ -18,7 +19,6 @@ import { apiAdmin } from '~/common/consts/general'
 import { get, post, putRequest, del } from '~/common/utils/fetch'
 
 
-
 function* fetchEmployees() {
   yield errorWrapper(function* () {
     try {
@@ -26,6 +26,18 @@ function* fetchEmployees() {
       yield put({ type: fetchEmployeeListAction.SUCCESS, payload: { employees: res } })
     } catch (e: unknown) {
       yield put({ type: fetchEmployeeListAction.FAILURE })
+      throw e
+    }
+  })
+}
+
+function* fetchEmployeeOptions() {
+  yield errorWrapper(function* () {
+    try {
+      const res: EmployeeLight[] = yield call(get, `${apiAdmin}/employee/options`)
+      yield put({ type: fetchEmployeeOptionsAction.SUCCESS, payload: { options: res } })
+    } catch (e: unknown) {
+      yield put({ type: fetchEmployeeOptionsAction.FAILURE })
       throw e
     }
   })
@@ -45,28 +57,41 @@ function* fetchEmployee(action: PayloadAction<{ id: number }>) {
 
 function* saveEmployee(action: PayloadAction<EmployeeNew>) {
   yield errorWrapper(function* () {
-    const res: Employee = yield call(post, `${apiAdmin}/employee`, action.payload)
-    yield put({ type: saveEmployeeAction.SUCCESS, payload: res })
+    yield saveWrapper(function* () {
+      try {
+        const res: Employee = yield call(post, `${apiAdmin}/employee`, action.payload)
+        yield put({ type: saveEmployeeAction.SUCCESS, payload: res })
+      } catch (e: unknown) {
+        yield put({ type: saveEmployeeAction.FAILURE })
+        throw e
+      }
+    })
   })
 }
 
 function* deleteEmployee(action: PayloadAction<{ id: number }>) {
   yield errorWrapper(function* () {
-    const res: Employee = yield call(del, `${apiAdmin}/employee/${action.payload.id}`)
-    yield put({ type: deleteEmployeeAction.SUCCESS, payload: res })
+    try {
+      const res: Employee = yield call(del, `${apiAdmin}/employee/${action.payload.id}`)
+      yield put({ type: deleteEmployeeAction.SUCCESS, payload: res })
+    } catch (e: unknown) {
+      yield put({ type: deleteEmployeeAction.FAILURE })
+      throw e
+    }
   })
 }
 
 function* updateEmployee(action: PayloadAction<Employee>) {
   yield errorWrapper(function* () {
-    try {
-      const res: Employee = yield call(putRequest, `${apiAdmin}/employee/${action.payload.id}`, action.payload)
-      yield put({type: updateEmployeeAction.SUCCESS, payload: res})
-      yield put(closeDialogueAction())
-    } catch (e: unknown) {
-      yield put(setLoadingDialogueAction(false))
-      throw e
-    }
+    yield updateWrapper(function* () {
+      try {
+        const res: Employee = yield call(putRequest, `${apiAdmin}/employee/${action.payload.id}`, action.payload)
+        yield put({ type: updateEmployeeAction.SUCCESS, payload: res })
+      } catch (e: unknown) {
+        yield put({ type: updateEmployeeAction.FAILURE })
+        throw e
+      }
+    })
   })
 }
 
@@ -75,9 +100,9 @@ function* saveImage(action: PayloadAction<ImageType>) {
   yield errorWrapper(function* () {
     try {
       const res: UploadedFileResponse = yield call(post, `${apiAdmin}/employee/photo`, { file: action.payload.file })
-      console.log(res)
+      yield put({ type: uploadPhoto.SUCCESS, payload: res })
     } catch (e: unknown) {
-      yield put(setLoadingDialogueAction(false))
+      yield put({ type: uploadPhoto.FAILURE })
       throw e
     }
   })
@@ -86,6 +111,7 @@ function* saveImage(action: PayloadAction<ImageType>) {
 function* employeeWatcher() {
   yield all([
     takeLatest(fetchEmployeeListAction.TRIGGER, fetchEmployees),
+    takeLatest(fetchEmployeeOptionsAction.TRIGGER, fetchEmployeeOptions),
     takeLatest(fetchEmployeeAction.TRIGGER, fetchEmployee),
     takeLatest(saveEmployeeAction.TRIGGER, saveEmployee),
     takeLatest(updateEmployeeAction.TRIGGER, updateEmployee),

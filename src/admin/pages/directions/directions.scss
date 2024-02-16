@@ -9,13 +9,14 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: $grid-base-extended;
+    align-items: center;
   }
 
   .item {
     display: grid;
-    grid-template-columns: $grid-normal repeat(8, 1fr);
+    grid-template-columns: $grid-normal repeat(3, 1fr);
     cursor: pointer;
-    grid-gap: $grid-small;
+    grid-gap: $grid-tiny-3x;
 
     &__bold {
       .p2 {

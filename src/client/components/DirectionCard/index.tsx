@@ -13,7 +13,7 @@ const DepartmentCard: FC<directionCard> = ({img, direction, backgroundColor, isA
         style={{ backgroundColor }}
         onClick={onClick}
       >
-        <h4 className='direction__card__text'>{direction.name}</h4>
+        <h4 className='direction__card__text'>{direction.number} {direction.name}</h4>
         <img 
           src={img} 
           alt='direction-icon' 

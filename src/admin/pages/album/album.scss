@@ -1,0 +1,47 @@
+@import "src/common/styles/constants";
+@import "src/common/styles/colors";
+@import "src/common/styles/fonts";
+
+.album {
+  &--form {
+    padding: $grid-big;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: $grid-tiny-3x;
+
+    .button {
+      margin-top: $grid-tiny-3x;
+
+      &__disabled {
+        background: $color-grey80;
+        border: none;
+
+        &:hover {
+          background: $color-grey80;
+          color: white;
+          border: none;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  .image {
+    max-width: $grid-big * 2;
+    max-height: $grid-big * 2;
+  }
+
+  .photos {
+    align-items: center;
+
+    .close {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+

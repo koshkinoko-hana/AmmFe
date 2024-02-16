@@ -3,6 +3,7 @@ export interface ListItemProps {
     id: number
     title?: string
     path: string
+    photoDate?: string
   }
   bold?: boolean
   onClick?: (id: number) => void

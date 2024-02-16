@@ -1,0 +1,9 @@
+@import "src/common/styles";
+
+.delimiter {
+  width: 100%;
+  height: 2px;
+  background-color: $color-key-primary;
+  margin-top: $grid-base-extended;
+  margin-bottom: $grid-base-extended;
+}

@@ -1,0 +1,41 @@
+@import "src/common/styles";
+
+.department__admin {
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  &__employees {
+    .item {
+      display: grid;
+      grid-template-columns: 1fr 1fr $grid-base-extended $grid-base-extended;
+      cursor: pointer;
+      grid-gap: $grid-tiny-3x;
+      align-items: center;
+      padding-bottom: $grid-tiny-3x;
+      position: relative;
+      &__bold {
+        .p2 {
+          font-weight: $font-weight-medium;
+        }
+      }
+      &__error {
+        position: absolute;
+        bottom: 0;
+        font-size: $grid-small;
+        line-height: $grid-tiny-3x;
+        color: $color-red80;
+      }
+    }
+    .save-list {
+      position: fixed;
+      right: $grid-base;
+      bottom: $grid-base;
+    }
+  }
+}

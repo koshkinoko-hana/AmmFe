@@ -18,9 +18,14 @@ const Menu: React.FC = () => {
     return (
       <div className="side-menu">
         <Link to="/" className="p1">Расписание</Link>
-        <Link to={`/${AdminRoutes.root}/${AdminRoutes.departments}`} onClick={toggleMenu} className="p1">Кафедры</Link>
-        <Link to={`/${AdminRoutes.root}/${AdminRoutes.positions}`} onClick={toggleMenu} className="p1">Должности</Link>
-        <Link to={`/${AdminRoutes.root}/${AdminRoutes.employees}`} onClick={toggleMenu} className="p1">Сотрудники</Link>
+        <Link to={`${AdminRoutes.departments}`} onClick={toggleMenu} className="p1" >Кафедры</Link>
+        <Link to={`${AdminRoutes.employees}`} onClick={toggleMenu} className="p1">Сотрудники</Link>
+        <Link to={`${AdminRoutes.directions}`} onClick={toggleMenu} className="p1">Направления</Link>
+        <Link to={`${AdminRoutes.gallery}`} onClick={toggleMenu} className="p1">Галерея</Link>
+        <Link to={`${AdminRoutes.faq}`} onClick={toggleMenu} className="p1">Вопрос декану</Link>
+        <Link to={`${AdminRoutes.positions}`} onClick={toggleMenu} className="p1">Должности</Link>
+        <Link to={`${AdminRoutes.news}`} onClick={toggleMenu} className="p1">Новости</Link>
+
       </div>
     )
   }

@@ -1,0 +1,35 @@
+@import "src/common/styles/constants";
+@import "src/common/styles/colors";
+@import "src/common/styles/fonts";
+
+.admin-users {
+  margin: auto;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__btn {
+      width: auto;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: $grid-normal 1fr 1fr 1fr $grid-normal;
+    cursor: pointer;
+    grid-gap: $grid-small;
+
+    &__bold {
+      .p2 {
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}

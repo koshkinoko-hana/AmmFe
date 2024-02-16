@@ -1,4 +1,5 @@
 import './clientRoute.scss'
+import BugAlarm from '@client/components/BugAlarm'
 import Header from '@client/components/header'
 import Menu from '@client/components/menu'
 import Dialogue from '@common/components/dialogue'
@@ -15,6 +16,7 @@ const ClientRoute: React.FC = () => {
       <Dialogue/>
       <Outlet />
       <Footer />
+      <BugAlarm/>
     </>
   )
 }

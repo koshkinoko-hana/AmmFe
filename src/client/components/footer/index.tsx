@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/react-in-jsx-scope */
 import './footer.scss'
+import { ClientRoutes } from '@common/types/routes'
 import IconColor from '~/assets/IconColor.svg'
 import IconBW from '~/assets/IconBw.svg'
 import { Link } from 'react-router-dom'
@@ -19,14 +20,8 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <div className='column'>
-              <Link to="/" className="p2">Новости</Link>
-              <Link to="/" className="p2">Кафедры</Link>
-              <Link to="/" className="p2">Вопрос декану</Link>
-            </div>
-            <div className='column'>
-              <Link to="/" className="p2">Галерея</Link>
-              <Link to="/" className="p2">Контакты</Link>
-              <Link to="/" className="p2">Контакты</Link>
+              <Link to={`/${ClientRoutes.deanFaq}`} className="p2">Вопрос декану</Link>
+              <Link to={`/${ClientRoutes.contacts}`} className="p2">Контакты</Link>
             </div>
           </div>
           <div className='contacts-container'>
@@ -57,7 +52,7 @@ const Footer: React.FC = () => {
             <img src={IconBW} />
           </div>
         </div>
-        <div className="copyright-text p4">© Факультет ПММ, {d.getFullYear()}</div>
+        <div className="copyright-text p4">© Факультет ПММ, 2023</div>
       </div>
     </div>
   )

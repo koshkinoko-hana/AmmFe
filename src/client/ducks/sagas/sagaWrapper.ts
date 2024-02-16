@@ -12,7 +12,7 @@ export function* errorWrapper(saga: () => any) {
       if (requestError.code === 401) {
         setToken('')
       }
-      yield put(errorAction(requestError.code))
+      yield put(errorAction({code: requestError.code}))
     }
   }
 }

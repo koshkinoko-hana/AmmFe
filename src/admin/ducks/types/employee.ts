@@ -32,10 +32,23 @@ export interface EmployeeState {
   loading: boolean
   current?: Employee
   employees: Employee[]
+  options: Option[]
 }
 
 export interface UploadedFileResponse {
   id: number
   path: string
   title?: string
+}
+
+export interface EmployeeShort {
+  id: number
+  name: string
+}
+
+export interface EmployeePositionShort {
+  id: number
+  name: string
+  positionId: number
+  positionName: string
 }

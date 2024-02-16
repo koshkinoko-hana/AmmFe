@@ -26,4 +26,5 @@ export interface NewsState {
   loading: boolean
   current?: News
   newsList: NewsLight[]
+  total: number
 }

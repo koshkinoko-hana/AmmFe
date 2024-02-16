@@ -1,5 +1,8 @@
+import Album from '@admin/pages/album'
+import Albums from '@admin/pages/albums'
 import NewsDetails from '@admin/pages/news'
 import NewsList from '@admin/pages/newsList'
+import NotFound from '@admin/pages/notFound'
 import Contacts from '@client/pages/contacts'
 import React from 'react'
 import AdminRoute from '@admin/components/adminRoute/AdminRoute'
@@ -14,11 +17,11 @@ import NewsPage from '~/client/pages/newsPage'
 import QuestionPage from '~/client/pages/questionPage'
 import Login from './admin/pages/login'
 import './common/styles/index.scss'
-import { AdminRoutes, ClientRoutes } from '@common/types/routes'
-import DepartmentsPage from './client/pages/departmentPage'
-import DepartmentPage from './client/pages/departments/Department1Page'
+import { AdminRoutes, ClientRoutes, CommonRoutes } from '@common/types/routes'
+import DepartmentsPage from './client/pages/departments'
+import DepartmentPage from '@client/pages/departmentDetails'
 import NewsDetailsPage from './client/pages/newsDetailsPage'
-import AdminDepartmentPage from './admin/pages/departmentPage'
+import AdminDepartmentDetails from './admin/pages/departmentDetails'
 import AdminFaqPage from './admin/pages/deanFaqPage'
 import Question from './admin/pages/deanFaq'
 import GalleryAdmin from './admin/pages/gallery'
@@ -36,14 +39,15 @@ function App(): JSX.Element {
       <Route path={`/${AdminRoutes.root}`} element={<AdminRoute/>}>
         <Route path={`${AdminRoutes.departments}`} element={<Departments/>}/>
         <Route path={`${AdminRoutes.department}`}>
-          <Route path="" element={<AdminDepartmentPage/>}/>
-          <Route path="create" element={<AdminDepartmentPage/>}/>
-          <Route path=":id" element={<AdminDepartmentPage/>}/>
+          <Route path="" element={<AdminDepartmentDetails/>}/>
+          <Route path="create" element={<AdminDepartmentDetails/>}/>
+          <Route path=":id" element={<AdminDepartmentDetails/>}/>
         </Route>
         <Route path={`${AdminRoutes.positions}`} element={<Positions/>}/>
         <Route path={`${AdminRoutes.gallery}`}>
-          <Route path="" element={<GalleryAdmin/>}/>
-          <Route path="create" element={<CreatePhoto/>}/>
+          <Route path="" element={<Albums/>}/>
+          <Route path="create" element={<Album/>}/>
+          <Route path=":id" element={<Album/>}/>
         </Route>
         <Route path={`${AdminRoutes.employees}`}>
           <Route path="" element={<Employees/>}/>
@@ -65,6 +69,7 @@ function App(): JSX.Element {
           <Route path="create" element={<NewsDetails />} />
           <Route path=":id" element={<NewsDetails />} />
         </Route>
+        <Route path={`${CommonRoutes.notFound}`} element={<NotFound/>}/>
       </Route>
       <Route path={'/'} element={<ClientRoute/>}>
         <Route path={`${ClientRoutes.home}`} element={<MainPage/>}/>
@@ -87,6 +92,7 @@ function App(): JSX.Element {
         {/*  <Route path="create" element={<Employee/>}/>*/}
         {/*  <Route path=":id" element={<Employee/>}/>*/}
         {/*</Route>*/}
+        <Route path={`${CommonRoutes.notFound}`} element={<NotFound/>}/>
       </Route>
     </Routes>
   )

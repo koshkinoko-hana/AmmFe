@@ -64,7 +64,6 @@ const NewsDetails: React.FC = () => {
 
   const onSubmit = useCallback((data: FormData) => {
     const { slug, name, description } = data
-    debugger
     if (currentNews) {
       const news = { ...currentNews }
       news.name = name

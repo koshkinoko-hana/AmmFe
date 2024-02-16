@@ -6,21 +6,23 @@ import {
   updateNewsAction
 } from '@admin/ducks/actions/news'
 import { News, NewsLight, NewsState } from '@admin/ducks/types/news'
+import { PaginatedResponseWrapper } from '@admin/ducks/types/paginatedResponseWrapper'
 import { createReducer, PayloadAction } from '@reduxjs/toolkit'
 
 
 const initialState: NewsState = {
   newsList: [],
-  loading: false
+  loading: false,
+  total: 0
 }
 
 const news = createReducer(initialState, {
   [fetchNewsListAction.TRIGGER]: (state) => {
     return { ...state, loading: true }
   },
-  [fetchNewsListAction.SUCCESS]: (state, action: PayloadAction<{news: NewsLight[]}>) => {
+  [fetchNewsListAction.SUCCESS]: (state, action: PayloadAction<{news: PaginatedResponseWrapper<NewsLight>}>) => {
     const { news } = action.payload
-    return { ...state, loggedIn: true, loading: false, newsList: news }
+    return { ...state, loading: false, newsList: news.data, total: news.total }
   },
   [fetchNewsListAction.FAILURE]: (state) => {
     return { ...state, loading: false }

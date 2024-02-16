@@ -1,3 +1,6 @@
 export interface AppState {
-  menuShown: boolean
+  menuShown: boolean,
+  showSaveToast: boolean,
+  showUpdateToast: boolean,
+  showDeleteToast: boolean
 }

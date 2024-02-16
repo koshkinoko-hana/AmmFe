@@ -1,5 +1,6 @@
 import { Option } from '@common/components/select/types'
 import React from 'react'
+import { FaTrashAlt } from 'react-icons/fa'
 import { ListItemProps } from './types'
 import bucket from '~/assets/delete.svg'
 
@@ -22,8 +23,7 @@ const ListItem = (props: ListItemProps) => {
     props.onClick(props.employee.id)
   }
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation()
+  const handleDelete = () => {
     if(props.onDelete && props.employee) {
       props.onDelete(props.employee.id)
     }
@@ -38,31 +38,9 @@ const ListItem = (props: ListItemProps) => {
         <p className="p2">
           {props.employee?.name || 'Имя'}
         </p>
-        <p className="p2">
-          {optionsToString(props.employee?.departments) || 'Кафедра'}
-        </p>
-        <p className="p2">
-          {optionsToString(props.employee?.positions) || 'Должность'}
-        </p>
         {!props.bold && (
           <div>
-            <button
-              onClick={handleDelete}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: `url(${bucket}) no-repeat center`,
-                backgroundSize: 'contain',
-                width: '24px', 
-                height: '24px',
-                border: 'none', 
-                cursor: 'pointer',
-                padding: '0',
-                borderRadius: '0',
-                margin: 'auto',
-              }}
-            />
+            <FaTrashAlt onClick={handleDelete} className="svg-dark svg-base-size"/>
           </div>
         )}
       </div>

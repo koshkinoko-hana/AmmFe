@@ -33,7 +33,7 @@ const News: React.FC = () => {
       newsList &&
       <div className="container news">
         <div className="news__header">
-          <h1>Сотрудники</h1>
+          <h1>Новости</h1>
           <button onClick={createNews}>Новая</button>
         </div>
         <List itemsRender={[

@@ -1,5 +1,5 @@
 import { fetchNewsAction, fetchNewsListAction, saveNewsAction, updateNewsAction } from '@admin/ducks/actions/news'
-import { errorWrapper } from '@admin/ducks/sagas/sagaWrapper'
+import { errorWrapper, saveWrapper, updateWrapper } from '@admin/ducks/sagas/sagaWrapper'
 import { News, NewsLight } from '@admin/ducks/types/news'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
@@ -10,7 +10,7 @@ function* fetchNewsList() {
   yield errorWrapper(function* () {
     try {
       const res: NewsLight[] = yield call(get, `${apiAdmin}/news`)
-      yield put({ type: fetchNewsListAction.SUCCESS, payload: { employees: res } })
+      yield put({ type: fetchNewsListAction.SUCCESS, payload: { news: res } })
     } catch (e: unknown) {
       yield put({ type: fetchNewsListAction.FAILURE })
       throw e
@@ -32,15 +32,19 @@ function* fetchNews(action: PayloadAction<{ slug: string }>) {
 
 function* saveNews(action: PayloadAction<News>) {
   yield errorWrapper(function* () {
-    const res: News = yield call(post, `${apiAdmin}/news`, action.payload)
-    yield put({ type: saveNewsAction.SUCCESS, payload: res })
+    yield saveWrapper(function* () {
+      const res: News = yield call(post, `${apiAdmin}/news`, action.payload)
+      yield put({ type: saveNewsAction.SUCCESS, payload: res })
+    })
   })
 }
 
 function* updateNews(action: PayloadAction<News>) {
   yield errorWrapper(function* () {
-    const res: News = yield call(putRequest, `${apiAdmin}/news/${action.payload.slug}`, action.payload)
-    yield put(updateNewsAction(res))
+    yield updateWrapper(function* () {
+      const res: News = yield call(putRequest, `${apiAdmin}/news/${action.payload.slug}`, action.payload)
+      yield put(updateNewsAction(res))
+    })
   })
 }
 

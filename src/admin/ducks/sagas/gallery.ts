@@ -1,16 +1,22 @@
-import { errorWrapper } from '@admin/ducks/sagas/sagaWrapper'
+import { errorWrapper, saveWrapper } from '@admin/ducks/sagas/sagaWrapper'
 import { closeDialogueAction, setLoadingDialogueAction } from '@common/ducks/slice/dialogue'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { apiAdmin } from '~/common/consts/general'
-import { del, get, postFormData } from '~/common/utils/fetch'
-import { GalleryPhoto, GalleryPhotoListItem } from '../types/gallery'
-import { createPhotoAction, deletePhotoAction, fetchPhotoAction, fetchPhotoListAction } from '../actions/gallery'
+import { del, get, post, postFormData } from '~/common/utils/fetch'
+import { CreateGalleryPhotoRequest, GalleryPhoto } from '../types/gallery'
+import {
+  createPhotoAction,
+  deletePhotoAction,
+  fetchPhotoAction,
+  fetchPhotoListAction,
+  uploadPhotoAction
+} from '../actions/gallery'
 
 function* fetchPhotos(action: PayloadAction<{offset: number, limit: number}>) {
   yield errorWrapper(function* () {
     try {
-      const res: {data: GalleryPhotoListItem[], total: number} = yield call(get, `${apiAdmin}/gallery?offset=${action.payload.offset}&limit=${action.payload.limit}`)
+      const res: {data: GalleryPhoto[], total: number} = yield call(get, `${apiAdmin}/gallery?offset=${action.payload.offset}&limit=${action.payload.limit}`)
       yield put({ type: fetchPhotoListAction.SUCCESS, payload: { photos: res.data, total: res.total } })
     } catch (e: unknown) {
       yield put({ type: fetchPhotoListAction.FAILURE })
@@ -44,16 +50,32 @@ function* deletePhoto(action: PayloadAction<{id: number}>) {
   })
 } 
   
-function* createPhoto(action: PayloadAction<FormData>) {
+function* uploadPhoto(action: PayloadAction<FormData>) {
   yield errorWrapper(function* () {
-    try {
-      yield call(postFormData, `${apiAdmin}/gallery`, action.payload)
-      yield put({type: createPhotoAction.SUCCESS})
-      yield put(closeDialogueAction())
-    } catch (e: unknown) {
-      yield put(setLoadingDialogueAction(false))
-      throw e
-    }
+    yield saveWrapper(function* () {
+      try {
+        yield call(postFormData, `${apiAdmin}/gallery/file`, action.payload)
+        yield put({ type: uploadPhotoAction.SUCCESS })
+      } catch (e: unknown) {
+        yield put({ type: uploadPhotoAction.FAILURE })
+        throw e
+      }
+    })
+  })
+}
+
+function* createPhoto(action: PayloadAction<CreateGalleryPhotoRequest>) {
+  yield errorWrapper(function* () {
+    yield saveWrapper(function* () {
+      try {
+        yield call(post, `${apiAdmin}/gallery`, action.payload)
+        yield put({ type: createPhotoAction.SUCCESS })
+        yield put(closeDialogueAction())
+      } catch (e: unknown) {
+        yield put(setLoadingDialogueAction(false))
+        throw e
+      }
+    })
   })
 }
   
@@ -62,9 +84,9 @@ function* galleryWatcher() {
     takeLatest(fetchPhotoListAction.TRIGGER, fetchPhotos),
     takeLatest(fetchPhotoAction.TRIGGER, fetchPhoto),
     takeLatest(deletePhotoAction.TRIGGER, deletePhoto),
+    takeLatest(uploadPhotoAction.TRIGGER, uploadPhoto),
     takeLatest(createPhotoAction.TRIGGER, createPhoto),
   ])
 }
   
 export default galleryWatcher
-  

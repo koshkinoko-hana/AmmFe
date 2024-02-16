@@ -1,3 +1,4 @@
+import { DepartmentDetailed } from '@admin/ducks/types/department'
 import { RootState } from '~/common/store'
 
 export const getDepartments = (state: RootState) => state.admin.department.departments

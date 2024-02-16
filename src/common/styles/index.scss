@@ -79,6 +79,28 @@ button {
       color: $color-white;
     }
   }
+
+  &.disabled {
+    background-color: $color-grey90;
+    border-color: $color-grey90;
+    cursor: not-allowed;
+
+    svg {
+      stroke: white;
+      fill: white;
+      cursor: not-allowed;
+    }
+
+
+    &:hover {
+      color: $color-grey90;
+
+      svg {
+        stroke: white;
+        fill: white;
+      }
+    }
+  }
 }
 
 .container {
@@ -276,4 +298,34 @@ svg {
   &:hover{
     fill: $color-blue80;
   }  
+}
+
+.svg-dark {
+  cursor: pointer;
+  border: none;
+  background: none;
+  fill: $color-key-primary;
+  stroke: $color-key-primary;
+  &:hover{
+    fill: $color-blue80;
+    stroke: $color-blue80;
+  }
+}
+
+
+.svg-base-size {
+  height: $grid-base;
+  width: $grid-base;
+}
+
+
+.button-svg {
+  padding: $grid-tiny-3x;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.hidden {
+  display: none;
 }

@@ -10,14 +10,14 @@ import { FormData } from './types'
 import TextInput from '@common/components/textInput'
 import Textarea from '@common/components/textarea'
 import EmailInput from '~/client/pages/questionPage/components/ContactForm/EmailInput'
-import { getUserLoggedIn } from '~/admin/ducks/selectors/user'
+import { getMeLoggedIn } from '@admin/ducks/selectors/me'
 
 const Question: React.FC = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const currentQuestion = useSelector(getCurrentQuestion)
-  const loggedIn = useSelector(getUserLoggedIn)
+  const loggedIn = useSelector(getMeLoggedIn)
 
 
   useEffect(() => {

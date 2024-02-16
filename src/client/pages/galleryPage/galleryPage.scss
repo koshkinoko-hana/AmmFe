@@ -1,7 +1,22 @@
+@import "src/common/styles";
+
 .gallery {
+    margin: 0 $grid-normal;
     display: grid;
-    justify-content: center;
-    grid-template-rows: repeat(3, 300px);
+    justify-content: left;
     grid-template-columns: repeat(7, 175px);
     grid-gap: 35px;
+
+    @media (max-width: $grid-tablet-max) {
+        grid-template-columns: repeat(5, 175px);
+    }
+
+    @media (max-width: $grid-tablet-medium) {
+        grid-template-columns: repeat(3, 175px);
+    }
+
+    @media (max-width: $grid-mobile-max) {
+        margin: 0 $grid-base;
+        display: flex;
+    }
 }

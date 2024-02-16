@@ -19,7 +19,14 @@ const ListItem = (props: ListItemProps) => {
         {props.photo?.title || 'Название'}
       </p>
       <p className="p2">
-        {props.photo?.path || 'Ссылка'}
+        {
+          props.photo?.path ?
+            <img src={props.photo?.path} className="preview"/> :
+            'Фото'
+        }
+      </p>
+      <p className="p2">
+        {props.photo?.photoDate ? (new Date(props.photo.photoDate)).toDateString() : 'Дата'}
       </p>
     </div>
   )

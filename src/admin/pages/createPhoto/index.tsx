@@ -1,21 +1,20 @@
+import { Image } from '@admin/pages/album/types'
+import PhotoInput from '@admin/components/photoInput'
 import TextInput from '@common/components/textInput'
 import React, {
-  ChangeEvent,
   useRef,
   useState
 } from 'react'
-import { FileDrop } from 'react-file-drop'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { FormDataType } from './types'
-import { createPhotoAction } from '~/admin/ducks/actions/gallery'
 
 const CreatePhoto: React.FC = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null)
+  const [uploadedFile, setUploadedFile] = useState<Image>({})
 
   const {
     register,
@@ -25,15 +24,20 @@ const CreatePhoto: React.FC = () => {
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const onFileInputChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    setUploadedFile(event.target.files![0])
+  const onFileInputChange = async (file: File) => {
+    setUploadedFile({ file })
   }
 
-  const onSubmit = ({title}: FormDataType) => {
+  const onImageLinkAdd = async (link: string) => {
+    setUploadedFile({link})
+  }
+
+  const onSubmit = ({title, photoDate}: FormDataType) => {
     const photo = new FormData()
     photo.append('title', title)
-    if(uploadedFile) photo.append('file', uploadedFile, 'file')
-    dispatch(createPhotoAction(photo))
+    photo.append('photoDate', photoDate.toISOString())
+    // if(uploadedFile) photo.append('file', uploadedFile, 'file')
+    // dispatch(createPhotoAction(photo))
   }
   const onCancel = () => {
     navigate(-1)
@@ -55,15 +59,19 @@ const CreatePhoto: React.FC = () => {
           register={register('title', { required: true, maxLength: 255, value: '' })}
           classList="full-width"
         />
-        <input
-          onChange={onFileInputChange}
-          ref={fileInputRef}
-          type="file"
-          className="hidden"
+        <TextInput
+          type="date"
+          label={'Дата'}
+          error={errors.photoDate?.type}
+          register={register('photoDate', { required: true, value: new Date(), valueAsDate: true })}
+          classList="full-width"
         />
-        <FileDrop
-          onTargetClick={onTargetClick}>
-        </FileDrop>
+        {/*<PhotoInput*/}
+        {/*  label="Изображение"*/}
+        {/*  setUploadedFile={onFileInputChange}*/}
+        {/*  setLink={onImageLinkAdd}*/}
+        {/*  disableChooseTab={true}*/}
+        {/*/>*/}
         <div className="buttons">
           <button
             type="submit"

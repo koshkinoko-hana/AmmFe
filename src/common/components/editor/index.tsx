@@ -16,7 +16,6 @@ const EditorComponent: FC<Props> = ({label, onChange}: Props) => {
 
   const onEditorStateChange = (editorState: EditorState) => {
     setEditorState(editorState)
-    debugger
     const rawContentState = convertToRaw(editorState.getCurrentContent())
     const markup = draftToHtml(
       rawContentState,
