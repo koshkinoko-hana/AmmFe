@@ -7,6 +7,5 @@ export interface Props {
   edit?: boolean
   close?: boolean
   onClose?: () => void
-  setIsEdit: () => void
   currentImage?: Image
 }

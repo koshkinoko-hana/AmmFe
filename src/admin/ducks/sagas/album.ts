@@ -6,6 +6,8 @@ import {
   updateAlbumAction
 } from '@admin/ducks/actions/album'
 import { errorWrapper, saveWrapper } from '@admin/ducks/sagas/sagaWrapper'
+import { CreateAlbumRequest } from '@admin/ducks/types/album'
+import { UploadedFileResponse } from '@admin/ducks/types/employee'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { apiAdmin } from '~/common/consts/general'
@@ -62,11 +64,27 @@ function* updateAlbum(action: PayloadAction<FormData>) {
   })
 }
 
-function* createAlbum(action: PayloadAction<CreateGalleryPhotoRequest>) {
+function* createAlbum(action: PayloadAction<CreateAlbumRequest>) {
   yield errorWrapper(function* () {
     yield saveWrapper(function* () {
       try {
-        yield call(post, `${apiAdmin}/gallery`, action.payload)
+        const resUploaded: UploadedFileResponse[] = yield all(
+          action.payload.photosUploading.map(pu =>  call(postFormData, `${apiAdmin}/gallery/file`, pu))
+        )
+        const resLinksIds: number[] = yield all(
+          action.payload.photosLinks.map(link =>  call(post, `${apiAdmin}/gallery/file`, { link }))
+        )
+        const req = {
+          title: action.payload.title,
+          albumDate: action.payload.albumDate,
+          description: action.payload.description,
+          photos: [
+            ...resUploaded.map(file => file.id),
+            ...resLinksIds,
+            action.payload.photosExistingIds
+          ]
+        }
+        yield call(post, `${apiAdmin}/album`, req)
         yield put({ type: createAlbumAction.SUCCESS })
       } catch (e: unknown) {
         yield put({ type: createAlbumAction.FAILURE })

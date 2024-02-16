@@ -1,5 +1,6 @@
 import './album.scss'
 import PhotoInput from '@admin/components/photoInput'
+import { createAlbumAction } from '@admin/ducks/actions/album'
 import { createPhotoAction } from '@admin/ducks/actions/gallery'
 import Textarea from '@common/components/textarea'
 import TextInput from '@common/components/textInput'
@@ -26,13 +27,10 @@ const CreateAlbum: React.FC = () => {
   } = useForm<FormDataType>({ mode: 'onChange' })
 
   const onImageAdd = async (image: Image) => {
-    setImages([ ...images, { ...image, edit: false } ])
+    setImages([ ...images, image ])
     setNewImageForm(false)
   }
 
-  const onImageChange = async (index: number, image: Image, edit?: boolean) => {
-    setImages([ ...images.slice(0, index),  { ...image, edit: edit || false}, ...images.slice(index + 1)])
-  }
   const onImageDelete = async (index: number) => {
     setImages([ ...images.slice(0, index), ...images.slice(index + 1) ])
   }
@@ -41,25 +39,31 @@ const CreateAlbum: React.FC = () => {
   }
 
   const onSubmit = ({ title, albumDate, description }: FormDataType) => {
-
+    debugger
     const photosUploading: FormData[] = []
     const photosLinks: string[] = []
+    const photosExistingIds: number[] = []
     images.forEach(image => {
+      debugger
       if (image.link) {
         photosLinks.push(image.link)
-      }
-      if (image.file) {
+      } else if (image.file) {
         const photo = new FormData()
-        photo.append('file', image.file, 'file')
+        photo.append('file', image.file)
         photosUploading.push(photo)
+      } else if (image.id) {
+        photosExistingIds.push(image.id)
       }
     })
     const album = {
       title,
       albumDate,
-      description
+      description,
+      photosUploading,
+      photosLinks,
+      photosExistingIds
     }
-    dispatch(createPhotoAction(photo))
+    dispatch(createAlbumAction(album))
   }
   const onCancel = () => {
     navigate(-1)
@@ -79,8 +83,8 @@ const CreateAlbum: React.FC = () => {
         />
         <Textarea
           label={'Описание'}
-          error={errors.title?.type}
-          register={register('title', { required: true, maxLength: 255, value: '' })}
+          error={errors.description?.type}
+          register={register('description', { required: true, maxLength: 255, value: '' })}
           classList="full-width"
         />
         <TextInput
@@ -97,10 +101,9 @@ const CreateAlbum: React.FC = () => {
               (i, index) =>
                 <PhotoInput
                   key={index}
-                  edit={i.edit}
-                  saveImage={(image: Image) => onImageChange(index, image)}
+                  edit={false}
+                  saveImage={onImageAdd}
                   onClose={() => onImageDelete(index)}
-                  setIsEdit={() => onImageChange(index, i, true)}
                   currentImage={i}
                 />
             )
@@ -115,7 +118,6 @@ const CreateAlbum: React.FC = () => {
                 edit={true}
                 close={true}
                 onClose={() => setNewImageForm(false)}
-                setIsEdit={() => {return}}
               />
             </div>
             :

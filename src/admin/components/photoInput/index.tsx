@@ -13,7 +13,6 @@ const PhotoInput: React.FC<Props> = ({
   close,
   onClose,
   saveImage,
-  setIsEdit,
   currentImage
 }) => {
 
@@ -105,10 +104,6 @@ const PhotoInput: React.FC<Props> = ({
           >
             <FaSave className="svg-base-size"/>
           </button>
-        }
-        {
-          !edit &&
-          <FaEdit onClick={setIsEdit} className="svg-dark svg-base-size"/>
         }
         {
           close && onClose &&

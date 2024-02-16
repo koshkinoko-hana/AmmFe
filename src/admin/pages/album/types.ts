@@ -7,5 +7,5 @@ export interface FormDataType {
 export interface Image {
   link?: string
   file?: File
-  edit?: boolean
+  id?: number
 }
